@@ -3,7 +3,7 @@
     <h1>Home</h1>
     <post-article v-for="topic of allTopics" :key="topic.id" 
     v-bind:title="topic.title"
-    v-bind:username="topic.userId"
+    v-bind:username="topic.username"
     v-bind:date="topic.createdDate"
     />
 

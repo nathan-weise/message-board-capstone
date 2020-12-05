@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.PostDAO;
 import com.techelevator.model.Post;
+import com.techelevator.model.PostDTO;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +21,8 @@ public class PostController {
     }
 
     @GetMapping(value = "/posts")
-    public List<Post> listPosts() {
-        List<Post> results = new ArrayList<>();
+    public List<PostDTO> listPosts() {
+        List<PostDTO> results = new ArrayList<>();
         return postDAO.listAllPosts();
     }
 
