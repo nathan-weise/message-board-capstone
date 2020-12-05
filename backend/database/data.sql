@@ -1,4 +1,4 @@
--- Dummy data for user table
+-- Dummy data for user table, all passwords are 'security'
 INSERT INTO users (username, password_hash, role)
 VALUES ('Kurt', '$2a$10$U1/EBRALXy8OnnOaoCFr2e6Tzrh/6bLwy1hIdpIuKBXNWqIXEMNAi', 'ROLE_ADMIN');
 INSERT INTO users (username, password_hash, role)
