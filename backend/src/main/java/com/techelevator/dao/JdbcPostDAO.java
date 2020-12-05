@@ -1,0 +1,43 @@
+package com.techelevator.dao;
+
+import com.techelevator.model.Post;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class JdbcPostDAO implements PostDAO {
+
+    private JdbcTemplate jdbcTemplate;
+
+    public JdbcPostDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public List<Post> listAllPosts() {
+        List<Post> results = new ArrayList<>();
+        String sql = "SELECT * FROM posts";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()) {
+            results.add(mapRowToPost(rowSet));
+        }
+        return results;
+    }
+
+    private Post mapRowToPost(SqlRowSet rs) {
+        Post post = new Post();
+        post.setId(rs.getLong("post_id"));
+        post.setTitle(rs.getString("post_title"));
+        post.setText(rs.getString("post_text"));
+        post.setForumId(rs.getLong("forum_id"));
+        post.setUserId(rs.getLong("user_id"));
+        post.setCreatedDate(rs.getDate("created_time"));
+
+        return post;
+    }
+
+}
