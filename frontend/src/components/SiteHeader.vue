@@ -15,7 +15,7 @@
         <b-button id="button-reg" v-bind:to="{name: 'register'}">Register</b-button>
       </div>
       <div v-else>
-        username goes here
+        Hello, {{ $store.state.user.username }} [{{ $store.state.user.authorities[0].name.substring(5) }}]
       </div>
     </div>
   </div>
@@ -23,6 +23,12 @@
 
 <script>
 export default {
+  // methods: {
+  //   test() {
+  //     console.log(this.$store.state.user.username);
+  //     return this.$store.state.token === ''
+  //   }
+  // }
 };
 </script>
 
