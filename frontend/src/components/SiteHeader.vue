@@ -10,7 +10,7 @@
       </b-input-group>
     </div>
     <div id="nav-buttons">
-      <div v-if="isAuthenticated">
+      <div v-if="$store.state.token === ''">
         <b-button id="button-log" v-bind:to="{name: 'login'}">Login</b-button>
         <b-button id="button-reg" v-bind:to="{name: 'register'}">Register</b-button>
       </div>
@@ -23,11 +23,6 @@
 
 <script>
 export default {
-  computed: {
-    isAuthenticated() {
-      return localStorage.getItem('token') === null;
-    }
-  }
 };
 </script>
 
