@@ -43,12 +43,6 @@
 
 <script>
 export default {
-  // methods: {
-  //   test() {
-  //     console.log(this.$store.state.user.username);
-  //     return this.$store.state.token === ''
-  //   }
-  // }
 };
 </script>
 

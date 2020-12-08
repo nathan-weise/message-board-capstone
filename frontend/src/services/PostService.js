@@ -6,6 +6,10 @@ export default {
 
   listAllPosts() {
     return axios.get('/posts');
+  },
+
+  listAllPostsForForum(forumId) {
+    return axios.get(`/forums/${forumId}/posts`);
   }
 
 }
