@@ -3,12 +3,12 @@
     <router-link v-bind:to="{ name: 'home' }">
       <img id="logo" src="../../res/pngegg.png" alt="bread" />
     </router-link>
-    <div id="search-bar">
+    <div id="search-bar" v-on:keyup.enter="performSearch()">
       <b-input-group size="md" class="mb-2">
         <b-input-group-prepend is-text>
-          <b-icon icon="search"></b-icon>
+          <b-icon icon="search" v-on:click="performSearch()"></b-icon>
         </b-input-group-prepend>
-        <b-form-input type="search" placeholder="Search BrEaDIT"></b-form-input>
+        <b-form-input v-model="searchTerm" type="search" placeholder="Search BrEaDIT"></b-form-input>
       </b-input-group>
     </div>
     <div>
@@ -41,8 +41,24 @@
   </div>
 </template>
 
+
 <script>
+import ForumService from "@/services/ForumService.js";
+
 export default {
+  data() {
+    return {
+      searchTerm: '',
+    }
+  },
+  methods: {
+    performSearch() {
+      ForumService.getForumBySearchTerm(this.searchTerm).then((response) => {
+        this.$store.commit('SET_SEARCH_RESULTS', response.data);
+        this.$router.push('search-results');
+    });
+    },
+  },
 };
 </script>
 
@@ -50,7 +66,7 @@ export default {
 #logo {
   height: 75px;
   width: 75px;
-  padding: 10px 0 0 0 
+  padding: 10px 0 0 0;
 }
 #container {
   display: flex;

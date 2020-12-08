@@ -26,7 +26,6 @@ export default {
     };
   },
   created() {
-    console.log(this.$route.path);
     const firstIndexOfSlash = this.$route.path.indexOf('/', 1);
     const secondIndexOfSlash = this.$route.path.indexOf('/', firstIndexOfSlash + 1);
     const forumId = this.$route.path.substring(firstIndexOfSlash + 1, secondIndexOfSlash);

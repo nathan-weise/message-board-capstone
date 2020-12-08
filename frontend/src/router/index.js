@@ -6,6 +6,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
+import Search from '../views/Search.vue'
 import Forum from '../views/Forum.vue'
 import store from '../store/index'
 
@@ -60,6 +61,14 @@ const router = new Router({
       path: '/forums/:forumId/posts',
       name: 'forum',
       component: Forum,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/search-results',
+      name: 'searchResults',
+      component: Search,
       meta: {
         requiresAuth: false
       }
