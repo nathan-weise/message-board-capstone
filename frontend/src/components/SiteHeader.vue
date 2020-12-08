@@ -1,6 +1,8 @@
 <template>
   <div id="container">
-    <h1>BrEaDIT</h1>
+    <router-link v-bind:to="{ name: 'home' }">
+      <img id="logo" src="../../res/pngegg.png" alt="bread" />
+    </router-link>
     <div id="search-bar">
       <b-input-group size="md" class="mb-2">
         <b-input-group-prepend is-text>
@@ -9,13 +11,31 @@
         <b-form-input type="search" placeholder="Search BrEaDIT"></b-form-input>
       </b-input-group>
     </div>
-    <div id="nav-buttons">
+    <div>
       <div v-if="$store.state.token === ''">
-        <b-button id="button-log" v-bind:to="{name: 'login'}">Login</b-button>
-        <b-button id="button-reg" v-bind:to="{name: 'register'}">Register</b-button>
+        <b-button
+          class="nav-buttons"
+          id="button-in"
+          v-bind:to="{ name: 'login' }"
+          >Login</b-button
+        >
+        <b-button
+          class="nav-buttons"
+          id="button-reg"
+          v-bind:to="{ name: 'register' }"
+          >Register</b-button
+        >
       </div>
       <div v-else>
-        Hello, {{ $store.state.user.username }} [{{ $store.state.user.authorities[0].name.substring(5) }}]
+        Hello, {{ $store.state.user.username }} [{{
+          $store.state.user.authorities[0].name.substring(5)
+        }}]
+        <b-button
+          class="nav-buttons"
+          id="button-in"
+          v-bind:to="{ name: 'logout' }"
+          >Logout</b-button
+        >
       </div>
     </div>
   </div>
@@ -33,6 +53,11 @@ export default {
 </script>
 
 <style>
+#logo {
+  height: 75px;
+  width: 75px;
+  padding: 10px 0 0 0 
+}
 #container {
   display: flex;
   justify-content: space-between;
@@ -43,8 +68,7 @@ export default {
   display: flex;
   padding: 10px 0px 0px 0px;
 }
-#button-log {
+#button-in {
   margin-right: 5px;
 }
-
 </style>
