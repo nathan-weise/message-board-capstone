@@ -34,7 +34,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listPostsForForum(long forumId) {
+    public List<PostDTO> listAllPostsForForum(long forumId) {
         List<PostDTO> results = new ArrayList<>();
         String sql = "SELECT * FROM posts " +
                      "JOIN forums ON posts.forum_id = forums.forum_id " +
@@ -47,6 +47,19 @@ public class JdbcPostDAO implements PostDAO {
         return results;
     }
 
+    @Override
+    public List<PostDTO> listAllPostsByDate() {
+        List<PostDTO> results = new ArrayList<>();
+        String sql = "SELECT * FROM posts " +
+                     "JOIN forums ON posts.forum_id = forums.forum_id " +
+                     "JOIN users ON posts.user_id = users.user_id " +
+                     "ORDER BY posts.created_time DESC;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()) {
+            results.add(mapRowToPostDTO(rowSet));
+        }
+        return results;
+    }
 
     private Post mapRowToPost(SqlRowSet rs) {
         Post post = new Post();

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1 >Home</h1>
+    <b-button v-on:click="loadPostsSortedByNew()">Sort By New</b-button>
     <post-article v-for="topic of allTopics" :key="topic.id" 
     v-bind:title="topic.title"
     v-bind:username="topic.username"
@@ -19,6 +20,13 @@ export default {
   data() {
     return {
       allTopics: []
+    }
+  },
+  methods: {
+    loadPostsSortedByNew() {
+      PostService.listAllNewPosts().then(response => {
+        this.allTopics = response.data;
+      });
     }
   },
   created() {

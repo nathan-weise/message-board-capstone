@@ -10,6 +10,9 @@ export default {
 
   listAllPostsForForum(forumId) {
     return axios.get(`/forums/${forumId}/posts`);
-  }
+  },
 
+  listAllNewPosts() {
+    return axios.get('/posts/new');
+  }
 }

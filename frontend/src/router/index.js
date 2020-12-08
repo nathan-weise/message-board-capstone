@@ -73,6 +73,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/new',
+      name: 'new',
+      component: Home,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 

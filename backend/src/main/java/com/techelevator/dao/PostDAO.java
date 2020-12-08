@@ -8,6 +8,7 @@ import java.util.List;
 public interface PostDAO {
 
     List<PostDTO> listAllPosts();
-    List<PostDTO> listPostsForForum(long forumId);
+    List<PostDTO> listAllPostsForForum(long forumId);
+    List<PostDTO> listAllPostsByDate();
 
 }
