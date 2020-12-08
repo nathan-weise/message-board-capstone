@@ -6,6 +6,9 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Component
 public class JdbcForumDAO implements ForumDAO {
@@ -27,8 +30,16 @@ public class JdbcForumDAO implements ForumDAO {
 
     //TODO
     // search method, check out ORDER BY DIFFERENCE
-//    SELECT * FROM forums
-//    WHERE forum_name ILIKE '%brea%';
+    public List<Forum> searchForumByTitle(String searchTerm) {
+        List<Forum> results = new ArrayList<>();
+        String sql = "SELECT * FROM forums " +
+                     "WHERE forum_name ILIKE '%" + searchTerm +  "%';";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()) {
+            results.add(mapRowToForum(rowSet));
+        }
+        return results;
+    }
 
     private Forum mapRowToForum(SqlRowSet rs) {
         Forum forum = new Forum();

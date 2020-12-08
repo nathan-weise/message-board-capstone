@@ -40,6 +40,6 @@ public class PostController {
     //get specific post on specific forum
     // /forums/{id}/posts/{id}
 
-
+    //blank query string returns popular posts
 
 }
