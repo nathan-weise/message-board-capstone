@@ -55,8 +55,9 @@ export default {
     performSearch() {
       ForumService.getForumBySearchTerm(this.searchTerm).then((response) => {
         this.$store.commit('SET_SEARCH_RESULTS', response.data);
-        if (!this.$route.path.includes('search-results')) {
-          this.$router.push('search-results');
+        if (!this.$route.path.includes('search?q=')) {
+          // this.$router.push('search-results');
+          this.$router.push({ path: 'search', query: { q: this.searchTerm } });
         }
     });
     },

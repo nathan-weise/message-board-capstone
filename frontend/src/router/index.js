@@ -66,7 +66,7 @@ const router = new Router({
       }
     },
     {
-      path: '/search-results',
+      path: '/search',
       name: 'searchResults',
       component: Search,
       meta: {
