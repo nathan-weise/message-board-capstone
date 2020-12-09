@@ -53,14 +53,22 @@ export default {
   },
   methods: {
     performSearch() {
-      ForumService.getForumBySearchTerm(this.searchTerm).then((response) => {
+      console.log(this.$route.query.q);
+
+      this.$router.push({ name: 'search', query: { q: this.searchTerm } });
+      ForumService.getForumBySearchTerm(this.$route.query.q).then((response) => {
         this.$store.commit('SET_SEARCH_RESULTS', response.data);
-        if (!this.$route.path.includes('search?q=')) {
-          this.$router.push({ name: 'search', query: { q: this.searchTerm } });
-        }
+        console.log(response.data);
+        // if (!this.$route.path.includes('search?q=')) {
+        // }
     });
     },
   },
+  created() {
+    this.searchTerm = this.$route.query.q;
+    this.performSearch();
+  }
+
 };
 </script>
 
