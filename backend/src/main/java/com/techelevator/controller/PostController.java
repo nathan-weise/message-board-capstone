@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -32,6 +33,14 @@ public class PostController {
     public List<PostDTO> listPostsByDate() {
         List<PostDTO> results = new ArrayList<>();
         return postDAO.listAllPostsByDate();
+    }
+
+    //Get posts sorted by creation date
+    @GetMapping(value = "/posts/popular")
+    public List<PostDTO> listPostsByPopularity() {
+        List<PostDTO> results = postDAO.listAllPosts();
+        Collections.sort(results);
+        return results;
     }
 
     //get posts for a specific forum

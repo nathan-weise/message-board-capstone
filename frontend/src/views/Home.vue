@@ -27,6 +27,11 @@ export default {
       PostService.listAllNewPosts().then(response => {
         this.allTopics = response.data;
       });
+    },
+    loadPostsSortedByPopularity() {
+      PostService.listAllNewPosts().then(response => {
+        this.allTopics = response.data;
+      });
     }
   },
   created() {

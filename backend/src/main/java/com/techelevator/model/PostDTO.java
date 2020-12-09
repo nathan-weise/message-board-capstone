@@ -1,8 +1,9 @@
 package com.techelevator.model;
 
 import java.util.Date;
+import java.util.Objects;
 
-public class PostDTO {
+public class PostDTO implements Comparable<PostDTO> {
 
     private long id;
     private String title;
@@ -66,5 +67,18 @@ public class PostDTO {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    @Override
+    public int compareTo(PostDTO o) {
+        if(this.getPopularity() == o.getPopularity()) {
+            return 0;
+        }
+        else if(this.getPopularity() > o.getPopularity()) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
     }
 }

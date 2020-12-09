@@ -10,5 +10,6 @@ public interface PostDAO {
     List<PostDTO> listAllPosts();
     List<PostDTO> listAllPostsForForum(long forumId);
     List<PostDTO> listAllPostsByDate();
+//    List<PostDTO> listAllPostsByPopularity();
 
 }

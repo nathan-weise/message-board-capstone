@@ -61,6 +61,11 @@ public class JdbcPostDAO implements PostDAO {
         return results;
     }
 
+//    @Override
+//    public List<PostDTO> listAllPostsByPopularity() {
+//
+//    }
+
     private Post mapRowToPost(SqlRowSet rs) {
         Post post = new Post();
         post.setId(rs.getLong("post_id"));
