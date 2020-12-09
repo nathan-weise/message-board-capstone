@@ -73,6 +73,15 @@ public class JdbcPostDAO implements PostDAO {
         return post;
     }
 
+    private int calculatePopularity(long postId) {
+        String sql = "SELECT (COUNT(CASE WHEN up_vote IS TRUE THEN 1 END) - COUNT(CASE WHEN down_vote IS TRUE THEN 1 END)) AS popularity " +
+                "FROM post_votes " +
+                "WHERE post_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, postId);
+        rowSet.next();
+        return rowSet.getInt("popularity");
+    }
+
     private PostDTO mapRowToPostDTO(SqlRowSet rs) {
         PostDTO post = new PostDTO();
         post.setId(rs.getLong("post_id"));
@@ -81,6 +90,7 @@ public class JdbcPostDAO implements PostDAO {
         post.setUsername(rs.getString("username"));
         post.setForumName(rs.getString("forum_name"));
         post.setCreatedDate(rs.getDate("created_time"));
+        post.setPopularity(calculatePopularity(post.getId()));
 
         return post;
     }

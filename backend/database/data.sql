@@ -57,4 +57,6 @@ INSERT INTO post_votes (post_id, up_vote, down_vote, user_id, created_time)
 VALUES (2, true, false, 3, TIMESTAMP '2015-7-6 10:23:54');
 INSERT INTO post_votes (post_id, up_vote, down_vote, user_id, created_time)
 VALUES (2, false, true, 4, TIMESTAMP '2015-7-6 10:23:54');
+INSERT INTO post_votes (post_id, up_vote, down_vote, user_id, created_time)
+VALUES (2, true, false, 5, TIMESTAMP '2015-7-6 10:23:54');
 
