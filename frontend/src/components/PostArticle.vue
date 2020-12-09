@@ -7,12 +7,13 @@
     <h3 id="title">{{ title }}</h3>
     <p  id="username">{{ username }}</p>
     <p  id="created">{{ date }}</p>
+    <p  id="popularity">Popularity: {{ popularity }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['title', 'username', 'date']
+  props: ['title', 'username', 'date', 'popularity']
 };
 </script>
 
@@ -22,7 +23,7 @@ div {
   margin-bottom: 10px;
   margin-left: 50px;
   display: grid;
-  height: 100px;
+  height: 8rem;
   width: 50%;
   border: solid;
   grid-template-areas:
@@ -49,6 +50,10 @@ img {
 
 #created {
   grid-area: create;
+}
+
+#popularity {
+  grid-area: votes;
 }
 
 

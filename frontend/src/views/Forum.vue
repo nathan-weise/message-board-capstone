@@ -8,6 +8,7 @@
       v-bind:title="post.title"
       v-bind:username="post.username"
       v-bind:date="post.createdDate"
+      v-bind:popularity="post.popularity"
     />
   </div>
 </template>

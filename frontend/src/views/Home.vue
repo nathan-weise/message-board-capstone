@@ -7,6 +7,7 @@
     v-bind:title="topic.title"
     v-bind:username="topic.username"
     v-bind:date="topic.createdDate"
+    v-bind:popularity="topic.popularity"
     />
 
   </div>

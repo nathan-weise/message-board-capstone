@@ -67,7 +67,7 @@ const router = new Router({
     },
     {
       path: '/search',
-      name: 'searchResults',
+      name: 'search',
       component: Search,
       meta: {
         requiresAuth: false
