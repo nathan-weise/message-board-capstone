@@ -2,6 +2,7 @@
   <div class="home">
     <h1 >Home</h1>
     <b-button v-on:click="loadPostsSortedByNew()">Sort By New</b-button>
+    <b-button v-on:click="loadPostsSortedByPopularity()">Sort By Popularity</b-button>
     <post-article v-for="topic of allTopics" :key="topic.id" 
     v-bind:title="topic.title"
     v-bind:username="topic.username"
@@ -29,7 +30,7 @@ export default {
       });
     },
     loadPostsSortedByPopularity() {
-      PostService.listAllNewPosts().then(response => {
+      PostService.listAllPopularPosts().then(response => {
         this.allTopics = response.data;
       });
     }

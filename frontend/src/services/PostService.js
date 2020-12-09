@@ -14,5 +14,9 @@ export default {
 
   listAllNewPosts() {
     return axios.get('/posts/new');
+  },
+
+  listAllPopularPosts() {
+    return axios.get('/posts/popular');
   }
 }
