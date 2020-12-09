@@ -1,13 +1,16 @@
 <template>
   <div>
-    <h3 id="title">{{ title }}</h3>
+    <router-link :to="{ name: 'forum', params: {forumId: id} }">
+      <h3 id="title">{{ title }}</h3>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
-    props: ['title']
+    props: ['title', 'id']
 }
+
 </script>
 
 <style scoped>

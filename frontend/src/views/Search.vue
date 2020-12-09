@@ -5,6 +5,7 @@
       v-for="result of $store.state.searchResults"
       :key="result.id"
       v-bind:title="result.name"
+      v-bind:id="result.id"
     />
   </div>
 </template>
