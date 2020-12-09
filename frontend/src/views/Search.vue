@@ -2,7 +2,7 @@
   <div>
     <p>Search results:</p>
     <forum-search-result
-      v-for="result of results"
+      v-for="result of $store.state.searchResults"
       :key="result.id"
       v-bind:title="result.name"
     />
@@ -16,12 +16,9 @@ export default {
 
   data() {
     return {
-      results: [],
+      results: this.$store.state.searchResults
     };
-  },
-  created() {
-    this.results = this.$store.state.searchResults;
-  },
+  }
 };
 </script>
 
