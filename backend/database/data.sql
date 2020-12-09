@@ -27,6 +27,16 @@ INSERT INTO forums (forum_name, user_id, created_time)
 VALUES ('Bagels', '5', TIMESTAMP '2018-6-4 16:23:54');
 INSERT INTO forums (forum_name, user_id, created_time)
 VALUES ('It is a mallard', '1', TIMESTAMP '2030-10-19 10:23:54');
+INSERT INTO forums (forum_name, user_id, created_time)
+VALUES ('Sourdough', '6', TIMESTAMP '2020-12-8 10:23:54');
+INSERT INTO forums (forum_name, user_id, created_time)
+VALUES ('Brioche', '4', TIMESTAMP '2018-8-2 10:23:54');
+INSERT INTO forums (forum_name, user_id, created_time)
+VALUES ('Pita', '1', TIMESTAMP '2019-4-19 10:23:54');
+INSERT INTO forums (forum_name, user_id, created_time)
+VALUES ('Naan', '2', TIMESTAMP '2010-10-1 2:23:54');
+INSERT INTO forums (forum_name, user_id, created_time)
+VALUES ('Ciabatta', '3', TIMESTAMP '2030-4-19 10:23:54');
 
 -- Dummy data for posts table
 INSERT INTO posts (post_title, post_text, forum_id, user_id, created_time)
