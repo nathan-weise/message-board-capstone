@@ -47,3 +47,14 @@ INSERT INTO comments (comment_text, post_id, user_id, created_time)
 VALUES ('Cake halvah powder cotton candy icing apple pie halvah marshmallow croissant. Jelly beans jelly wafer dragée croissant ice cream marzipan. Chocolate marzipan sesame snaps. Powder danish sugar plum cheesecake marzipan marzipan toffee topping. Jelly-o wafer lemon drops candy canes. Croissant pastry chocolate bar cupcake tiramisu candy canes. Donut sesame snaps toffee sweet roll bonbon. Pudding brownie cotton candy toffee fruitcake. Jelly beans chocolate cake carrot cake cupcake marzipan candy canes ice cream. Bear claw cheesecake sugar plum tart chocolate cotton candy caramels. Sugar plum danish cotton candy muffin candy canes. Pie apple pie jelly beans dessert. Tiramisu jujubes oat cake icing. Candy fruitcake icing.', 3, 1, TIMESTAMP '2004-10-19 10:23:58');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
 VALUES ('Cake halvah powder cotton candy icing apple pie halvah marshmallow croissant. Jelly beans jelly wafer dragée croissant ice cream marzipan. Chocolate marzipan sesame snaps. Powder danish sugar plum cheesecake marzipan marzipan toffee topping. Jelly-o wafer lemon drops candy canes. Croissant pastry chocolate bar cupcake tiramisu candy canes. Donut sesame snaps toffee sweet roll bonbon. Pudding brownie cotton candy toffee fruitcake. Jelly beans chocolate cake carrot cake cupcake marzipan candy canes ice cream. Bear claw cheesecake sugar plum tart chocolate cotton candy caramels. Sugar plum danish cotton candy muffin candy canes. Pie apple pie jelly beans dessert. Tiramisu jujubes oat cake icing. Candy fruitcake icing.', 3, 5, TIMESTAMP '2015-7-6 10:23:54');
+
+-- Dummy data for post_votes table
+INSERT INTO post_votes (post_id, up_vote, down_vote, user_id, created_time)
+VALUES (1, true, false, 1, TIMESTAMP '2015-7-6 10:23:54');
+INSERT INTO post_votes (post_id, up_vote, down_vote, user_id, created_time)
+VALUES (2, true, false, 2, TIMESTAMP '2015-7-6 10:23:54');
+INSERT INTO post_votes (post_id, up_vote, down_vote, user_id, created_time)
+VALUES (2, true, false, 3, TIMESTAMP '2015-7-6 10:23:54');
+INSERT INTO post_votes (post_id, up_vote, down_vote, user_id, created_time)
+VALUES (2, false, true, 4, TIMESTAMP '2015-7-6 10:23:54');
+

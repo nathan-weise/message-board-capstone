@@ -1,5 +1,6 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS post_votes;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS forums;
@@ -29,6 +30,7 @@ CREATE TABLE posts (
 	forum_id integer,
     user_id integer,
     created_time timestamp,
+    popularity integer,
 	CONSTRAINT PK_post_id PRIMARY KEY (post_id),
     CONSTRAINT FK_forum_id FOREIGN KEY (forum_id) REFERENCES forums(forum_id),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -45,5 +47,16 @@ CREATE TABLE comments (
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE post_votes (
+    vote_id serial,
+    post_id integer,
+    up_vote boolean,
+    down_vote boolean,
+    user_id integer,
+    created_time timestamp,
+    CONSTRAINT vote_id PRIMARY KEY (vote_id),
+    CONSTRAINT FK_post_id FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
 
 COMMIT TRANSACTION;

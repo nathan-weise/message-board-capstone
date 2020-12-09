@@ -10,6 +10,15 @@ public class PostDTO {
     private String forumName;
     private String username;
     private Date createdDate;
+    private int popularity;
+
+    public int getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(int popularity) {
+        this.popularity = popularity;
+    }
 
     public long getId() {
         return id;
