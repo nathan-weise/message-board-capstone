@@ -6,7 +6,10 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,12 +44,42 @@ public class JdbcForumDAO implements ForumDAO {
         return results;
     }
 
+    //This exists to help locate a username by their ID
+    public long findIdByUsername(String username) {
+        String sql = "SELECT user_id FROM users WHERE username ILIKE ?;";
+        Long id = jdbcTemplate.queryForObject(sql, Long.class, username);
+        if (id != null) {
+            return id;
+        } else {
+            return -1;
+        }
+    }
+
+    //This is the functionality to insert a new forum into the forum table in the database
+    public Forum createNewForum(String forumName, long userId, LocalDateTime createdDate) {
+        Forum newForum = new Forum();
+        String sql = "INSERT INTO forums " +
+                     "(forum_name, user_id, created_time) " +
+                     "VALUES (?,?,?) RETURNING forum_id;";
+        newForum.setName(forumName);
+        newForum.setUserId(userId);
+        newForum.setCreatedTime(createdDate);
+        try {
+             Long newId = jdbcTemplate.queryForObject(sql, Long.class, forumName, userId, createdDate);
+             newForum.setId(newId);
+            return newForum;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
     private Forum mapRowToForum(SqlRowSet rs) {
         Forum forum = new Forum();
         forum.setId(rs.getLong("forum_id"));
         forum.setName(rs.getString("forum_name"));
         forum.setUserId(rs.getLong("user_id"));
-        forum.setCreatedTime(rs.getDate("created_time"));
+        forum.setCreatedTime(LocalDateTime.ofInstant(rs.getDate("created_time").toInstant(), ZoneId.systemDefault()));
 
         return forum;
     }

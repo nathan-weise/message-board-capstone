@@ -1,13 +1,14 @@
 package com.techelevator.model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class Forum {
 
     private long id;
     private String name;
     private long userId;
-    private Date createdTime;
+    private LocalDateTime createdTime;
 
     public long getId() {
         return id;
@@ -33,11 +34,11 @@ public class Forum {
         this.userId = userId;
     }
 
-    public Date getCreatedTime() {
+    public LocalDateTime getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(LocalDateTime createdTime) {
         this.createdTime = createdTime;
     }
 }
