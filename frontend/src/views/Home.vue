@@ -3,6 +3,8 @@
     <h1 >Home</h1>
     <b-button v-on:click="loadPostsSortedByNew()">Sort By New</b-button>
     <b-button v-on:click="loadPostsSortedByPopularity()">Sort By Popularity</b-button>
+    <!-- TODO: Move this button to the sidebar once complete, just here to test functionality -->
+    <popup-form />
     <post-article v-for="topic of allTopics" :key="topic.id" 
     v-bind:title="topic.title"
     v-bind:username="topic.username"
@@ -16,11 +18,12 @@
 <script>
 import PostArticle from '../components/PostArticle.vue';
 import PostService from '@/services/PostService.js';
+import PopupForm from '../components/PopupForm.vue';
 
 export default {
-  components: { PostArticle },
+  components: { PostArticle, PopupForm },
   data() {
-    return {
+  return {
       allTopics: []
     }
   },
@@ -34,6 +37,9 @@ export default {
       PostService.listAllPopularPosts().then(response => {
         this.allTopics = response.data;
       });
+    },
+    showCreateForumForm() {
+      console.log('asdfasdfasdf');
     }
   },
   created() {
