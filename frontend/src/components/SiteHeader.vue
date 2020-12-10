@@ -53,14 +53,9 @@ export default {
   },
   methods: {
     performSearch() {
-      console.log(this.$route.query.q);
-
       this.$router.push({ name: 'search', query: { q: this.searchTerm } });
       ForumService.getForumBySearchTerm(this.$route.query.q).then((response) => {
         this.$store.commit('SET_SEARCH_RESULTS', response.data);
-        console.log(response.data);
-        // if (!this.$route.path.includes('search?q=')) {
-        // }
     });
     },
   },
