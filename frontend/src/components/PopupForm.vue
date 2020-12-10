@@ -5,7 +5,7 @@
      <form>
   <div class="form-group">
     <label for="forumNameInput">Forum Name</label>
-    <input id="forumNameInput" type="text" class="form-control" placeholder="Forum Name">
+    <input v-model="name" id="forumNameInput" type="text" class="form-control" placeholder="Forum Name">
   </div>
   <div class="form-group">
     <label for="forumDescInput">Forum Description</label>
@@ -14,7 +14,7 @@
   <div class="form-check">
     <b-form-checkbox type="checkbox" class="form-check-input" id="forumNsfw">nsfw?</b-form-checkbox>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" v-on:click.prevent="addForum()">Submit</button>
 </form>
     
       
@@ -23,12 +23,18 @@
 </template>
 
 <script>
+import ForumService from '@/services/ForumService.js';
+
 export default {
   data() {
     return {
-      value1:'',
-      value2:'',
-      popupActivo2:false
+      name: '',
+      popupActivo2: false
+    }
+  },
+  methods: {
+    addForum() {
+      ForumService.addForum({name: this.name});
     }
   }
 }

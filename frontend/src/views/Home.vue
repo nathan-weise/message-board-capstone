@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 >Home</h1>
+    <h1>Home</h1>
     <b-button v-on:click="loadPostsSortedByNew()">Sort By New</b-button>
     <b-button v-on:click="loadPostsSortedByPopularity()">Sort By Popularity</b-button>
     <!-- TODO: Move this button to the sidebar once complete, just here to test functionality -->
@@ -37,9 +37,6 @@ export default {
       PostService.listAllPopularPosts().then(response => {
         this.allTopics = response.data;
       });
-    },
-    showCreateForumForm() {
-      console.log('asdfasdfasdf');
     }
   },
   created() {
