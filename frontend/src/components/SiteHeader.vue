@@ -60,8 +60,13 @@ export default {
     },
   },
   created() {
-    this.searchTerm = this.$route.query.q;
-    this.performSearch();
+    // This statement runs a search when the page is reloaded, but only when we 
+    //are already on the search page. This allows us to copy and paste the search
+    //url and perform a search when the page is loaded
+    if (this.$route.name === 'search') {
+      this.searchTerm = this.$route.query.q;
+      this.performSearch();
+    }
   }
 
 };

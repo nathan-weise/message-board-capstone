@@ -37,7 +37,7 @@ export default {
     }
   },
   created() {
-    PostService.listAllPosts().then(response => {
+    PostService.listAllRecentPopularPosts().then(response => {
       this.allTopics = response.data;
     });
   }

@@ -18,5 +18,10 @@ export default {
 
   listAllPopularPosts() {
     return axios.get('/posts/popular');
+  },
+
+  //For displaying on the homepage
+  listAllRecentPopularPosts() {
+    return axios.get('/posts/recent-popular');
   }
 }
