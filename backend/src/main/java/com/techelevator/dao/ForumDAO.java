@@ -12,6 +12,7 @@ public interface ForumDAO {
 
     long findIdByUsername(String username);
 
+
     Forum createNewForum(String forumName, long userId, LocalDateTime createdDate);
 
 }

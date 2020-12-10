@@ -1,5 +1,9 @@
 package com.techelevator.model;
 
+import com.techelevator.dao.ForumDAO;
+import com.techelevator.dao.PostDAO;
+import com.techelevator.dao.UserDAO;
+
 import java.util.Date;
 
 public class Post {

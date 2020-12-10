@@ -34,6 +34,16 @@ public class JdbcUserDAO implements UserDAO {
     }
 
     @Override
+    public User findUsernameById(long userId) {
+        String sql = "SELECT user_id, username, password_hash, role FROM users WHERE user_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        if (rowSet.next()){
+            return mapRowToUser(rowSet);
+        }
+        throw new UsernameNotFoundException("User with id: " + userId + " was not found.");
+    }
+
+    @Override
     public boolean create(String username, String password, String role) {
         if (role == null || role.isEmpty()) {
             role = "ROLE_USER"; //default

@@ -7,6 +7,7 @@ import java.util.List;
 public interface UserDAO {
 
     User findByUsername(String username);
+    User findUsernameById(long userId);
 
     boolean create(String username, String password, String role);
 }
