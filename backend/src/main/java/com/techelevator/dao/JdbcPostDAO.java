@@ -66,6 +66,20 @@ public class JdbcPostDAO implements PostDAO {
 //
 //    }
 
+
+    @Override
+    public List<PostDTO> listAllPostsByRecentPopularity() {
+        List<PostDTO> results = new ArrayList<>();
+        String sql = "SELECT * FROM posts " +
+                     "JOIN forums ON posts.forum_id = forums.forum_id " +
+                     "JOIN users ON posts.user_id = users.user_id;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()) {
+            results.add(mapRowToPostDTO(rowSet));
+        }
+        return results;
+    }
+
     private Post mapRowToPost(SqlRowSet rs) {
         Post post = new Post();
         post.setId(rs.getLong("post_id"));
@@ -76,15 +90,6 @@ public class JdbcPostDAO implements PostDAO {
         post.setCreatedDate(rs.getDate("created_time"));
 
         return post;
-    }
-
-    private int calculatePopularity(long postId) {
-        String sql = "SELECT (COUNT(CASE WHEN up_vote IS TRUE THEN 1 END) - COUNT(CASE WHEN down_vote IS TRUE THEN 1 END)) AS popularity " +
-                "FROM post_votes " +
-                "WHERE post_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, postId);
-        rowSet.next();
-        return rowSet.getInt("popularity");
     }
 
     private PostDTO mapRowToPostDTO(SqlRowSet rs) {
@@ -100,4 +105,12 @@ public class JdbcPostDAO implements PostDAO {
         return post;
     }
 
+    private int calculatePopularity(long postId) {
+        String sql = "SELECT (COUNT(CASE WHEN up_vote IS TRUE THEN 1 END) - COUNT(CASE WHEN down_vote IS TRUE THEN 1 END)) AS popularity " +
+                "FROM post_votes " +
+                "WHERE post_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, postId);
+        rowSet.next();
+        return rowSet.getInt("popularity");
+    }
 }

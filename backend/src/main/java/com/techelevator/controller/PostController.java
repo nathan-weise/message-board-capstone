@@ -35,10 +35,19 @@ public class PostController {
         return postDAO.listAllPostsByDate();
     }
 
-    //Get posts sorted by creation date
+    //Get posts sorted by popularity (upvotes - downvotes)
     @GetMapping(value = "/posts/popular")
     public List<PostDTO> listPostsByPopularity() {
         List<PostDTO> results = postDAO.listAllPosts();
+        Collections.sort(results);
+        return results;
+    }
+
+    //Get top ten most popular posts from the last 24 hours
+    //for displaying on the homepage
+    @GetMapping(value = "/posts/recent-popular")
+    public List<PostDTO> listPostsByRecentPopularity() {
+        List<PostDTO> results = postDAO.listAllPostsByRecentPopularity();
         Collections.sort(results);
         return results;
     }
