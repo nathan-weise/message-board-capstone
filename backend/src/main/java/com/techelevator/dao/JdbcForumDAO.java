@@ -80,7 +80,6 @@ public class JdbcForumDAO implements ForumDAO {
         forum.setId(rs.getLong("forum_id"));
         forum.setName(rs.getString("forum_name"));
         forum.setUserId(rs.getLong("user_id"));
-//        forum.setCreatedTime(LocalDateTime.ofInstant((rs.getDate("created_time")).toInstant(), ZoneId.systemDefault()));
         forum.setCreatedTime(rs.getTimestamp("created_time").toLocalDateTime());
 
         return forum;
