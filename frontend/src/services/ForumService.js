@@ -13,7 +13,6 @@ export default {
   },
 
   addForum(forum) {
-    console.log('hello from forum service');
     return axios.post('forums', forum);
   }
 

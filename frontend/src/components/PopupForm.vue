@@ -34,7 +34,11 @@ export default {
   },
   methods: {
     addForum() {
-      ForumService.addForum({name: this.name});
+      ForumService.addForum({name: this.name}).then(response => {
+        if (response.status === 201) {
+          this.$router.push(`forums/${response.data.id}/posts`)
+        }
+      })
     }
   }
 }
