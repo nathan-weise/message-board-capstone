@@ -21,7 +21,9 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     forum: {},
-    searchResults: []
+    searchResults: [],
+    forumPosts: [],
+    activePost: {}
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -42,6 +44,15 @@ export default new Vuex.Store({
     },
     SET_SEARCH_RESULTS(state, results) {
       state.searchResults = results;
+    },
+    SET_FORUM_POSTS(state, results) {
+      state.forumPosts = results;
+    },
+    ADD_FORUM_POST(state, post) {
+      state.forumPosts.push(post);
+    },
+    SET_ACTIVE_POST(state, post) {
+      state.activePost = post;
     }
   }
 })

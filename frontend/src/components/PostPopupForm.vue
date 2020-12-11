@@ -39,6 +39,7 @@ export default {
       PostService.addPost({title: this.title, text: this.text, nsfw: this.nsfw, forumId: this.$route.params.forumId}).then(response => {
         if (response.status === 201) {
           this.popupActivo2 = false;
+          this.$store.commit('ADD_FORUM_POST', response.data);
         }
       })
     }

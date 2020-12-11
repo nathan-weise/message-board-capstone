@@ -6,12 +6,21 @@ import java.util.Objects;
 public class PostDTO implements Comparable<PostDTO> {
 
     private long id;
+    private long forumId;
     private String title;
     private String text;
     private String forumName;
     private String username;
     private Date createdDate;
     private int popularity;
+
+    public long getForumId() {
+        return forumId;
+    }
+
+    public void setForumId(long forumId) {
+        this.forumId = forumId;
+    }
 
     public int getPopularity() {
         return popularity;

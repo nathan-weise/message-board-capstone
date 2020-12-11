@@ -9,6 +9,7 @@ import Register from '../views/Register.vue'
 import Search from '../views/Search.vue'
 import Forum from '../views/Forum.vue'
 import store from '../store/index'
+import Post from '../views/Post.vue'
 
 Vue.use(Router)
 
@@ -81,6 +82,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path:'/forums/:forumId/posts/:postId',
+      name: 'post',
+      component: Post,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 

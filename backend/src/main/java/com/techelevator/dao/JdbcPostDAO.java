@@ -129,6 +129,7 @@ public class JdbcPostDAO implements PostDAO {
     private PostDTO mapRowToPostDTO(SqlRowSet rs) {
         PostDTO post = new PostDTO();
         post.setId(rs.getLong("post_id"));
+        post.setForumId(rs.getLong("forum_id"));
         post.setTitle(rs.getString("post_title"));
         post.setText(rs.getString("post_text"));
         post.setUsername(rs.getString("username"));
