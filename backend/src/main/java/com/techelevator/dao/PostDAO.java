@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Post;
 import com.techelevator.model.PostDTO;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PostDAO {
@@ -12,5 +13,7 @@ public interface PostDAO {
     List<PostDTO> listAllPostsByDate();
 //    List<PostDTO> listAllPostsByPopularity();
     List<PostDTO> listAllPostsByRecentPopularity();
+
+    Post createNewPost(String postTitle, String postText, long forumId, long userId, LocalDateTime createdDate);
 
 }

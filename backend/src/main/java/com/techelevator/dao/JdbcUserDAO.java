@@ -43,6 +43,16 @@ public class JdbcUserDAO implements UserDAO {
         throw new UsernameNotFoundException("User with id: " + userId + " was not found.");
     }
 
+    public long findIdByUsername(String username) {
+        String sql = "SELECT user_id FROM users WHERE username = ?;";
+        Long id = jdbcTemplate.queryForObject(sql, Long.class, username);
+        if (id != null) {
+            return id;
+        } else {
+            return -1;
+        }
+    }
+
     @Override
     public boolean create(String username, String password, String role) {
         if (role == null || role.isEmpty()) {
