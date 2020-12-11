@@ -31,7 +31,7 @@ public class Forum {
         return description;
     }
 
-    public void setDescription(String forumDescription) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
