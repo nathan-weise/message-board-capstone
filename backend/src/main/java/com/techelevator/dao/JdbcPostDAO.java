@@ -75,9 +75,9 @@ public class JdbcPostDAO implements PostDAO {
     @Override
     public List<PostDTO> listAllPostsByRecentPopularity() {
         List<PostDTO> results = new ArrayList<>();
-        String sql = "SELECT posts.post_id, posts.post_title, posts.post_text, posts.created_time, users.username, forums.forum_name, (COUNT(CASE WHEN up_vote IS TRUE THEN 1 END) - COUNT(CASE WHEN down_vote IS TRUE THEN 1 END)) AS popularity " +
+        String sql = "SELECT posts.post_id, posts.post_title, posts.post_text, posts.created_time, users.username, forums.forum_name, SUM(vote) AS popularity " +
                      "FROM posts " +
-                     "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                     "JOIN post_votes ON posts.post_id = post_votes.post_id " +
                      "JOIN users ON posts.user_id = users.user_id " +
                      "JOIN forums ON posts.forum_id = forums.forum_id " +
                      "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
@@ -118,7 +118,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     private int calculatePopularity(long postId) {
-        String sql = "SELECT (COUNT(CASE WHEN up_vote IS TRUE THEN 1 END) - COUNT(CASE WHEN down_vote IS TRUE THEN 1 END)) AS popularity " +
+        String sql = "SELECT SUM(vote) AS popularity " +
                 "FROM post_votes " +
                 "WHERE post_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, postId);

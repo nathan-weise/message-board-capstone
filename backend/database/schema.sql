@@ -1,5 +1,6 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS forum_votes;
 DROP TABLE IF EXISTS post_votes;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS posts;
@@ -17,7 +18,10 @@ CREATE TABLE users (
 CREATE TABLE forums (
 	forum_id serial,
 	forum_name varchar(50) NOT NULL,
+	forum_description varchar,
     user_id integer,
+    color varchar(6),
+    forum_image bytea,
     created_time timestamp,
 	CONSTRAINT PK_forum_id PRIMARY KEY (forum_id),
 	CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -29,6 +33,7 @@ CREATE TABLE posts (
     post_text varchar NOT NULL,
 	forum_id integer,
     user_id integer,
+    post_image bytea,
     created_time timestamp,
     popularity integer,
 	CONSTRAINT PK_post_id PRIMARY KEY (post_id),
@@ -48,14 +53,24 @@ CREATE TABLE comments (
 );
 
 CREATE TABLE post_votes (
-    vote_id serial,
+    post_vote_id serial,
     post_id integer,
-    up_vote boolean,
-    down_vote boolean,
+    vote integer,
     user_id integer,
     created_time timestamp,
-    CONSTRAINT vote_id PRIMARY KEY (vote_id),
+    CONSTRAINT post_vote_id PRIMARY KEY (post_vote_id),
     CONSTRAINT FK_post_id FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE forum_votes (
+    forum_vote_id serial,
+    forum_id integer,
+    vote integer,
+    user_id integer,
+    created_time timestamp,
+    CONSTRAINT forum_vote_id PRIMARY KEY (forum_vote_id),
+    CONSTRAINT FK_post_id FOREIGN KEY (forum_id) REFERENCES forums(forum_id),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 

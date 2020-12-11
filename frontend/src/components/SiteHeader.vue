@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <router-link v-bind:to="{ name: 'home' }">
-      <img id="logo" src="../../res/pngegg.png" alt="bread" />
+      <img id="logo" src="@/res/pngegg.png" alt="bread" />
     </router-link>
     <div id="search-bar" v-on:keyup.enter="performSearch()">
       <b-input-group size="md" class="mb-2">
