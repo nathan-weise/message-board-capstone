@@ -4,6 +4,7 @@ import com.techelevator.dao.ForumDAO;
 import com.techelevator.dao.PostDAO;
 import com.techelevator.dao.UserDAO;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Post {
@@ -13,7 +14,7 @@ public class Post {
     private String text;
     private long forumId;
     private long userId;
-    private Date createdDate;
+    private LocalDateTime createdDate;
 
     public long getId() {
         return id;
@@ -55,11 +56,11 @@ public class Post {
         this.userId = userId;
     }
 
-    public Date getCreatedDate() {
+    public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 }
