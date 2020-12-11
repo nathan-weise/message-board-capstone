@@ -87,7 +87,6 @@ public class JdbcPostDAO implements PostDAO {
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while (rowSet.next()) {
             results.add(mapRowToPostDTO(rowSet));
-
         }
         return results;
     }
