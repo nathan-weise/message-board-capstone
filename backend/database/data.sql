@@ -100,3 +100,27 @@ VALUES (2, -1, 4, TIMESTAMP '2015-7-6 10:23:54');
 INSERT INTO forum_votes (forum_id, vote, user_id, created_time)
 VALUES (2, 1, 5, TIMESTAMP '2015-7-6 10:23:54');
 
+-- Dummy data for forum_mods table
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (1, 1);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (2, 1);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (3, 1);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (4, 1);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (5, 1);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (6, 1);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (7, 1);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (8, 1);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (8, 2);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (1, 2);
+INSERT INTO forum_mods (user_id, forum_id)
+VALUES (1, 3);
+

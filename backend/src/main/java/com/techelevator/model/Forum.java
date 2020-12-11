@@ -7,6 +7,7 @@ public class Forum {
 
     private long id;
     private String name;
+    private String description;
     private long userId;
     private LocalDateTime createdTime;
 
@@ -24,6 +25,14 @@ public class Forum {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String forumDescription) {
+        this.description = description;
     }
 
     public long getUserId() {

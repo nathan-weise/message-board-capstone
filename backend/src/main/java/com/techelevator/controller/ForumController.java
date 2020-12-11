@@ -46,7 +46,7 @@ public class ForumController {
         String username = principal.getName();
         long userId = forumDAO.findIdByUsername(username);
         LocalDateTime date = LocalDateTime.now();
-        return forumDAO.createNewForum(newForum.getName(), userId, date);
+        return forumDAO.createNewForum(newForum.getName(), newForum.getDescription(), userId, date);
     }
 
 }
