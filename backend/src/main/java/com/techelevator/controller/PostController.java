@@ -75,6 +75,11 @@ public class PostController {
         return postDAO.createNewPost(newPost.getTitle(), newPost.getText(), newPost.getForumId(), userId, date);
     }
 
+    @GetMapping(value = "posts/{postId}")
+    public PostDTO getPost(@PathVariable long postId) {
+        return postDAO.getPost(postId);
+    }
+
     //get specific post on specific forum
     // /forums/{id}/posts/{id}
 

@@ -13,6 +13,7 @@ public interface PostDAO {
     List<PostDTO> listAllPostsByDate();
 //    List<PostDTO> listAllPostsByPopularity();
     List<PostDTO> listAllPostsByRecentPopularity();
+    PostDTO getPost(long postId);
 
     Post createNewPost(String postTitle, String postText, long forumId, long userId, LocalDateTime createdDate);
 
