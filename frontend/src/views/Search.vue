@@ -1,5 +1,6 @@
 <template>
   <div>
+    <side-bar />
     <p>Search results:</p>
     <forum-search-result
       v-for="result of $store.state.searchResults"
@@ -12,8 +13,9 @@
 
 <script>
 import ForumSearchResult from "../components/ForumSearchResult.vue";
+import SideBar from '../components/SideBar.vue';
 export default {
-  components: { ForumSearchResult },
+  components: { ForumSearchResult, SideBar },
 
   data() {
     return {

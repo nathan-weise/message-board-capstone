@@ -1,5 +1,6 @@
 <template>
   <div>
+    <side-bar />
     <forum-posts />
     <h1>{{ forum.name }}</h1>
     <post-article
@@ -17,9 +18,10 @@
 import PostArticle from "../components/PostArticle.vue";
 import PostService from "@/services/PostService.js";
 import ForumService from "@/services/ForumService.js";
+import SideBar from '../components/SideBar.vue';
 
 export default {
-  components: { PostArticle },
+  components: { PostArticle, SideBar },
   data() {
     return {
       posts: [],

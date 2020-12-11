@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="centerx">
-    <b-button @click="popupActivo2=true" color="primary" type="filled">Open Popup</b-button>
+    <b-button @click="popupActivo2=true" color="primary" type="filled">+ Forum</b-button>
     <vs-popup classContent="popup-example"  title="Create New Forum" :active.sync="popupActivo2">
      <form>
   <div class="form-group">

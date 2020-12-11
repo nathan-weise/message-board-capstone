@@ -4,13 +4,13 @@
     <b-button v-on:click="loadPostsSortedByNew()">Sort By New</b-button>
     <b-button v-on:click="loadPostsSortedByPopularity()">Sort By Popularity</b-button>
     <!-- TODO: Move this button to the sidebar once complete, just here to test functionality -->
-    <popup-form />
     <post-article v-for="topic of allTopics" :key="topic.id" 
     v-bind:title="topic.title"
     v-bind:username="topic.username"
     v-bind:date="topic.createdDate"
     v-bind:popularity="topic.popularity"
     />
+    <side-bar />
 
   </div>
 </template>
@@ -18,10 +18,10 @@
 <script>
 import PostArticle from '../components/PostArticle.vue';
 import PostService from '@/services/PostService.js';
-import PopupForm from '../components/PopupForm.vue';
+import SideBar from '../components/SideBar.vue';
 
 export default {
-  components: { PostArticle, PopupForm },
+  components: { PostArticle, SideBar },
   data() {
   return {
       allTopics: []
