@@ -1,12 +1,15 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.PostDAO;
+import com.techelevator.dao.UserDAO;
+import com.techelevator.model.Post;
 import com.techelevator.model.PostDTO;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,9 +19,11 @@ import java.util.List;
 public class PostController {
 
     private PostDAO postDAO;
+    private UserDAO userDAO;
 
-    public PostController(PostDAO postDAO) {
+    public PostController(PostDAO postDAO, UserDAO userDAO) {
         this.postDAO = postDAO;
+        this.userDAO = userDAO;
     }
 
     //We will need to add some functionality here to find posts by popularity, this is temporary
@@ -58,6 +63,16 @@ public class PostController {
     public List<PostDTO> listPostsForForum(@PathVariable long forumId) {
         List<PostDTO> results = new ArrayList<>();
         return postDAO.listAllPostsForForum(forumId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping(value = "posts")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Post createPost(Principal principal, @RequestBody Post newPost) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+        LocalDateTime date = LocalDateTime.now();
+        return postDAO.createNewPost(newPost.getTitle(), newPost.getText(), newPost.getForumId(), userId, date);
     }
 
     //get specific post on specific forum

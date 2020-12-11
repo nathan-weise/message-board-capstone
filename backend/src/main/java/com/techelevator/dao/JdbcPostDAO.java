@@ -5,9 +5,11 @@ import com.techelevator.model.Post;
 import com.techelevator.model.PostDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,6 +94,26 @@ public class JdbcPostDAO implements PostDAO {
         return results;
     }
 
+    public Post createNewPost(String postTitle, String postText, long forumId, long userId, LocalDateTime createdDate) {
+        Post newPost = new Post();
+        String sql = "INSERT INTO posts " +
+                     "(post_title, post_text, forum_id, user_id, created_time) " +
+                     "VALUES (?,?,?,?,?) RETURNING post_id;";
+        newPost.setTitle(postTitle);
+        newPost.setText(postText);
+        newPost.setForumId(forumId);
+        newPost.setUserId(userId);
+        newPost.setCreatedDate(createdDate);
+        try {
+            Long newId = jdbcTemplate.queryForObject(sql, Long.class, postTitle, postText, forumId, userId, createdDate);
+            newPost.setId(newId);
+            return newPost;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
     private Post mapRowToPost(SqlRowSet rs) {
         Post post = new Post();
         post.setId(rs.getLong("post_id"));
@@ -99,7 +121,7 @@ public class JdbcPostDAO implements PostDAO {
         post.setText(rs.getString("post_text"));
         post.setForumId(rs.getLong("forum_id"));
         post.setUserId(rs.getLong("user_id"));
-        post.setCreatedDate(rs.getDate("created_time"));
+        post.setCreatedDate(rs.getTimestamp("created_time").toLocalDateTime());
 
         return post;
     }
