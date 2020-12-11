@@ -7,11 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @Component
@@ -57,16 +54,17 @@ public class JdbcForumDAO implements ForumDAO {
     }
 
     //This is the functionality to insert a new forum into the forum table in the database
-    public Forum createNewForum(String forumName, long userId, LocalDateTime createdDate) {
+    public Forum createNewForum(String forumName, String forumDescription, long userId, LocalDateTime createdDate) {
         Forum newForum = new Forum();
         String sql = "INSERT INTO forums " +
-                     "(forum_name, user_id, created_time) " +
-                     "VALUES (?,?,?) RETURNING forum_id;";
+                     "(forum_name, forum_description, user_id, created_time) " +
+                     "VALUES (?,?,?,?) RETURNING forum_id;";
         newForum.setName(forumName);
+        newForum.setDescription(forumDescription);
         newForum.setUserId(userId);
         newForum.setCreatedTime(createdDate);
         try {
-             Long newId = jdbcTemplate.queryForObject(sql, Long.class, forumName, userId, createdDate);
+             Long newId = jdbcTemplate.queryForObject(sql, Long.class, forumName, forumDescription, userId, createdDate);
              newForum.setId(newId);
             return newForum;
         } catch (Exception e) {
