@@ -1,6 +1,6 @@
 <template>
   <div>
-    <side-bar />
+    <side-bar v-if="$store.state.token !== ''"/>
     <p>Search results:</p>
     <forum-search-result
       v-for="result of $store.state.searchResults"

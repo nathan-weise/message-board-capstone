@@ -23,5 +23,9 @@ export default {
   //For displaying on the homepage
   listAllRecentPopularPosts() {
     return axios.get('/posts/recent-popular');
+  },
+
+  addPost(post) {
+    return axios.post('posts', post);
   }
 }

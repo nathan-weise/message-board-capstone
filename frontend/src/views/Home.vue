@@ -10,7 +10,7 @@
     v-bind:date="topic.createdDate"
     v-bind:popularity="topic.popularity"
     />
-    <side-bar />
+    <side-bar v-if="$store.state.token !== ''"/>
 
   </div>
 </template>

@@ -14,7 +14,7 @@
   <div class="form-check">
     <b-form-checkbox v-model="nsfw" type="checkbox" class="form-check-input" id="postNsfw">nsfw?</b-form-checkbox>
   </div>
-  <button type="submit" class="btn btn-primary" v-on:click.prevent="addForum()">Submit</button>
+  <button type="submit" class="btn btn-primary" v-on:click.prevent="addPost()">Submit</button>
 </form>
     
       
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import ForumService from '@/services/ForumService.js';
+import PostService from '@/services/PostService.js';
 
 export default {
   data() {
@@ -35,10 +35,10 @@ export default {
     }
   },
   methods: {
-    addForum() {
-      ForumService.addForum({name: this.name, description: this.description, nsfw: this.nsfw}).then(response => {
+    addPost() {
+      PostService.addPost({title: this.title, text: this.text, nsfw: this.nsfw, forumId: this.$route.params.forumId}).then(response => {
         if (response.status === 201) {
-          this.$router.push(`forums/${response.data.id}/posts`)
+          this.popupActivo2 = false;
         }
       })
     }

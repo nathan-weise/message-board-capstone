@@ -1,6 +1,6 @@
 <template>
   <div>
-    <side-bar />
+    <side-bar v-if="$store.state.token !== ''"/>
     <forum-posts />
     <h1>{{ forum.name }}</h1>
     <post-article
