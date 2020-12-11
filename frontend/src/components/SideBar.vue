@@ -2,13 +2,22 @@
   <div class="sidebar-container">
     <h3>example</h3>
     <popup-form />
+    <post-popup-form v-if="isInForum"/>
   </div>
 </template>
 
 <script>
 import PopupForm from "./PopupForm.vue";
+import PostPopupForm from './PostPopupForm.vue';
 export default {
-  components: { PopupForm },
+  components: { PopupForm, PostPopupForm },
+  computed: {
+    isInForum: function () {
+      return this.$route.name === 'forum'
+    }
+    
+    
+  }
 };
 </script>
 
@@ -19,7 +28,7 @@ export default {
   width: 8rem;
   margin-right: 10px;
   position: fixed;
-  left: 90.75%;
+  right: 5px;
   top: 150px;
   display: flex;
   flex-direction: column;
