@@ -16,6 +16,7 @@
           v-bind:username="post.username"
           v-bind:date="post.createdDate"
           v-bind:popularity="post.popularity"
+          v-bind:post="post"
         >
         </post-article>
       </router-link>

@@ -27,5 +27,9 @@ export default {
 
   addPost(post) {
     return axios.post('posts', post);
+  },
+
+  getPostById(id) {
+    return axios.get(`/posts/${id}`);
   }
 }

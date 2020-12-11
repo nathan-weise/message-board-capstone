@@ -2,7 +2,7 @@
   <div class="sidebar-container">
     <h3>example</h3>
     <popup-form />
-    <post-popup-form v-if="isInForum"/>
+    <post-popup-form v-if="isInForumOrPost"/>
   </div>
 </template>
 
@@ -12,8 +12,8 @@ import PostPopupForm from './PostPopupForm.vue';
 export default {
   components: { PopupForm, PostPopupForm },
   computed: {
-    isInForum: function () {
-      return this.$route.name === 'forum'
+    isInForumOrPost: function () {
+      return this.$route.name === 'forum' || this.$route.name === 'post'
     }
     
     

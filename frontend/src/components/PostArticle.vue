@@ -13,7 +13,10 @@
 
 <script>
 export default {
-  props: ['title', 'username', 'date', 'popularity']
+  props: ['title', 'username', 'date', 'popularity', 'post'],
+  created() {
+    this.$store.commit('SET_ACTIVE_POST', this.post);
+  }
 };
 </script>
 
