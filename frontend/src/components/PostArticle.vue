@@ -17,27 +17,8 @@
     <p id="created">{{ date }}</p>
 
     <div id="popularity">
-      <label class="flex-item">
-        <input
-          v-on:click.prevent=clickUpvote()
-          type="checkbox"
-          value="upvote"
-          v-bind:name="title + date"
-          v-model="upvtoe"
-        />
-        <span></span>
-      </label>
-
-      <label class="flex-item">
-        <input
-          v-on:click=clickDownvote()
-          type="checkbox"
-          value="downvote"
-          v-bind:name="title + date"
-          v-model="downvote"
-        />
-        <span></span>
-      </label>
+      <font-awesome-icon icon="arrow-up" size="2x"/>
+      <font-awesome-icon icon="arrow-down" size="2x"/>
     </div>
     <p>{{ popularity }}</p>
   </div>
@@ -57,7 +38,7 @@ export default {
   },
   methods: {
     clickUpvote() {
-      this.upvote = true
+      this.upvote = true;
     },
   },
 };
@@ -100,5 +81,4 @@ img {
 #popularity {
   grid-area: votes;
 }
-
 </style>
