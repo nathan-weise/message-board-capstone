@@ -6,6 +6,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,21 @@ public class JdbcCommentDAO implements CommentDAO {
         }
 
         return results;
+    }
+
+    @Override
+    public Comment addCommentToPost(long postId, long userId, Comment newComment) {
+        Comment comment = new Comment();
+        String sql = "INSERT INTO comments " +
+                "(comment_text, post_id, user_id, created_time) " +
+                "VALUES (?, ?, ?, ?) RETURNING comment_id;";
+        comment.setText(newComment.getText());
+        comment.setUserId(userId);
+        comment.setPostId(postId);
+        comment.setCreatedTime(LocalDateTime.now());
+        Long commentId = jdbcTemplate.queryForObject(sql, Long.class, newComment.getText(), postId, userId, comment.getCreatedTime());
+        comment.setId(commentId);
+        return comment;
     }
 
     private Comment mapToComment(SqlRowSet rs) {
