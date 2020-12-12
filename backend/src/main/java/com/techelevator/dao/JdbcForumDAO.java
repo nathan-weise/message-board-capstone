@@ -64,8 +64,8 @@ public class JdbcForumDAO implements ForumDAO {
         newForum.setUserId(userId);
         newForum.setCreatedTime(createdDate);
         try {
-             Long newId = jdbcTemplate.queryForObject(sql, Long.class, forumName, forumDescription, userId, createdDate);
-             newForum.setId(newId);
+            Long newId = jdbcTemplate.queryForObject(sql, Long.class, forumName, forumDescription, userId, createdDate);
+            newForum.setId(newId);
             return newForum;
         } catch (Exception e) {
             System.out.println(e);

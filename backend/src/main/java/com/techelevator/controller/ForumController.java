@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.ForumDAO;
+import com.techelevator.dao.ModeratorDAO;
 import com.techelevator.model.Forum;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,8 +17,9 @@ import java.util.List;
 public class ForumController {
 
     private ForumDAO forumDAO;
+    private ModeratorDAO moderatorDAO;
 
-    public ForumController(ForumDAO forumDAO) { this.forumDAO = forumDAO; }
+    public ForumController(ForumDAO forumDAO, ModeratorDAO moderatorDAO) { this.forumDAO = forumDAO; this.moderatorDAO = moderatorDAO; }
 
     //get mapping to return all forums
     // for something in the future
@@ -46,7 +48,11 @@ public class ForumController {
         String username = principal.getName();
         long userId = forumDAO.findIdByUsername(username);
         LocalDateTime date = LocalDateTime.now();
-        return forumDAO.createNewForum(newForum.getName(), newForum.getDescription(), userId, date);
+        Forum forum = forumDAO.createNewForum(newForum.getName(), newForum.getDescription(), userId, date);
+
+        moderatorDAO.addModerator(userId, forum.getId());
+
+        return forum;
     }
 
 }
