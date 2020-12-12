@@ -23,7 +23,8 @@ export default new Vuex.Store({
     forum: {},
     searchResults: [],
     forumPosts: [],
-    activePost: {}
+    activePost: {},
+    comments: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -53,6 +54,12 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_POST(state, post) {
       state.activePost = post;
+    },
+    SET_ACTIVE_COMMENTS(state, comments) {
+      state.comments = comments;
+    },
+    ADD_COMMENT(state, comment) {
+      state.comments.push(comment);
     }
   }
 })

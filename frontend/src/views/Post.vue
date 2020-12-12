@@ -30,6 +30,7 @@ export default {
     CommentService.getCommentByPost(this.$route.params.postId).then(
       (response) => {
         this.comments = response.data;
+        this.$store.commit("SET_ACTIVE_COMMENTS", response.data);
       }
     );
     PostService.getPostById(this.$route.params.postId).then((response) => {
