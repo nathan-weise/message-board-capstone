@@ -17,8 +17,19 @@
     <p id="created">{{ date }}</p>
 
     <div id="popularity">
-      <font-awesome-icon icon="arrow-up" size="2x"/>
-      <font-awesome-icon icon="arrow-down" size="2x"/>
+      <font-awesome-icon
+        icon="arrow-up"
+        size="2x"
+        v-on:click="clickUpvote()"
+        v-bind:class="{ upvote: vote }"
+      />
+      <p style="display: inline">{{ popularity }}</p>
+      <font-awesome-icon
+        icon="arrow-down"
+        size="2x"
+        v-on:click="clickDownvote()"
+        v-bind:class="{ downvote: vote === false }"
+      />
     </div>
     <p>{{ popularity }}</p>
   </div>
@@ -28,8 +39,7 @@
 export default {
   data() {
     return {
-      upvote: false,
-      downvote: false,
+      vote: null,
     };
   },
   props: ["title", "username", "date", "popularity", "post"],
@@ -38,7 +48,18 @@ export default {
   },
   methods: {
     clickUpvote() {
-      this.upvote = true;
+      if (this.vote) {
+        this.vote = null;
+      } else {
+        this.vote = true;
+      }
+    },
+    clickDownvote() {
+      if (this.vote === false) {
+        this.vote = null;
+      } else {
+        this.vote = false;
+      }
     },
   },
 };
@@ -80,5 +101,21 @@ img {
 
 #popularity {
   grid-area: votes;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+#popularity * {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.upvote {
+  color: orange;
+}
+
+.downvote {
+  color: blue;
 }
 </style>
