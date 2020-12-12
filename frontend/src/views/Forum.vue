@@ -5,12 +5,6 @@
     <h1>{{ forum.name }}</h1>
 
     <div v-for="post of posts" :key="post.id">
-      <router-link
-        :to="{
-          name: 'post',
-          params: { forumId: post.forumId, postId: post.id }
-        }"
-      >
         <post-article
           v-bind:title="post.title"
           v-bind:username="post.username"
@@ -19,7 +13,6 @@
           v-bind:post="post"
         >
         </post-article>
-      </router-link>
     </div>
   </div>
 </template>
