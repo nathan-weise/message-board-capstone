@@ -13,6 +13,7 @@ public class PostDTO implements Comparable<PostDTO> {
     private String username;
     private Date createdDate;
     private int popularity;
+    private int vote;
 
     public long getForumId() {
         return forumId;
@@ -76,6 +77,14 @@ public class PostDTO implements Comparable<PostDTO> {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public int getVote() {
+        return vote;
+    }
+
+    public void setVote(int vote) {
+        this.vote = vote;
     }
 
     @Override

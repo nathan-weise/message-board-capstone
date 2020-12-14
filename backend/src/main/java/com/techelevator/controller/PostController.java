@@ -51,8 +51,10 @@ public class PostController {
     //Get top ten most popular posts from the last 24 hours
     //for displaying on the homepage
     @GetMapping(value = "/posts/recent-popular")
-    public List<PostDTO> listPostsByRecentPopularity() {
-        List<PostDTO> results = postDAO.listAllPostsByRecentPopularity();
+    public List<PostDTO> listPostsByRecentPopularity(Principal principal) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+        List<PostDTO> results = postDAO.listAllPostsByRecentPopularity(userId);
         Collections.sort(results);
         return results;
     }

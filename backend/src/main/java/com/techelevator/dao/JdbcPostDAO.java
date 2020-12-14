@@ -75,19 +75,19 @@ public class JdbcPostDAO implements PostDAO {
 
 
     @Override
-    public List<PostDTO> listAllPostsByRecentPopularity() {
+    public List<PostDTO> listAllPostsByRecentPopularity(long userId) {
         List<PostDTO> results = new ArrayList<>();
         String sql = "SELECT pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
-                "FROM posts " +
-                "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-                "JOIN users ON posts.user_id = users.user_id " +
-                "JOIN forums ON posts.forum_id = forums.forum_id " +
-                "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = 3) " +
-                "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
-                "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-                "ORDER BY popularity DESC, posts.created_time DESC " +
-                "LIMIT 10;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+                     "FROM posts " +
+                     "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                     "JOIN users ON posts.user_id = users.user_id " +
+                     "JOIN forums ON posts.forum_id = forums.forum_id " +
+                     "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                     "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
+                     "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                     "ORDER BY popularity DESC, posts.created_time DESC " +
+                     "LIMIT 10;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
         while (rowSet.next()) {
             results.add(mapRowToPostDTO(rowSet));
         }
@@ -147,6 +147,10 @@ public class JdbcPostDAO implements PostDAO {
         post.setForumName(rs.getString("forum_name"));
         post.setCreatedDate(rs.getDate("created_time"));
         post.setPopularity(calculatePopularity(post.getId()));
+//        if (rs.getObject("vote", Integer.class) != null) {
+//            post.setVote(rs.getInt("vote"));
+//        }
+        post.setVote(rs.getInt("vote"));
 
         return post;
     }
