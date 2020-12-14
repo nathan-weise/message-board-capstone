@@ -4,7 +4,7 @@
     <forum-posts />
     <h1>{{ forum.name }}</h1>
         <b-button v-on:click="loadPostsSortedByNew()">Sort By New</b-button>
-    <b-button v-on:click="loadPostsSortedByPopularity()"
+    <b-button v-on:click="loadPostsByPopularity()"
       >Sort By Popularity</b-button>
 
     <div v-for="post of posts" :key="post.id">
@@ -38,6 +38,11 @@ export default {
     test() {
       console.log("cool");
     },
+    loadPostsByPopularity() {
+      PostService.listAllPopularPostsByForum(this.$route.params.forumId).then((response) => {
+        this.posts = response.data;
+      });
+    }
   },
   created() {
     const firstIndexOfSlash = this.$route.path.indexOf("/", 1);

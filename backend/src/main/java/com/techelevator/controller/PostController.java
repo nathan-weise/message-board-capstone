@@ -52,6 +52,14 @@ public class PostController {
         return results;
     }
 
+    //Get posts sorted by popularity (per forum)
+    @GetMapping(value = "/forums/{forumId}/posts/popular")
+    public List<PostDTO> listPostsByForumByPopularity(@PathVariable long forumId, Principal principal) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+        return postDAO.listAllPostsByForumByPopularity(userId, forumId);
+    }
+
     //Get top ten most popular posts from the last 24 hours
     //for displaying on the homepage
     @GetMapping(value = "/posts/recent-popular")

@@ -20,6 +20,10 @@ export default {
     return axios.get('/posts/popular');
   },
 
+  listAllPopularPostsByForum(forumId) {
+    return axios.get(`/forums/${forumId}/posts/popular`)
+  },
+
   //For displaying on the homepage
   listAllRecentPopularPosts() {
     return axios.get('/posts/recent-popular');
