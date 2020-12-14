@@ -163,8 +163,46 @@ public class JdbcPostDAO implements PostDAO {
         return results;
     }
 
-    @Override
-    public PostDTO alterVote(long userId, long postId, Boolean vote) {
+    @Override //5, 4
+    public PostDTO alterVote(long userId, long postId, Integer vote) {
+        String sqlToFindVote = "SELECT vote FROM post_votes WHERE post_id = ? AND user_id = ?;";
+        try {
+            // queryForRowSet()
+            Integer voteAsNumber = jdbcTemplate.queryForObject(sqlToFindVote, Integer.class, postId, userId);
+
+            if (vote == 0) {
+                //update vote to 0
+                System.out.println("there is a vote in the table, updating row with vote as 0");
+                String sql = "UPDATE post_votes SET vote = 0 WHERE post_id = ? AND user_id = ?;";
+                jdbcTemplate.update(sql, postId, userId);
+            } else if (vote == -1) {
+                //update vote as -1
+                System.out.println("there is a vote in the table, updating row with vote as -1");
+                String sql = "UPDATE post_votes SET vote = -1 WHERE post_id = ? AND user_id = ?;";
+                jdbcTemplate.update(sql, postId, userId);
+            } else if (vote == 1) {
+                //update vote as +1
+                System.out.println("there is a vote in the table, updating row with vote as +1");
+                String sql = "UPDATE post_votes SET vote = 1 WHERE post_id = ? AND user_id = ?;";
+                jdbcTemplate.update(sql, postId, userId);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+            if (vote == -1) {
+                //insert into vote as -1
+                System.out.println("there is no vote in the table, inserting row with vote as -1");
+                String sql = "INSERT INTO post_votes (post_id, vote, user_id, created_time) VALUES (?, ?, ?, ?);";
+                jdbcTemplate.update(sql, postId, vote, userId, LocalDateTime.now());
+            } else if (vote == 1) {
+                //insert into vote as +1
+                System.out.println("there is no vote in the table, inserting row with vote as +1");
+                String sql = "INSERT INTO post_votes (post_id, vote, user_id, created_time) VALUES (?, ?, ?, ?);";
+                jdbcTemplate.update(sql, postId, vote, userId, LocalDateTime.now());
+            }
+            return null;
+        }
+
 
         return null;
     }

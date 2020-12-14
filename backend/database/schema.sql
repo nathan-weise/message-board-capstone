@@ -61,6 +61,7 @@ CREATE TABLE post_votes (
     user_id integer,
     created_time timestamp,
     CONSTRAINT post_vote_id PRIMARY KEY (post_vote_id),
+--    CONSTRAINT post_user_id PRIMARY KEY (user_id, post_id),
     CONSTRAINT FK_post_id FOREIGN KEY (post_id) REFERENCES posts(post_id),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

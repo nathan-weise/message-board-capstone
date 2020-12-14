@@ -21,14 +21,14 @@
         icon="arrow-up"
         size="2x"
         v-on:click="clickUpvote()"
-        v-bind:class="{ upvote: vote }"
+        v-bind:class="{ upvote: vote === 1 }"
       />
       <p style="display: inline">{{ popularity }}</p>
       <font-awesome-icon
         icon="arrow-down"
         size="2x"
         v-on:click="clickDownvote()"
-        v-bind:class="{ downvote: vote === false }"
+        v-bind:class="{ downvote: vote === -1 }"
       />
     </div>
     <p>{{ popularity }}</p>
@@ -39,28 +39,27 @@
 export default {
   data() {
     return {
-      // Already had logic in here based on true, false and null but we get 0, -1, or 1 from db
-      // that is why this ternary operator is here
-      vote: this.post.vote === 1 ? true : this.post.vote === -1 ? false : null,
+      vote: 0,
     };
   },
   props: ["title", "username", "date", "popularity", "post"],
   created() {
     this.$store.commit("SET_ACTIVE_POST", this.post);
+    this.vote = this.post.vote;
   },
   methods: {
     clickUpvote() {
-      if (this.vote) {
-        this.vote = null;
+      if (this.vote === 1) {
+        this.vote = 0;
       } else {
-        this.vote = true;
+        this.vote = 1;
       }
     },
     clickDownvote() {
-      if (this.vote === false) {
-        this.vote = null;
+      if (this.vote === -1) {
+        this.vote = 0;
       } else {
-        this.vote = false;
+        this.vote = -1;
       }
     },
   },

@@ -16,7 +16,7 @@ public interface PostDAO {
     List<PostDTO> listAllPostsByForumByPopularity(long userId, long forumId);
     List<PostDTO> listAllPostsByForumByRecent(long userId, long forumId);
     PostDTO getPost(long userId, long postId);
-    PostDTO alterVote(long userId, long postId, Boolean vote);
+    PostDTO alterVote(long userId, long postId, Integer vote);
 
 
     Post createNewPost(String postTitle, String postText, long forumId, long userId, LocalDateTime createdDate);

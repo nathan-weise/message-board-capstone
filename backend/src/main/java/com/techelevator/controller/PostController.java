@@ -106,7 +106,7 @@ public class PostController {
     }
 
     @PutMapping(value = "posts/{postId}")
-    public PostDTO voteOnPost(Principal principal, @PathVariable long postId, Boolean vote) {
+    public PostDTO voteOnPost(Principal principal, @PathVariable long postId, @RequestBody Integer vote) {
         String username = principal.getName();
         long userId = userDAO.findIdByUsername(username);
 
