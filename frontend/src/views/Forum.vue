@@ -3,6 +3,9 @@
     <side-bar v-if="$store.state.token !== ''" />
     <forum-posts />
     <h1>{{ forum.name }}</h1>
+        <b-button v-on:click="loadPostsSortedByNew()">Sort By New</b-button>
+    <b-button v-on:click="loadPostsSortedByPopularity()"
+      >Sort By Popularity</b-button>
 
     <div v-for="post of posts" :key="post.id">
         <post-article
