@@ -3,7 +3,7 @@
     <side-bar v-if="$store.state.token !== ''" />
     <forum-posts />
     <h1>{{ forum.name }}</h1>
-        <b-button v-on:click="loadPostsSortedByNew()">Sort By New</b-button>
+        <b-button v-on:click="loadPostsByRecent()">Sort By New</b-button>
     <b-button v-on:click="loadPostsByPopularity()"
       >Sort By Popularity</b-button>
 
@@ -40,6 +40,11 @@ export default {
     },
     loadPostsByPopularity() {
       PostService.listAllPopularPostsByForum(this.$route.params.forumId).then((response) => {
+        this.posts = response.data;
+      });
+    },
+    loadPostsByRecent() {
+      PostService.listAllRecentPostsByForum(this.$route.params.forumId).then((response) => {
         this.posts = response.data;
       });
     }

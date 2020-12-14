@@ -81,6 +81,18 @@ public class JdbcPostDAO implements PostDAO {
             "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
             "ORDER BY popularity DESC, posts.created_time DESC;";
 
+        private static final String QUERY_RECENT_POSTS_BY_FORUM =
+            "SELECT pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "FROM posts " +
+            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+            "JOIN users ON posts.user_id = users.user_id " +
+            "JOIN forums ON posts.forum_id = forums.forum_id " +
+            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+            "WHERE forums.forum_id = ? " +
+            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+            "ORDER BY posts.created_time DESC;";
+
+
     private JdbcTemplate jdbcTemplate;
     private UserDAO userDAO;
     private ForumDAO forumDAO;
@@ -135,6 +147,16 @@ public class JdbcPostDAO implements PostDAO {
     public List<PostDTO> listAllPostsByForumByPopularity(long userId, long forumId) {
         List<PostDTO> results = new ArrayList<>();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_POPULAR_POSTS_BY_FORUM, userId, forumId);
+        while (rowSet.next()) {
+            results.add(mapRowToPostDTO(rowSet));
+        }
+        return results;
+    }
+
+    @Override
+    public List<PostDTO> listAllPostsByForumByRecent(long userId, long forumId) {
+        List<PostDTO> results = new ArrayList<>();
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_RECENT_POSTS_BY_FORUM, userId, forumId);
         while (rowSet.next()) {
             results.add(mapRowToPostDTO(rowSet));
         }

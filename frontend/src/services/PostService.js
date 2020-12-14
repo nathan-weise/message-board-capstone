@@ -21,7 +21,11 @@ export default {
   },
 
   listAllPopularPostsByForum(forumId) {
-    return axios.get(`/forums/${forumId}/posts/popular`)
+    return axios.get(`/forums/${forumId}/posts/popular`);
+  },
+
+  listAllRecentPostsByForum(forumId) {
+    return axios.get(`/forums/${forumId}/posts/new`);
   },
 
   //For displaying on the homepage
