@@ -1,11 +1,9 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Forum;
 import com.techelevator.model.Post;
 import com.techelevator.model.PostDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +14,30 @@ import java.util.List;
 @Service
 @Component
 public class JdbcPostDAO implements PostDAO {
+
+    private static final String QUERY_RECENT_POPULAR =
+            "SELECT pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "FROM posts " +
+            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+            "JOIN users ON posts.user_id = users.user_id " +
+            "JOIN forums ON posts.forum_id = forums.forum_id " +
+            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+            "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
+            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+            "ORDER BY popularity DESC, posts.created_time DESC " +
+            "LIMIT 10;";
+
+    private static final String QUERY_FORUM_POSTS =
+            "SELECT pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "FROM posts " +
+            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+            "JOIN users ON posts.user_id = users.user_id " +
+            "JOIN forums ON posts.forum_id = forums.forum_id " +
+            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+            "WHERE forums.forum_id = ? " +
+            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+            "ORDER BY popularity DESC, posts.created_time DESC " +
+            "LIMIT 10;";
 
     private JdbcTemplate jdbcTemplate;
     private UserDAO userDAO;
@@ -41,13 +63,9 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPostsForForum(long forumId) {
+    public List<PostDTO> listAllPostsForForum(long userId, long forumId) {
         List<PostDTO> results = new ArrayList<>();
-        String sql = "SELECT * FROM posts " +
-                     "JOIN forums ON posts.forum_id = forums.forum_id " +
-                     "JOIN users ON posts.user_id = users.user_id " +
-                     "WHERE forums.forum_id = ?;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, forumId);
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_FORUM_POSTS, userId, forumId);
         while (rowSet.next()) {
             results.add(mapRowToPostDTO(rowSet));
         }
@@ -77,17 +95,7 @@ public class JdbcPostDAO implements PostDAO {
     @Override
     public List<PostDTO> listAllPostsByRecentPopularity(long userId) {
         List<PostDTO> results = new ArrayList<>();
-        String sql = "SELECT pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
-                     "FROM posts " +
-                     "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-                     "JOIN users ON posts.user_id = users.user_id " +
-                     "JOIN forums ON posts.forum_id = forums.forum_id " +
-                     "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-                     "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
-                     "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-                     "ORDER BY popularity DESC, posts.created_time DESC " +
-                     "LIMIT 10;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_RECENT_POPULAR, userId);
         while (rowSet.next()) {
             results.add(mapRowToPostDTO(rowSet));
         }

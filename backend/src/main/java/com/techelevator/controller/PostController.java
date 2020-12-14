@@ -62,9 +62,10 @@ public class PostController {
     //get posts for a specific forum
     // /forums/{id}/posts
     @GetMapping(value = "/forums/{forumId}/posts")
-    public List<PostDTO> listPostsForForum(@PathVariable long forumId) {
-        List<PostDTO> results = new ArrayList<>();
-        return postDAO.listAllPostsForForum(forumId);
+    public List<PostDTO> listPostsForForum(Principal principal, @PathVariable long forumId) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+        return postDAO.listAllPostsForForum(userId, forumId);
     }
 
     @PreAuthorize("isAuthenticated()")

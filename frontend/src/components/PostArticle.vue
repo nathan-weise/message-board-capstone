@@ -41,7 +41,7 @@ export default {
     return {
       // Already had logic in here based on true, false and null but we get 0, -1, or 1 from db
       // that is why this ternary operator is here
-      vote: this.post.vote === 1 ? true : this.post.vote === 0 ? false : null,
+      vote: this.post.vote === 1 ? true : this.post.vote === -1 ? false : null,
     };
   },
   props: ["title", "username", "date", "popularity", "post"],
