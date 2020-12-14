@@ -28,22 +28,26 @@ public class PostController {
 
     //We will need to add some functionality here to find posts by popularity, this is temporary
     @GetMapping(value = "/posts")
-    public List<PostDTO> listPosts() {
-        List<PostDTO> results = new ArrayList<>();
-        return postDAO.listAllPosts();
+    public List<PostDTO> listPosts(Principal principal) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+        return postDAO.listAllPosts(userId);
     }
 
     //Get posts sorted by creation date
     @GetMapping(value = "/posts/new")
-    public List<PostDTO> listPostsByDate() {
-        List<PostDTO> results = new ArrayList<>();
-        return postDAO.listAllPostsByDate();
+    public List<PostDTO> listPostsByDate(Principal principal) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+        return postDAO.listAllPostsByDate(userId);
     }
 
     //Get posts sorted by popularity (upvotes - downvotes)
     @GetMapping(value = "/posts/popular")
-    public List<PostDTO> listPostsByPopularity() {
-        List<PostDTO> results = postDAO.listAllPosts();
+    public List<PostDTO> listPostsByPopularity(Principal principal) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+        List<PostDTO> results = postDAO.listAllPosts(userId);
         Collections.sort(results);
         return results;
     }
@@ -83,6 +87,14 @@ public class PostController {
         String username = principal.getName();
         long userId = userDAO.findIdByUsername(username);
         return postDAO.getPost(userId, postId);
+    }
+
+    @PutMapping(value = "posts/{postId}")
+    public PostDTO voteOnPost(Principal principal, @PathVariable long postId, Boolean vote) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+
+        return postDAO.alterVote(userId, postId, vote);
     }
 
     //get specific post on specific forum

@@ -50,6 +50,26 @@ public class JdbcPostDAO implements PostDAO {
             "ORDER BY popularity DESC, posts.created_time DESC " +
             "LIMIT 10;";
 
+    private static final String QUERY_ALL_POSTS =
+            "SELECT pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "FROM posts " +
+            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+            "JOIN users ON posts.user_id = users.user_id " +
+            "JOIN forums ON posts.forum_id = forums.forum_id " +
+            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+            "ORDER BY popularity DESC, posts.created_time DESC;";
+
+    private static final String QUERY_RECENT_POSTS =
+            "SELECT pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "FROM posts " +
+            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+            "JOIN users ON posts.user_id = users.user_id " +
+            "JOIN forums ON posts.forum_id = forums.forum_id " +
+            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+            "ORDER BY posts.created_time DESC;";
+
     private JdbcTemplate jdbcTemplate;
     private UserDAO userDAO;
     private ForumDAO forumDAO;
@@ -61,12 +81,9 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPosts() {
+    public List<PostDTO> listAllPosts(long userId) {
         List<PostDTO> results = new ArrayList<>();
-        String sql = "SELECT * FROM posts " +
-                     "JOIN forums ON posts.forum_id = forums.forum_id " +
-                     "JOIN users ON posts.user_id = users.user_id;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_ALL_POSTS, userId);
         while (rowSet.next()) {
             results.add(mapRowToPostDTO(rowSet));
         }
@@ -84,13 +101,9 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPostsByDate() {
+    public List<PostDTO> listAllPostsByDate(long userId) {
         List<PostDTO> results = new ArrayList<>();
-        String sql = "SELECT * FROM posts " +
-                     "JOIN forums ON posts.forum_id = forums.forum_id " +
-                     "JOIN users ON posts.user_id = users.user_id " +
-                     "ORDER BY posts.created_time DESC;";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_RECENT_POSTS, userId);
         while (rowSet.next()) {
             results.add(mapRowToPostDTO(rowSet));
         }
@@ -113,6 +126,13 @@ public class JdbcPostDAO implements PostDAO {
         return results;
     }
 
+    @Override
+    public PostDTO alterVote(long userId, long postId, Boolean vote) {
+
+        return null;
+    }
+
+    @Override
     public Post createNewPost(String postTitle, String postText, long forumId, long userId, LocalDateTime createdDate) {
         Post newPost = new Post();
         String sql = "INSERT INTO posts " +

@@ -8,12 +8,13 @@ import java.util.List;
 
 public interface PostDAO {
 
-    List<PostDTO> listAllPosts();
+    List<PostDTO> listAllPosts(long userId);
     List<PostDTO> listAllPostsForForum(long userId, long forumId);
-    List<PostDTO> listAllPostsByDate();
+    List<PostDTO> listAllPostsByDate(long userId);
 //    List<PostDTO> listAllPostsByPopularity();
     List<PostDTO> listAllPostsByRecentPopularity(long userId);
     PostDTO getPost(long userId, long postId);
+    PostDTO alterVote(long userId, long postId, Boolean vote);
 
     Post createNewPost(String postTitle, String postText, long forumId, long userId, LocalDateTime createdDate);
 
