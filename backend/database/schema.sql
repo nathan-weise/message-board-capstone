@@ -1,6 +1,7 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS forum_mods;
+DROP TABLE IF EXISTS forum_favorites;
 DROP TABLE IF EXISTS forum_votes;
 DROP TABLE IF EXISTS post_votes;
 DROP TABLE IF EXISTS comments;
@@ -36,7 +37,6 @@ CREATE TABLE posts (
     user_id integer,
     post_image varchar,
     created_time timestamp,
-    popularity integer,
 	CONSTRAINT PK_post_id PRIMARY KEY (post_id),
     CONSTRAINT FK_forum_id FOREIGN KEY (forum_id) REFERENCES forums(forum_id),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -77,12 +77,23 @@ CREATE TABLE forum_votes (
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE forum_favorites (
+    user_id integer,
+    forum_id integer,
+    created_time timestamp,
+    CONSTRAINT favorite_id PRIMARY KEY (user_id, forum_id),
+    CONSTRAINT FK_forum_id FOREIGN KEY (forum_id) REFERENCES forums(forum_id),
+    CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
 CREATE TABLE forum_mods (
     user_id integer,
     forum_id integer,
+    created_time timestamp,
     CONSTRAINT mod_id PRIMARY KEY (user_id, forum_id),
     CONSTRAINT FK_forum_id FOREIGN KEY (forum_id) REFERENCES forums(forum_id),
     CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
 
 COMMIT TRANSACTION;
