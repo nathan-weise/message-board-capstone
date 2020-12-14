@@ -142,123 +142,123 @@ VALUES ('this is a comment', 1, 3, TIMESTAMP '2020-12-14 10:00:00');
 
 -- Dummy data for post_votes table
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (11, 1, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (1, 1, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (12, 0, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (2, 0, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (13, 1, 0, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (3, 1, 0, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (14, 0, 0, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (4, 0, 0, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, user_id, created_time)
-VALUES (15, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (5, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, spicy, user_id, created_time)
-VALUES (16, 0, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (6, 0, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, user_id, created_time)
-VALUES (17, 0, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (7, 0, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, spicy, user_id, created_time)
-VALUES (18, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (8, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, user_id, created_time)
-VALUES (19, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (9, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, user_id, created_time)
-VALUES (20, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (10, 1, 8, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (12, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (2, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (13, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (3, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (14, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (4, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (15, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (5, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (16, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (6, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (17, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (7, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (18, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (8, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (19, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (9, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (20, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (10, 1, 1, 1, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (18, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (8, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (19, 1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (9, 1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (11, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (1, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (12, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (2, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (13, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (3, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (14, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (4, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (15, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (5, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (16, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (6, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (17, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (7, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (19, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (9, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (20, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (10, 1, 1, 2, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (11, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (1, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (12, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (2, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (13, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (3, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (14, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (4, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (15, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (5, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (16, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (6, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (17, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (7, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (18, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (8, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (20, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (10, -1, 1, 3, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (11, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (1, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (12, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (2, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (13, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (3, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (14, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (4, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (15, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (5, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (16, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (6, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (17, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (7, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (18, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (8, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (19, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (9, -1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (20, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (10, 1, 1, 4, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (11, -1, 1, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (1, -1, 1, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (12, 1, 1, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (2, 1, 1, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (13, -1, 1, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (3, -1, 1, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (14, 1, 1, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (4, 1, 1, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (15, -1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (5, -1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (16, 1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (6, 1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (17, -1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (7, -1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (18, 1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (8, 1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (19, -1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (9, -1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
-VALUES (20, 1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
+VALUES (10, 1, 0, 5, TIMESTAMP '2020-12-14 9:00:00');
 
 -- Dummy data for forum_votes table
 INSERT INTO forum_votes (forum_id, vote, user_id, created_time)
