@@ -79,8 +79,10 @@ public class PostController {
     }
 
     @GetMapping(value = "posts/{postId}")
-    public PostDTO getPost(@PathVariable long postId) {
-        return postDAO.getPost(postId);
+    public PostDTO getPost(Principal principal, @PathVariable long postId) {
+        String username = principal.getName();
+        long userId = userDAO.findIdByUsername(username);
+        return postDAO.getPost(userId, postId);
     }
 
     //get specific post on specific forum
