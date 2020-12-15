@@ -74,6 +74,14 @@ export default new Vuex.Store({
       } else {
         thisPost.popularity = thisPost.popularity + payload.vote;
       }
+    },
+    UPDATE_SPICY(state, payload) {
+      let thisPost = state.forumPosts.find((post) => post.id === payload.postId);
+      if (payload.spicy === 1) {
+        thisPost.totalSpicy++;
+      } else {
+        thisPost.totalSpicy--;
+      }
     }
   }
 })

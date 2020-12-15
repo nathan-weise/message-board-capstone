@@ -30,6 +30,7 @@
         v-on:click="clickDownvote()"
         v-bind:class="{ downvote: vote === -1 }"
       />
+      <p style="display: inline">{{ post.totalSpicy }}</p>
       <font-awesome-icon
         icon="pepper-hot"
         size="2x"
@@ -59,22 +60,26 @@ export default {
     this.spicy = this.post.spicy;
   },
   methods: {
-    callAPI(prevVote) {
+    callAPI(prevVote, prevSpicy) {
       PostService.alterVote(this.vote, this.spicy, this.post.id).then((response) => {
         console.log(response);
         if (prevVote !== this.vote) {
-          this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote});
+          this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote, });
+        }
+        if (this.spicy !== prevSpicy) {
+          this.$store.commit('UPDATE_SPICY', {"spicy": this.spicy, "postId": this.post.id});
         }
       });
     },
     clickSpicy() {
       let prevVote = this.vote
+      let prevSpicy = this.spicy
       if (this.spicy === 1) {
         this.spicy = 0;
       } else {
         this.spicy = 1;
       }
-      this.callAPI(prevVote);
+      this.callAPI(prevVote, prevSpicy);
     },
     clickUpvote() {
       let prevVote = this.vote;

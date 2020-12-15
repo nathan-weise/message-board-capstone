@@ -17,7 +17,7 @@ import java.util.List;
 public class JdbcPostDAO implements PostDAO {
 
     private static final String QUERY_RECENT_POPULAR =
-            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy " +
             "FROM posts " +
             "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
             "JOIN users ON posts.user_id = users.user_id " +
@@ -29,7 +29,7 @@ public class JdbcPostDAO implements PostDAO {
             "LIMIT 10;";
 
     private static final String QUERY_FORUM_POSTS =
-            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
             "FROM posts " +
             "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
             "JOIN users ON posts.user_id = users.user_id " +
@@ -40,7 +40,7 @@ public class JdbcPostDAO implements PostDAO {
             "ORDER BY popularity DESC, posts.created_time DESC;";
 
     private static final String QUERY_POST_DETAILS =
-            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
             "FROM posts " +
             "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
             "JOIN users ON posts.user_id = users.user_id " +
@@ -52,7 +52,7 @@ public class JdbcPostDAO implements PostDAO {
             "LIMIT 10;";
 
     private static final String QUERY_ALL_POSTS =
-            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
             "FROM posts " +
             "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
             "JOIN users ON posts.user_id = users.user_id " +
@@ -62,7 +62,7 @@ public class JdbcPostDAO implements PostDAO {
             "ORDER BY popularity DESC, posts.created_time DESC;";
 
     private static final String QUERY_RECENT_POSTS =
-            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
             "FROM posts " +
             "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
             "JOIN users ON posts.user_id = users.user_id " +
@@ -72,7 +72,7 @@ public class JdbcPostDAO implements PostDAO {
             "ORDER BY posts.created_time DESC;";
 
     private static final String QUERY_POPULAR_POSTS_BY_FORUM =
-            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
             "FROM posts " +
             "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
             "JOIN users ON posts.user_id = users.user_id " +
@@ -83,7 +83,7 @@ public class JdbcPostDAO implements PostDAO {
             "ORDER BY popularity DESC, posts.created_time DESC;";
 
         private static final String QUERY_RECENT_POSTS_BY_FORUM =
-            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity " +
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
             "FROM posts " +
             "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
             "JOIN users ON posts.user_id = users.user_id " +
@@ -271,6 +271,7 @@ public class JdbcPostDAO implements PostDAO {
         post.setVote(rs.getInt("vote"));
         post.setImageURL(rs.getString("post_image"));
         post.setSpicy(rs.getInt("spicy"));
+        post.setTotalSpicy(rs.getInt("total_spicy"));
 
         return post;
     }

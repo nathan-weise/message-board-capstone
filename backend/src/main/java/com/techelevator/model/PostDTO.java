@@ -13,6 +13,7 @@ public class PostDTO implements Comparable<PostDTO> {
     private String username;
     private Date createdDate;
     private int popularity;
+    private int totalSpicy;
     private int vote;
     private int spicy;
     private String imageURL;
@@ -96,6 +97,14 @@ public class PostDTO implements Comparable<PostDTO> {
 
     public void setSpicy(int spicy) {
         this.spicy = spicy;
+    }
+
+    public int getTotalSpicy() {
+        return totalSpicy;
+    }
+
+    public void setTotalSpicy(int totalSpicy) {
+        this.totalSpicy = totalSpicy;
     }
 
     public String getImageURL() {
