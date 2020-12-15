@@ -14,6 +14,9 @@ public class PostDTO implements Comparable<PostDTO> {
     private Date createdDate;
     private int popularity;
     private int vote;
+    private int spicy;
+    private String imageURL;
+    private static final String DEFAULT_IMAGE = "https://i.redd.it/eyx6qo3e8vy51.jpg";
 
     public long getForumId() {
         return forumId;
@@ -85,6 +88,25 @@ public class PostDTO implements Comparable<PostDTO> {
 
     public void setVote(int vote) {
         this.vote = vote;
+    }
+
+    public int getSpicy() {
+        return spicy;
+    }
+
+    public void setSpicy(int spicy) {
+        this.spicy = spicy;
+    }
+
+    public String getImageURL() {
+        if (this.imageURL == null) {
+            this.setImageURL(DEFAULT_IMAGE);
+        }
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     @Override

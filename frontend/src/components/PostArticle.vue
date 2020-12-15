@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <img
-      src="https://www.thespruce.com/thmb/KwKqGx7uhDC9Gou99usNPflipTo=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/high-angle-view-of-male-mallard-duck-with-mouth-open-629724643-572b53fc3df78c038ee2d78f.jpg"
+      v-bind:src="post.imageURL"
       alt="duck"
     />
     <router-link

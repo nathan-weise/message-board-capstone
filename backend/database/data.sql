@@ -18,87 +18,87 @@ VALUES ('Murtaugh', '$2a$10$U1/EBRALXy8OnnOaoCFr2e6Tzrh/6bLwy1hIdpIuKBXNWqIXEMNA
 
 -- Dummy data for forum table
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Banana', 'Description', 1, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Banana', 'Description', 1, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Baguette', 'Description', 2, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Baguette', 'Description', 2, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Breadstick', 'Description', 3, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Breadstick', 'Description', 3, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Brioche', 'Description', 1, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Brioche', 'Description', 1, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Challah', 'Description', 2, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Challah', 'Description', 2, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Ciabatta', 'Description', 3, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Ciabatta', 'Description', 3, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Pita', 'Description', 1, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Pita', 'Description', 1, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Cornbread', 'Description', 2, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Cornbread', 'Description', 2, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Focaccia', 'Description', 3, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Focaccia', 'Description', 3, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Multigrain', 'Description', 1, '000000', 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Multigrain', 'Description', 1, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Parrot', 'Description', 2, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Parrot', 'Description', 2, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Owl', 'Description', 3, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Owl', 'Description', 3, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Hummingbird', 'Description', 1, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Hummingbird', 'Description', 1, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Duck', 'Description', 2, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Duck', 'Description', 2, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Goose', 'Description', 3, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Goose', 'Description', 3, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Hawk', 'Description', 1, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Hawk', 'Description', 1, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Finch', 'Description', 2, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Finch', 'Description', 2, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Woodpecker', 'Description', 3, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Woodpecker', 'Description', 3, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Herons', 'Description', 1, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Herons', 'Description', 1, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO forums (forum_name, forum_description, user_id, color, forum_image, created_time)
-VALUES ('Swallow', 'Description', 2, '000000', 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('Swallow', 'Description', 2, '000000', 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 
 -- Dummy data for posts table
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 1, 1, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 1, 1, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 2, 2, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 2, 2, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 3, 3, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 3, 3, 'https://i.imgur.com/N0JTeJi.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 1, 4, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 1, 4, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 2, 5, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 2, 5, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 3, 6, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 3, 6, 'https://i.imgur.com/N0JTeJi.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 1, 7, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 1, 7, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 2, 8, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 2, 8, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 3, 1, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 3, 1, 'https://i.imgur.com/N0JTeJi.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('popular post', 'text', 1, 2, 'html link goes here', TIMESTAMP '2020-12-10 10:00:00');
+VALUES ('popular post', 'text', 1, 2, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-10 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 2, 3, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 2, 3, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 3, 4, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 3, 4, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 1, 5, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 1, 5, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 2, 6, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 2, 6, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 3, 7, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 3, 7, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 1, 8, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 1, 8, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 2, 1, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 2, 1, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 3, 2, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 3, 2, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 1, 3, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 1, 3, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO posts (post_title, post_text, forum_id, user_id, post_image, created_time)
-VALUES ('recent post', 'text', 2, 4, 'html link goes here', TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('recent post', 'text', 2, 4, 'https://i.imgur.com/Frk3Kiy.jpeg', TIMESTAMP '2020-12-14 10:00:00');
 
 -- Dummy data for comments table
 INSERT INTO comments (comment_text, post_id, user_id, created_time)

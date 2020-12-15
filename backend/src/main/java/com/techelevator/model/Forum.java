@@ -1,6 +1,5 @@
 package com.techelevator.model;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class Forum {
@@ -10,6 +9,8 @@ public class Forum {
     private String description;
     private long userId;
     private LocalDateTime createdTime;
+    private String color;
+    private String imageURL;
 
     public long getId() {
         return id;
@@ -49,5 +50,21 @@ public class Forum {
 
     public void setCreatedTime(LocalDateTime createdTime) {
         this.createdTime = createdTime;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = "#" + color;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
