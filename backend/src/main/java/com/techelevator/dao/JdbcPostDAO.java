@@ -23,7 +23,7 @@ public class JdbcPostDAO implements PostDAO {
             "JOIN users ON posts.user_id = users.user_id " +
             "JOIN forums ON posts.forum_id = forums.forum_id " +
             "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "WHERE posts.created_time >= NOW() - '48 hours'::INTERVAL " +
+            "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
             "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
             "ORDER BY popularity DESC, posts.created_time DESC " +
             "LIMIT 10;";

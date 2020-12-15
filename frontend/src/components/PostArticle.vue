@@ -53,7 +53,6 @@ export default {
     callAPI(prevVote) {
       PostService.alterVote(this.vote, this.post.id).then((response) => {
         console.log(response);
-        console.log(`post id in PostArticle.vue is: ${this.post.id}`);
         this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote});
       });
     },

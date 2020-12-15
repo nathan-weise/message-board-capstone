@@ -41,11 +41,13 @@ export default {
     loadPostsByPopularity() {
       PostService.listAllPopularPostsByForum(this.$route.params.forumId).then((response) => {
         this.posts = response.data;
+        this.$store.commit("SET_FORUM_POSTS", this.posts);
       });
     },
     loadPostsByRecent() {
       PostService.listAllRecentPostsByForum(this.$route.params.forumId).then((response) => {
         this.posts = response.data;
+        this.$store.commit("SET_FORUM_POSTS", this.posts);
       });
     }
   },

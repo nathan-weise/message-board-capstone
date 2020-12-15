@@ -34,17 +34,20 @@ export default {
     loadPostsSortedByNew() {
       PostService.listAllNewPosts().then((response) => {
         this.allTopics = response.data;
+      this.$store.commit("SET_FORUM_POSTS", this.allTopics);
       });
     },
     loadPostsSortedByPopularity() {
       PostService.listAllPopularPosts().then((response) => {
         this.allTopics = response.data;
+      this.$store.commit("SET_FORUM_POSTS", this.allTopics);
       });
     },
   },
   created() {
     PostService.listAllRecentPopularPosts().then((response) => {
       this.allTopics = response.data;
+      this.$store.commit("SET_FORUM_POSTS", this.allTopics);
     });
   },
 };
