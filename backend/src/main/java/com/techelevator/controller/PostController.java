@@ -30,24 +30,21 @@ public class PostController {
     //We will need to add some functionality here to find posts by popularity, this is temporary
     @GetMapping(value = "/posts")
     public List<PostDTO> listPosts(Principal principal) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
         return postDAO.listAllPosts(userId);
     }
 
     //Get posts sorted by creation date
     @GetMapping(value = "/posts/new")
     public List<PostDTO> listPostsByDate(Principal principal) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
         return postDAO.listAllPostsByDate(userId);
     }
 
     //Get posts sorted by popularity (upvotes - downvotes)
     @GetMapping(value = "/posts/popular")
     public List<PostDTO> listPostsByPopularity(Principal principal) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
         List<PostDTO> results = postDAO.listAllPosts(userId);
         Collections.sort(results);
         return results;
@@ -57,15 +54,14 @@ public class PostController {
     @GetMapping(value = "/forums/{forumId}/posts/popular")
     public List<PostDTO> listPostsByForumByPopularity(@PathVariable long forumId, Principal principal) {
         String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        long userId = getUserIdFromPrincipal(principal);
         return postDAO.listAllPostsByForumByPopularity(userId, forumId);
     }
 
     //Get posts sorted by recentness (per forum)
     @GetMapping(value = "/forums/{forumId}/posts/new")
     public List<PostDTO> listPostsByForumByRecent(@PathVariable long forumId, Principal principal) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
         return postDAO.listAllPostsByForumByRecent(userId, forumId);
     }
 
@@ -73,8 +69,7 @@ public class PostController {
     //for displaying on the homepage
     @GetMapping(value = "/posts/recent-popular")
     public List<PostDTO> listPostsByRecentPopularity(Principal principal) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
         List<PostDTO> results = postDAO.listAllPostsByRecentPopularity(userId);
         Collections.sort(results);
         return results;
@@ -84,8 +79,7 @@ public class PostController {
     // /forums/{id}/posts
     @GetMapping(value = "/forums/{forumId}/posts")
     public List<PostDTO> listPostsForForum(Principal principal, @PathVariable long forumId) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
         return postDAO.listAllPostsForForum(userId, forumId);
     }
 
@@ -93,25 +87,31 @@ public class PostController {
     @PostMapping(value = "posts")
     @ResponseStatus(HttpStatus.CREATED)
     public Post createPost(Principal principal, @RequestBody PostDTO newPost) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
         LocalDateTime date = LocalDateTime.now();
         return postDAO.createNewPost(newPost.getTitle(), newPost.getText(), newPost.getForumId(), newPost.getImageURL(), userId, date);
     }
 
     @GetMapping(value = "posts/{postId}")
     public PostDTO getPost(Principal principal, @PathVariable long postId) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
         return postDAO.getPost(userId, postId);
     }
 
     @PutMapping(value = "posts/{postId}")
     public PostDTO voteOnPost(Principal principal, @PathVariable long postId, @RequestBody Vote vote) {
-        String username = principal.getName();
-        long userId = userDAO.findIdByUsername(username);
+        Long userId = getUserIdFromPrincipal(principal);
 
         return postDAO.alterVote(userId, postId, vote);
+    }
+
+    private Long getUserIdFromPrincipal(Principal principal) {
+        if (principal == null) {
+            return null;
+        } else {
+            String username = principal.getName();
+            return userDAO.findIdByUsername(username);
+        }
     }
 
     //get specific post on specific forum

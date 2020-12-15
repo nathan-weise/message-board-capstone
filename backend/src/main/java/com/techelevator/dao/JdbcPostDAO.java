@@ -105,7 +105,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPosts(long userId) {
+    public List<PostDTO> listAllPosts(Long userId) {
         List<PostDTO> results = new ArrayList<>();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_ALL_POSTS, userId);
         while (rowSet.next()) {
@@ -115,7 +115,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPostsForForum(long userId, long forumId) {
+    public List<PostDTO> listAllPostsForForum(Long userId, long forumId) {
         List<PostDTO> results = new ArrayList<>();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_FORUM_POSTS, userId, forumId);
         while (rowSet.next()) {
@@ -125,7 +125,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPostsByDate(long userId) {
+    public List<PostDTO> listAllPostsByDate(Long userId) {
         List<PostDTO> results = new ArrayList<>();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_RECENT_POSTS, userId);
         while (rowSet.next()) {
@@ -135,7 +135,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPostsByRecentPopularity(long userId) {
+    public List<PostDTO> listAllPostsByRecentPopularity(Long userId) {
         List<PostDTO> results = new ArrayList<>();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_RECENT_POPULAR, userId);
         while (rowSet.next()) {
@@ -145,7 +145,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPostsByForumByPopularity(long userId, long forumId) {
+    public List<PostDTO> listAllPostsByForumByPopularity(Long userId, long forumId) {
         List<PostDTO> results = new ArrayList<>();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_POPULAR_POSTS_BY_FORUM, userId, forumId);
         while (rowSet.next()) {
@@ -155,7 +155,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public List<PostDTO> listAllPostsByForumByRecent(long userId, long forumId) {
+    public List<PostDTO> listAllPostsByForumByRecent(Long userId, long forumId) {
         List<PostDTO> results = new ArrayList<>();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_RECENT_POSTS_BY_FORUM, userId, forumId);
         while (rowSet.next()) {
@@ -165,7 +165,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override //5, 4
-    public PostDTO alterVote(long userId, long postId, Vote vote) {
+    public PostDTO alterVote(Long userId, long postId, Vote vote) {
         String sqlToFindVote = "SELECT vote FROM post_votes WHERE post_id = ? AND user_id = ?;";
         try {
             // queryForRowSet()
@@ -207,7 +207,7 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public Post createNewPost(String postTitle, String postText, long forumId, String imageURL, long userId, LocalDateTime createdDate) {
+    public Post createNewPost(String postTitle, String postText, long forumId, String imageURL, Long userId, LocalDateTime createdDate) {
         Post newPost = new Post();
         String sql = "INSERT INTO posts " +
                      "(post_title, post_text, forum_id, user_id, created_time, post_image) " +
@@ -228,7 +228,7 @@ public class JdbcPostDAO implements PostDAO {
         }
     }
 
-    public PostDTO getPost(long userId, long postId) {
+    public PostDTO getPost(Long userId, long postId) {
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_POST_DETAILS, userId, postId);
         rowSet.next();
         return mapRowToPostDTO(rowSet);
