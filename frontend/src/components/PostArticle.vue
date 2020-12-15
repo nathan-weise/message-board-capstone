@@ -60,13 +60,21 @@ export default {
   },
   methods: {
     callAPI(prevVote) {
-      PostService.alterVote(this.vote, this.post.id).then((response) => {
+      PostService.alterVote(this.vote, this.spicy, this.post.id).then((response) => {
         console.log(response);
-        this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote});
+        if (prevVote !== this.vote) {
+          this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote});
+        }
       });
     },
     clickSpicy() {
-
+      let prevVote = this.vote
+      if (this.spicy === 1) {
+        this.spicy = 0;
+      } else {
+        this.spicy = 1;
+      }
+      this.callAPI(prevVote);
     },
     clickUpvote() {
       let prevVote = this.vote;
