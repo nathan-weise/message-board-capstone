@@ -39,5 +39,10 @@ export default {
 
   getPostById(id) {
     return axios.get(`/posts/${id}`);
+  },
+
+  alterVote(vote, postId) {
+    console.log('inside altervote mehtod');
+    return axios.put(`posts/${postId}`, {"vote": vote});
   }
 }

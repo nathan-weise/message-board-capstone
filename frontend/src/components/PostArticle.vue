@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import PostService from "@/services/PostService.js";
+
 export default {
   data() {
     return {
@@ -48,20 +50,31 @@ export default {
     this.vote = this.post.vote;
   },
   methods: {
+    callAPI(prevVote) {
+      PostService.alterVote(this.vote, this.post.id).then((response) => {
+        console.log(response);
+        console.log(`post id in PostArticle.vue is: ${this.post.id}`);
+        this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote});
+      });
+    },
     clickUpvote() {
+      let prevVote = this.vote;
       if (this.vote === 1) {
         this.vote = 0;
       } else {
         this.vote = 1;
       }
+      this.callAPI(prevVote);
     },
     clickDownvote() {
+      let prevVote = this.vote;
       if (this.vote === -1) {
         this.vote = 0;
       } else {
         this.vote = -1;
       }
-    },
+      this.callAPI(prevVote);
+    }
   },
 };
 </script>

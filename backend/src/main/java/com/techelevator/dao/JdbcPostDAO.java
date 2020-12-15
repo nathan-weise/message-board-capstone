@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Post;
 import com.techelevator.model.PostDTO;
+import com.techelevator.model.Vote;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,7 @@ public class JdbcPostDAO implements PostDAO {
             "JOIN users ON posts.user_id = users.user_id " +
             "JOIN forums ON posts.forum_id = forums.forum_id " +
             "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
+            "WHERE posts.created_time >= NOW() - '48 hours'::INTERVAL " +
             "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
             "ORDER BY popularity DESC, posts.created_time DESC " +
             "LIMIT 10;";
@@ -164,23 +165,23 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override //5, 4
-    public PostDTO alterVote(long userId, long postId, Integer vote) {
+    public PostDTO alterVote(long userId, long postId, Vote vote) {
         String sqlToFindVote = "SELECT vote FROM post_votes WHERE post_id = ? AND user_id = ?;";
         try {
             // queryForRowSet()
             Integer voteAsNumber = jdbcTemplate.queryForObject(sqlToFindVote, Integer.class, postId, userId);
 
-            if (vote == 0) {
+            if (vote.getVote() == 0) {
                 //update vote to 0
                 System.out.println("there is a vote in the table, updating row with vote as 0");
                 String sql = "UPDATE post_votes SET vote = 0 WHERE post_id = ? AND user_id = ?;";
                 jdbcTemplate.update(sql, postId, userId);
-            } else if (vote == -1) {
+            } else if (vote.getVote()  == -1) {
                 //update vote as -1
                 System.out.println("there is a vote in the table, updating row with vote as -1");
                 String sql = "UPDATE post_votes SET vote = -1 WHERE post_id = ? AND user_id = ?;";
                 jdbcTemplate.update(sql, postId, userId);
-            } else if (vote == 1) {
+            } else if (vote.getVote()  == 1) {
                 //update vote as +1
                 System.out.println("there is a vote in the table, updating row with vote as +1");
                 String sql = "UPDATE post_votes SET vote = 1 WHERE post_id = ? AND user_id = ?;";
@@ -189,21 +190,19 @@ public class JdbcPostDAO implements PostDAO {
 
         } catch (Exception e) {
             System.out.println(e);
-            if (vote == -1) {
+            if (vote.getVote()  == -1) {
                 //insert into vote as -1
                 System.out.println("there is no vote in the table, inserting row with vote as -1");
                 String sql = "INSERT INTO post_votes (post_id, vote, user_id, created_time) VALUES (?, ?, ?, ?);";
-                jdbcTemplate.update(sql, postId, vote, userId, LocalDateTime.now());
-            } else if (vote == 1) {
+                jdbcTemplate.update(sql, postId, vote.getVote(), userId, LocalDateTime.now());
+            } else if (vote.getVote()  == 1) {
                 //insert into vote as +1
                 System.out.println("there is no vote in the table, inserting row with vote as +1");
                 String sql = "INSERT INTO post_votes (post_id, vote, user_id, created_time) VALUES (?, ?, ?, ?);";
-                jdbcTemplate.update(sql, postId, vote, userId, LocalDateTime.now());
+                jdbcTemplate.update(sql, postId, vote.getVote(), userId, LocalDateTime.now());
             }
             return null;
         }
-
-
         return null;
     }
 

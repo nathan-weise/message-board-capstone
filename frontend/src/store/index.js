@@ -60,6 +60,20 @@ export default new Vuex.Store({
     },
     ADD_COMMENT(state, comment) {
       state.comments.push(comment);
+    },
+    UPDATE_POPULARITY_TOTAL(state, payload) {
+      let thisPost = state.forumPosts.find((post) => post.id === payload.postId);
+      if (payload.prevVote === 1 && payload.vote === 0) {
+        thisPost.popularity--;
+      } else if (payload.prevVote === -1 && payload.vote === 0) {
+        thisPost.popularity++;
+      } else if (payload.prevVote === 1 && payload.vote === -1) {
+        thisPost.popularity -= 2;
+      } else if (payload.prevVote === -1 && payload.vote === 1) {
+        thisPost.popularity += 2;
+      } else {
+        thisPost.popularity = thisPost.popularity + payload.vote;
+      }
     }
   }
 })

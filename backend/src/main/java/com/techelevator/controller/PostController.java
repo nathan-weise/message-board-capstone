@@ -4,6 +4,7 @@ import com.techelevator.dao.PostDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.model.Post;
 import com.techelevator.model.PostDTO;
+import com.techelevator.model.Vote;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -106,7 +107,7 @@ public class PostController {
     }
 
     @PutMapping(value = "posts/{postId}")
-    public PostDTO voteOnPost(Principal principal, @PathVariable long postId, @RequestBody Integer vote) {
+    public PostDTO voteOnPost(Principal principal, @PathVariable long postId, @RequestBody Vote vote) {
         String username = principal.getName();
         long userId = userDAO.findIdByUsername(username);
 
