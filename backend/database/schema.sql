@@ -81,6 +81,7 @@ CREATE TABLE forum_votes (
 CREATE TABLE forum_favorites (
     user_id integer,
     forum_id integer,
+    forum_favorite integer,
     created_time timestamp,
     CONSTRAINT favorite_id PRIMARY KEY (user_id, forum_id),
     CONSTRAINT FK_forum_id FOREIGN KEY (forum_id) REFERENCES forums(forum_id),

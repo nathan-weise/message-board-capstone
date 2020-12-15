@@ -65,8 +65,7 @@ export default {
         console.log(response);
         if (prevVote !== this.vote) {
           this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote, });
-        }
-        if (this.spicy !== prevSpicy) {
+        } else if (this.spicy !== prevSpicy) {
           this.$store.commit('UPDATE_SPICY', {"spicy": this.spicy, "postId": this.post.id});
         }
       });

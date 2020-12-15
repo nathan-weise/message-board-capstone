@@ -295,3 +295,19 @@ INSERT INTO forum_mods (user_id, forum_id)
 VALUES (1, 2);
 INSERT INTO forum_mods (user_id, forum_id)
 VALUES (1, 3);
+
+-- Dummy data for forum_favorites table
+INSERT INTO forum_favorites (user_id, forum_id, forum_favorite)
+VALUES (4, 2, 1);
+INSERT INTO forum_favorites (user_id, forum_id, forum_favorite)
+VALUES (4, 3, 1);
+INSERT INTO forum_favorites (user_id, forum_id, forum_favorite)
+VALUES (4, 4, 1);
+INSERT INTO forum_favorites (user_id, forum_id, forum_favorite)
+VALUES (4, 5, 1);
+INSERT INTO forum_favorites (user_id, forum_id, forum_favorite)
+VALUES (4, 8, 1);
+INSERT INTO forum_favorites (user_id, forum_id, forum_favorite)
+VALUES (2, 3, 1);
+INSERT INTO forum_favorites (user_id, forum_id, forum_favorite)
+VALUES (2, 1, 1);

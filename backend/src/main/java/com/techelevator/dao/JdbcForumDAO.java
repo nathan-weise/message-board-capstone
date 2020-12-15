@@ -29,6 +29,19 @@ public class JdbcForumDAO implements ForumDAO {
         return mapRowToForum(rowSet);
     }
 
+    @Override
+    public List<Forum> getFavoriteForums(Long userId) {
+        List<Forum> results = new ArrayList<>();
+        String sql = "SELECT * FROM forums " +
+                     "JOIN forum_favorites ON forums.forum_id = forum_favorites.forum_id " +
+                     "WHERE forum_favorite = 1 AND forum_favorites.user_id = ?;";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        while (rowSet.next()) {
+            results.add(mapRowToForum(rowSet));
+        }
+        return results;
+    }
+
     //TODO
     // search method, check out ORDER BY DIFFERENCE
     public List<Forum> searchForumByTitle(String searchTerm) {

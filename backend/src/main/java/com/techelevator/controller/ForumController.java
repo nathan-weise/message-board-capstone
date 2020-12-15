@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,14 @@ public class ForumController {
         return forumDAO.getForumById(forumId);
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping(value = "favorites/forums")
+    public List<Forum> listFavoriteForums(Principal principal) {
+        String username = principal.getName();
+        Long userId = forumDAO.findIdByUsername(username);
+        return forumDAO.getFavoriteForums(userId);
+    }
+
     //Method needed to create Forums in the database based upon the logged in user
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "forums")
@@ -54,5 +63,6 @@ public class ForumController {
 
         return forum;
     }
+
 
 }

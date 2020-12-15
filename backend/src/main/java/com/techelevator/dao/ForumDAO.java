@@ -12,6 +12,8 @@ public interface ForumDAO {
 
     List<Forum> searchForumByTitle(String searchTerm);
 
+    List<Forum> getFavoriteForums(Long userId);
+
     long findIdByUsername(String username);
 
     Forum createNewForum(String forumName, String forumDescription, long userId, LocalDateTime createdDate);

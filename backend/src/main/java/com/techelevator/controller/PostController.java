@@ -98,6 +98,7 @@ public class PostController {
         return postDAO.getPost(userId, postId);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PutMapping(value = "posts/{postId}")
     public PostDTO voteOnPost(Principal principal, @PathVariable long postId, @RequestBody Vote vote) {
         Long userId = getUserIdFromPrincipal(principal);
