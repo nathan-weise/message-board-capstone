@@ -7,6 +7,10 @@
     <label for="postTitleInput">Post Name</label>
     <input v-model="title" id="postTitleInput" type="text" class="form-control" placeholder="Post Title">
   </div>
+    <div class="form-group">
+    <label for="thumbnail">Thumbnail Image URL</label>
+    <input v-model="imageURL" id="thumbnail" type="text" class="form-control" placeholder="Insert Image URL">
+  </div>
   <div class="form-group">
     <label for="postText">Post Text</label>
     <textarea v-model="text" id="postText" type="text-area" class="form-control" placeholder="Post Text"></textarea>
@@ -30,13 +34,14 @@ export default {
     return {
       title: '',
       text: '',
+      imageURL: '',
       nsfw: false,
       popupActivo2: false
     }
   },
   methods: {
     addPost() {
-      PostService.addPost({title: this.title, text: this.text, nsfw: this.nsfw, forumId: this.$route.params.forumId}).then(response => {
+      PostService.addPost({title: this.title, text: this.text, nsfw: this.nsfw, imageURL: this.imageURL, forumId: this.$route.params.forumId}).then(response => {
         if (response.status === 201) {
           this.popupActivo2 = false;
           this.$store.commit('ADD_FORUM_POST', response.data);

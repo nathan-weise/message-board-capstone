@@ -207,18 +207,19 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
-    public Post createNewPost(String postTitle, String postText, long forumId, long userId, LocalDateTime createdDate) {
+    public Post createNewPost(String postTitle, String postText, long forumId, String imageURL, long userId, LocalDateTime createdDate) {
         Post newPost = new Post();
         String sql = "INSERT INTO posts " +
-                     "(post_title, post_text, forum_id, user_id, created_time) " +
-                     "VALUES (?,?,?,?,?) RETURNING post_id;";
+                     "(post_title, post_text, forum_id, user_id, created_time, post_image) " +
+                     "VALUES (?,?,?,?,?,?) RETURNING post_id;";
         newPost.setTitle(postTitle);
         newPost.setText(postText);
         newPost.setForumId(forumId);
         newPost.setUserId(userId);
         newPost.setCreatedDate(createdDate);
+        newPost.setImageURL(imageURL);
         try {
-            Long newId = jdbcTemplate.queryForObject(sql, Long.class, postTitle, postText, forumId, userId, createdDate);
+            Long newId = jdbcTemplate.queryForObject(sql, Long.class, postTitle, postText, forumId, userId, createdDate, imageURL);
             newPost.setId(newId);
             return newPost;
         } catch (Exception e) {

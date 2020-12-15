@@ -92,11 +92,11 @@ public class PostController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "posts")
     @ResponseStatus(HttpStatus.CREATED)
-    public Post createPost(Principal principal, @RequestBody Post newPost) {
+    public Post createPost(Principal principal, @RequestBody PostDTO newPost) {
         String username = principal.getName();
         long userId = userDAO.findIdByUsername(username);
         LocalDateTime date = LocalDateTime.now();
-        return postDAO.createNewPost(newPost.getTitle(), newPost.getText(), newPost.getForumId(), userId, date);
+        return postDAO.createNewPost(newPost.getTitle(), newPost.getText(), newPost.getForumId(), newPost.getImageURL(), userId, date);
     }
 
     @GetMapping(value = "posts/{postId}")

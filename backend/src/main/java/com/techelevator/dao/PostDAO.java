@@ -20,6 +20,6 @@ public interface PostDAO {
     PostDTO alterVote(long userId, long postId, Vote vote);
 
 
-    Post createNewPost(String postTitle, String postText, long forumId, long userId, LocalDateTime createdDate);
+    Post createNewPost(String postTitle, String postText, long forumId, String imageURL, long userId, LocalDateTime createdDate);
 
 }

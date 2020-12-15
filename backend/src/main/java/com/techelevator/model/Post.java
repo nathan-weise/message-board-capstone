@@ -15,6 +15,8 @@ public class Post {
     private long forumId;
     private long userId;
     private LocalDateTime createdDate;
+    private String imageURL;
+    private static final String DEFAULT_IMAGE = "https://i.redd.it/eyx6qo3e8vy51.jpg";
 
     public long getId() {
         return id;
@@ -58,6 +60,17 @@ public class Post {
 
     public LocalDateTime getCreatedDate() {
         return createdDate;
+    }
+
+    public String getImageURL() {
+        if (this.imageURL == null) {
+            this.setImageURL(DEFAULT_IMAGE);
+        }
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public void setCreatedDate(LocalDateTime createdDate) {
