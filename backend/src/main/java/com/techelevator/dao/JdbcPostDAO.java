@@ -173,34 +173,46 @@ public class JdbcPostDAO implements PostDAO {
 
             if (vote.getVote() == 0) {
                 //update vote to 0
-                System.out.println("there is a vote in the table, updating row with vote as 0");
                 String sql = "UPDATE post_votes SET vote = 0 WHERE post_id = ? AND user_id = ?;";
                 jdbcTemplate.update(sql, postId, userId);
-            } else if (vote.getVote()  == -1) {
+            } else if (vote.getVote() == -1) {
                 //update vote as -1
-                System.out.println("there is a vote in the table, updating row with vote as -1");
                 String sql = "UPDATE post_votes SET vote = -1 WHERE post_id = ? AND user_id = ?;";
                 jdbcTemplate.update(sql, postId, userId);
-            } else if (vote.getVote()  == 1) {
+            } else if (vote.getVote() == 1) {
                 //update vote as +1
-                System.out.println("there is a vote in the table, updating row with vote as +1");
                 String sql = "UPDATE post_votes SET vote = 1 WHERE post_id = ? AND user_id = ?;";
+                jdbcTemplate.update(sql, postId, userId);
+            }
+
+            if (vote.getSpicy() == 1) {
+                String sql = "UPDATE post_votes SET spicy = 1 WHERE post_id = ? AND user_id = ?;";
+                jdbcTemplate.update(sql, postId, userId);
+            } else if (vote.getSpicy() == 0) {
+                String sql = "UPDATE post_votes SET spicy = 0 WHERE post_id = ? AND user_id = ?;";
                 jdbcTemplate.update(sql, postId, userId);
             }
 
         } catch (Exception e) {
             System.out.println(e);
-            if (vote.getVote()  == -1) {
+            if (vote.getVote() == -1) {
                 //insert into vote as -1
-                System.out.println("there is no vote in the table, inserting row with vote as -1");
                 String sql = "INSERT INTO post_votes (post_id, vote, user_id, created_time) VALUES (?, ?, ?, ?);";
                 jdbcTemplate.update(sql, postId, vote.getVote(), userId, LocalDateTime.now());
-            } else if (vote.getVote()  == 1) {
+            } else if (vote.getVote() == 1) {
                 //insert into vote as +1
-                System.out.println("there is no vote in the table, inserting row with vote as +1");
                 String sql = "INSERT INTO post_votes (post_id, vote, user_id, created_time) VALUES (?, ?, ?, ?);";
                 jdbcTemplate.update(sql, postId, vote.getVote(), userId, LocalDateTime.now());
             }
+
+            if (vote.getSpicy() == 1) {
+                String sql = "INSERT INTO post_votes (post_id, spicy, user_id, created_time) VALUES (?, ?, ?, ?);";
+                jdbcTemplate.update(sql, postId, vote.getSpicy(), userId, LocalDateTime.now());
+            } else if (vote.getSpicy() == 0) {
+                String sql = "INSERT INTO post_votes (post_id, vote, user_id, created_time) VALUES (?, ?, ?, ?);";
+                jdbcTemplate.update(sql, postId, vote.getSpicy(), userId, LocalDateTime.now());
+            }
+
             return null;
         }
         return null;
@@ -258,6 +270,7 @@ public class JdbcPostDAO implements PostDAO {
         post.setPopularity(calculatePopularity(post.getId()));
         post.setVote(rs.getInt("vote"));
         post.setImageURL(rs.getString("post_image"));
+        post.setSpicy(rs.getInt("spicy"));
 
         return post;
     }

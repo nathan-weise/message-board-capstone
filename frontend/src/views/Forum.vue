@@ -63,6 +63,7 @@ export default {
     );
     PostService.listAllPostsForForum(forumId).then((response) => {
       this.posts = response.data;
+      console.log(response);
       this.$store.commit("SET_FORUM_POSTS", this.posts);
     });
     ForumService.getForumById(forumId).then((response) => {

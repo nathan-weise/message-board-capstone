@@ -63,7 +63,7 @@ public class Post {
     }
 
     public String getImageURL() {
-        if (this.imageURL == null) {
+        if (this.imageURL == null || this.imageURL.isEmpty()) {
             this.setImageURL(DEFAULT_IMAGE);
         }
         return imageURL;

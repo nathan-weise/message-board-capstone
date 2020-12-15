@@ -30,6 +30,12 @@
         v-on:click="clickDownvote()"
         v-bind:class="{ downvote: vote === -1 }"
       />
+      <font-awesome-icon
+        icon="pepper-hot"
+        size="2x"
+        v-on:click="clickSpicy()"
+        v-bind:class="{ red: spicy === 1 }"
+      />
     </div>
     <p>{{ popularity }}</p>
   </div>
@@ -42,12 +48,15 @@ export default {
   data() {
     return {
       vote: 0,
+      spicy: 0
     };
   },
   props: ["title", "username", "date", "popularity", "post"],
   created() {
     this.$store.commit("SET_ACTIVE_POST", this.post);
+    console.log(this.post);
     this.vote = this.post.vote;
+    this.spicy = this.post.spicy;
   },
   methods: {
     callAPI(prevVote) {
@@ -55,6 +64,9 @@ export default {
         console.log(response);
         this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote});
       });
+    },
+    clickSpicy() {
+
     },
     clickUpvote() {
       let prevVote = this.vote;
@@ -130,5 +142,9 @@ img {
 
 .downvote {
   color: blue;
+}
+
+.red {
+  color: red;
 }
 </style>

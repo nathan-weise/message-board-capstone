@@ -12,6 +12,7 @@ import 'vuesax/dist/vuesax.css' //Vuesax styles
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faPepperHot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(BootstrapVueIcons)
@@ -19,7 +20,7 @@ Vue.use(BootstrapVue)
 Vue.use(Vuesax)
 Vue.config.productionTip = false
 
-library.add(faArrowUp, faArrowDown)
+library.add(faArrowUp, faArrowDown, faPepperHot)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
