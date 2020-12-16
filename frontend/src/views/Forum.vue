@@ -26,7 +26,7 @@
       />
       <img
         height="75px"
-        src="https://i.imgur.com/igiQgWE.png"
+        src="https://i.imgur.com/t84eS4w.png"
         v-on:click="loadPostsBySpicy()"
       />
     </div>
@@ -142,7 +142,11 @@ export default {
 }
 
 .sort-buttons img:hover {
-  -webkit-filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black);
-  filter: blur(2px);
+  filter: drop-shadow(0px 0px 5px black);
+}
+
+.sort-buttons img:last-child:hover {
+  filter: drop-shadow(0px 0px 5px rgb(207, 45, 45));
+  filter: saturate(500%);
 }
 </style>
