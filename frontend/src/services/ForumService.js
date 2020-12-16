@@ -14,6 +14,10 @@ export default {
 
   addForum(forum) {
     return axios.post('forums', forum);
+  },
+
+  getFavoriteForums() {
+    return axios.get('favorites/forums');
   }
 
 }

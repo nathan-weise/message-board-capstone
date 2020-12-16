@@ -61,6 +61,7 @@ export default {
       firstIndexOfSlash + 1,
       secondIndexOfSlash
     );
+    
     PostService.listAllPostsForForum(forumId).then((response) => {
       this.posts = response.data;
       console.log(response);
