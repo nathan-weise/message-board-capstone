@@ -1,23 +1,32 @@
 <template>
-  <div>
+  <div class="home-container">
     <side-bar v-if="$store.state.token !== ''" />
     <forum-posts />
-    <div class="forum-title">
-      <h1>{{ forum.name }}</h1>
-      <b-button v-on:click="addToFavorites()">+ Favorite</b-button>
+    <div class="details-container">
+      <div class="forum-title">
+        <h1>{{ forum.name }}</h1>
+        <b-button v-on:click="addToFavorites()">+ Favorite</b-button>
+      </div>
     </div>
-    <b-button v-on:click="loadPostsByRecent()">Sort By New</b-button>
-    <b-button v-on:click="loadPostsByPopularity()">Sort By Popularity</b-button>
 
-    <div v-for="post of posts" :key="post.id">
-      <post-article
-        v-bind:title="post.title"
-        v-bind:username="post.username"
-        v-bind:date="post.createdDate"
-        v-bind:popularity="post.popularity"
-        v-bind:post="post"
+    <div class="sort-buttons">
+      <b-button v-on:click="loadPostsByRecent()">Sort By New</b-button>
+      <b-button v-on:click="loadPostsByPopularity()"
+        >Sort By Popularity</b-button
       >
-      </post-article>
+    </div>
+
+    <div class="posts-container">
+      <div v-for="post of posts" :key="post.id">
+        <post-article
+          v-bind:title="post.title"
+          v-bind:username="post.username"
+          v-bind:date="post.createdDate"
+          v-bind:popularity="post.popularity"
+          v-bind:post="post"
+        >
+        </post-article>
+      </div>
     </div>
   </div>
 </template>
@@ -76,7 +85,7 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.loadForumPosts(to.params.forumId);
     next();
-  }
+  },
 };
 </script>
 
@@ -84,5 +93,24 @@ export default {
 .forum-title {
   display: flex;
   flex-direction: row;
+}
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas:
+    "details sort-buttons ."
+    ".       posts        .";
+}
+
+.posts-container {
+  grid-area: posts;
+}
+
+.details-container {
+  grid-area: details;
+}
+
+.sort-buttons {
+  grid-area: sort-buttons;
 }
 </style>

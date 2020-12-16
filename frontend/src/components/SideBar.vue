@@ -63,6 +63,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  background-color:rgb(200, 196, 191);
 }
 
 .favorites {

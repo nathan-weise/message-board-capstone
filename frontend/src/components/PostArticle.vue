@@ -108,13 +108,15 @@ export default {
 
 <style scoped>
 .container {
+  border: 2px black solid;
   margin-bottom: 10px;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   display: grid;
   min-height: 8rem;
-  width: 50%;
-  /* border: solid; */
-  background-color: white;
+  /* width: 100%; */
+  /* background-color: rgba(94, 94, 94, 0.9); */
+  background-image: url("https://www.f-covers.com/cover/cartoon-bread-toast-facebook-cover-timeline-banner-for-fb.jpg");
+  background-size: cover;
   border-radius: 5px;
   grid-template-areas:
     "img title    title"
