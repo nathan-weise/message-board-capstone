@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="centerx">
-    <b-button @click="popupActivo2=true" color="primary" type="filled">+ Forum</b-button>
+    <b-button @click="popupActivo2=true" class="popup-button">+ Forum</b-button>
     <vs-popup classContent="popup-example"  title="Create New Forum" :active.sync="popupActivo2">
      <form>
   <div class="form-group">
@@ -23,25 +23,37 @@
 </template>
 
 <script>
-import ForumService from '@/services/ForumService.js';
+import ForumService from "@/services/ForumService.js";
 
 export default {
   data() {
     return {
-      name: '',
-      description: '',
+      name: "",
+      description: "",
       nsfw: false,
-      popupActivo2: false
-    }
+      popupActivo2: false,
+    };
   },
   methods: {
     addForum() {
-      ForumService.addForum({name: this.name, description: this.description, nsfw: this.nsfw}).then(response => {
+      ForumService.addForum({
+        name: this.name,
+        description: this.description,
+        nsfw: this.nsfw,
+      }).then((response) => {
         if (response.status === 201) {
-          this.$router.push(`forums/${response.data.id}/posts`)
+          this.$router.push(`forums/${response.data.id}/posts`);
         }
-      })
-    }
-  }
-}
+      });
+    },
+  },
+};
 </script>
+
+<style scoped>
+.popup-button {
+  display: block;
+  width: 100%;
+  background-color: rgba(150, 150, 150, 0.6);
+}
+</style>

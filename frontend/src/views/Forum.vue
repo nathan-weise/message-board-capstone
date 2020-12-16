@@ -5,15 +5,14 @@
     <div class="details-container">
       <div class="forum-title">
         <h1>{{ forum.name }}</h1>
-        <b-button v-on:click="addToFavorites()">+ Favorite</b-button>
+        <img width="180px" src="https://i.imgur.com/FPnod3d.png" v-on:click="addToFavorites()" />
       </div>
     </div>
 
     <div class="sort-buttons">
-      <b-button v-on:click="loadPostsByRecent()">Sort By New</b-button>
-      <b-button v-on:click="loadPostsByPopularity()"
-        >Sort By Popularity</b-button
-      >
+      <img height="75px" src="https://i.imgur.com/39CkSom.png" v-on:click="loadPostsByRecent()" />
+      <img height="75px" src="https://i.imgur.com/igiQgWE.png" v-on:click="loadPostsByPopularity()" />
+      <img height="75px" src="https://i.imgur.com/igiQgWE.png" v-on:click="loadPostsByPopularity()" />
     </div>
 
     <div class="posts-container">
@@ -91,15 +90,16 @@ export default {
 
 <style scoped>
 .forum-title {
+  padding: 5px 0 0 15px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .home-container {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
     "details sort-buttons ."
-    ".       posts        .";
+    "details posts        .";
 }
 
 .posts-container {
@@ -112,5 +112,8 @@ export default {
 
 .sort-buttons {
   grid-area: sort-buttons;
+  display:flex;
+  justify-content: space-around;
+  padding: 5px 0 5px 0;
 }
 </style>

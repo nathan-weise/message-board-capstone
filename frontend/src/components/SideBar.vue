@@ -1,17 +1,25 @@
 <template>
   <div class="sidebar-container">
-    <h3>example</h3>
-    <popup-form />
-    <!-- <img id="favorites" src="../../res/site_images/favorites.png" alt="favorites" /> -->
-    <post-popup-form v-if="isInForumOrPost" />
-    <comment-popup-form v-if="isInPost" />
-    <div class="favorites" >
-    <b-button class="favorite-buttons" v-for="forum of favoriteForums" :key="forum.id" v-on:click="navigateToForum(forum.id)">
-      <div>
-      <router-link class="forum-link" :to="{ name: 'forum', params: { forumId: forum.id } }">
-        {{ forum.name }}
-      </router-link>
-      </div>
+    <div class="button-container">
+      <popup-form class="plus-button" />
+      <post-popup-form class="plus-button" v-if="isInForumOrPost" />
+      <comment-popup-form class="plus-button" v-if="isInPost" />
+    </div>
+    <div class="favorites">
+      <b-button
+        class="favorite-buttons"
+        v-for="forum of favoriteForums"
+        :key="forum.id"
+        v-on:click="navigateToForum(forum.id)"
+      >
+        <div>
+          <router-link
+            class="forum-link"
+            :to="{ name: 'forum', params: { forumId: forum.id } }"
+          >
+            {{ forum.name }}
+          </router-link>
+        </div>
       </b-button>
     </div>
   </div>
@@ -45,9 +53,9 @@ export default {
   },
   methods: {
     navigateToForum(forumId) {
-      this.$router.push({ name: 'forum', params: { forumId: forumId } });
-    }
-  }
+      this.$router.push({ name: "forum", params: { forumId: forumId } });
+    },
+  },
 };
 </script>
 
@@ -63,26 +71,36 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background-color:rgb(200, 196, 191);
+  background-color: rgb(200, 196, 191);
 }
 
 .favorites {
   flex-direction: column;
-  background-image: url('https://i.imgur.com/zcymVM3.png');
-  background-size: cover;
+  background-image: url("https://i.imgur.com/Q1T5T8U.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
   min-height: 150px;
   padding: 75px 0px 0px 0px;
 }
 
+.button-container:first-child {
+  padding-top: 5px;
+}
+
+.plus-button {
+  padding-bottom: 5px;
+
+}
+
 .favorite-buttons {
-  background-color: rgba(150, 150, 150, 0.2);
+  background-color: rgba(150, 150, 150, 0.6);
   margin-bottom: 5px;
   display: block;
-  width: 100%
+  width: 100%;
 }
 
 .favorite-buttons:hover {
-  background-color: rgba(255, 74, 255, 0.356);
+  background-color: rgba(248, 182, 78, 0.8);
 }
 
 .forum-link:link {
