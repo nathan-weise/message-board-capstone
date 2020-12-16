@@ -2,6 +2,7 @@
   <div class="sidebar-container">
     <h3>example</h3>
     <popup-form />
+    <!-- <img id="favorites" src="../../res/site_images/favorites.png" alt="favorites" /> -->
     <post-popup-form v-if="isInForumOrPost" />
     <comment-popup-form v-if="isInPost" />
     <div class="favorites" >
@@ -89,5 +90,9 @@ export default {
 
 .forum-link {
   color: black;
+}
+
+#favorites {
+  height: 200px;
 }
 </style>
