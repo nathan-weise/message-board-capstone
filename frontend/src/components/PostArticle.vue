@@ -31,7 +31,7 @@
         v-bind:class="{ downvote: vote === -1 }"
       />
       <p style="display: inline">{{ post.totalSpicy }}</p>
-      <img id="nsfw" src="https://i.imgur.com/fx4CFzI.png" alt="nsfw" class="vote-button"
+      <img id="nsfw" src="https://i.imgur.com/JV8jUbB.png" alt="nsfw" class="vote-button"
         icon="nsfw"
         size="2x"
         v-on:click="clickSpicy()"
