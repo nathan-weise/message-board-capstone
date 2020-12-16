@@ -28,6 +28,10 @@ export default {
     return axios.get(`/forums/${forumId}/posts/new`);
   },
 
+  listAllSpicyPostsByForum(forumId) {
+    return axios.get(`/forums/${forumId}/posts/spicy`);
+  },
+
   //For displaying on the homepage
   listAllRecentPopularPosts() {
     return axios.get('/posts/recent-popular');

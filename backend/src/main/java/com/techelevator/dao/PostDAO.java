@@ -16,6 +16,7 @@ public interface PostDAO {
     List<PostDTO> listAllPostsByRecentPopularity(Long userId);
     List<PostDTO> listAllPostsByForumByPopularity(Long userId, long forumId);
     List<PostDTO> listAllPostsByForumByRecent(Long userId, long forumId);
+    List<PostDTO> listAllPostsByForumBySpicy(Long userId, long forumId);
     PostDTO getPost(Long userId, long postId);
     PostDTO alterVote(Long userId, long postId, Vote vote);
     PostDTO alterSpicy(Long userId, long postId, Vote vote);
