@@ -8,7 +8,7 @@
     <div class="favorites" >
     <b-button class="favorite-buttons" v-for="forum of favoriteForums" :key="forum.id" v-on:click="navigateToForum(forum.id)">
       <div>
-      <router-link :to="{ name: 'forum', params: { forumId: forum.id } }">
+      <router-link class="forum-link" :to="{ name: 'forum', params: { forumId: forum.id } }">
         {{ forum.name }}
       </router-link>
       </div>
@@ -82,6 +82,14 @@ export default {
 
 .favorite-buttons:hover {
   background-color: rgba(255, 74, 255, 0.356);
+}
+
+.forum-link:link {
+  text-decoration: none;
+}
+
+.forum-link {
+  color: black;
 }
 
 #favorites {
