@@ -102,8 +102,14 @@ public class PostController {
     @PutMapping(value = "posts/{postId}")
     public PostDTO voteOnPost(Principal principal, @PathVariable long postId, @RequestBody Vote vote) {
         Long userId = getUserIdFromPrincipal(principal);
-
         return postDAO.alterVote(userId, postId, vote);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping(value = "posts/spicy/{postId}")
+    public PostDTO spicyOnPost(Principal principal, @PathVariable long postId, @RequestBody Vote vote) {
+        Long userId = getUserIdFromPrincipal(principal);
+        return postDAO.alterSpicy(userId, postId, vote);
     }
 
     private Long getUserIdFromPrincipal(Principal principal) {

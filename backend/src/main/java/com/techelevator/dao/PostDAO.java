@@ -18,8 +18,7 @@ public interface PostDAO {
     List<PostDTO> listAllPostsByForumByRecent(Long userId, long forumId);
     PostDTO getPost(Long userId, long postId);
     PostDTO alterVote(Long userId, long postId, Vote vote);
-
-
+    PostDTO alterSpicy(Long userId, long postId, Vote vote);
     Post createNewPost(String postTitle, String postText, long forumId, String imageURL, Long userId, LocalDateTime createdDate);
 
 }

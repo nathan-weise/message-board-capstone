@@ -58,34 +58,31 @@ export default {
     },
     addToFavorites() {
       ForumService.addToFavorites(this.$route.params.forumId);
-    }
+    },
+    loadForumPosts(forumId) {
+      PostService.listAllPostsForForum(forumId).then((response) => {
+        this.posts = response.data;
+        console.log(response);
+        this.$store.commit("SET_FORUM_POSTS", this.posts);
+      });
+      ForumService.getForumById(forumId).then((response) => {
+        this.forum = response.data;
+      });
+    },
   },
   created() {
-    const firstIndexOfSlash = this.$route.path.indexOf("/", 1);
-    const secondIndexOfSlash = this.$route.path.indexOf(
-      "/",
-      firstIndexOfSlash + 1
-    );
-    const forumId = this.$route.path.substring(
-      firstIndexOfSlash + 1,
-      secondIndexOfSlash
-    );
-
-    PostService.listAllPostsForForum(forumId).then((response) => {
-      this.posts = response.data;
-      console.log(response);
-      this.$store.commit("SET_FORUM_POSTS", this.posts);
-    });
-    ForumService.getForumById(forumId).then((response) => {
-      this.forum = response.data;
-    });
+    this.loadForumPosts(this.$route.params.forumId);
   },
+  beforeRouteUpdate(to, from, next) {
+    this.loadForumPosts(to.params.forumId);
+    next();
+  }
 };
 </script>
 
 <style scoped>
-  .forum-title {
-    display: flex;
-    flex-direction: row;
-  }
+.forum-title {
+  display: flex;
+  flex-direction: row;
+}
 </style>
