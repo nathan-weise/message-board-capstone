@@ -27,7 +27,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.45;
+  opacity: 0.36;
   background-position: center;
   background-size: cover;
   z-index: -1;

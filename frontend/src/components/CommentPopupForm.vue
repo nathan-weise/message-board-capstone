@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="centerx">
-    <b-button @click="popupActivo2=true" color="primary" type="filled">+ Comment</b-button>
+    <b-button @click="popupActivo2=true" class="popup-button">+ Comment</b-button>
     <vs-popup classContent="popup-example"  title="Create New Comment" :active.sync="popupActivo2">
      <form>
   <div class="form-group">
@@ -37,3 +37,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.popup-button {
+  display: block;
+  width: 100%;
+  background-color: rgba(150, 150, 150, 0.6);
+}
+
+</style>

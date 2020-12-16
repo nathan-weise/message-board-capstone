@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="centerx">
-    <b-button @click="popupActivo2=true" color="primary" type="filled">+ Post</b-button>
+    <b-button @click="popupActivo2=true" class="popup-button">+ Post</b-button>
     <vs-popup classContent="popup-example"  title="Create New Post" :active.sync="popupActivo2">
      <form>
   <div class="form-group">
@@ -27,27 +27,41 @@
 </template>
 
 <script>
-import PostService from '@/services/PostService.js';
+import PostService from "@/services/PostService.js";
 
 export default {
   data() {
     return {
-      title: '',
-      text: '',
-      imageURL: '',
+      title: "",
+      text: "",
+      imageURL: "",
       nsfw: false,
-      popupActivo2: false
-    }
+      popupActivo2: false,
+    };
   },
   methods: {
     addPost() {
-      PostService.addPost({title: this.title, text: this.text, nsfw: this.nsfw, imageURL: this.imageURL, forumId: this.$route.params.forumId}).then(response => {
+      PostService.addPost({
+        title: this.title,
+        text: this.text,
+        nsfw: this.nsfw,
+        imageURL: this.imageURL,
+        forumId: this.$route.params.forumId,
+      }).then((response) => {
         if (response.status === 201) {
           this.popupActivo2 = false;
-          this.$store.commit('ADD_FORUM_POST', response.data);
+          this.$store.commit("ADD_FORUM_POST", response.data);
         }
-      })
-    }
-  }
-}
+      });
+    },
+  },
+};
 </script>
+
+<style scoped>
+.popup-button {
+  display: block;
+  width: 100%;
+  background-color: rgba(150, 150, 150, 0.6);
+}
+</style>
