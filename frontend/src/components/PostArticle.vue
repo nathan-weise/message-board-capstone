@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img
+    <img class="thumbnail"
       v-bind:src="post.imageURL"
       alt="duck"
     />
@@ -115,7 +115,7 @@ export default {
     "img votes    .";
 }
 
-img {
+.thumbnail {
   border-radius: 100%;
   height: 90px;
   width: 90px;
