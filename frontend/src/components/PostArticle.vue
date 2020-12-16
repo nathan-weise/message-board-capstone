@@ -38,7 +38,6 @@
         v-bind:class="{ red: spicy === 1 }"
       />
     </div>
-    <p>{{ popularity }}</p>
   </div>
 </template>
 
