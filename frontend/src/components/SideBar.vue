@@ -2,6 +2,7 @@
   <div class="sidebar-container">
     <h3>example</h3>
     <popup-form />
+    <!-- <img id="favorites" src="../../res/site_images/favorites.png" alt="favorites" /> -->
     <post-popup-form v-if="isInForumOrPost" />
     <comment-popup-form v-if="isInPost" />
     <div class="favorites" >
@@ -81,5 +82,9 @@ export default {
 
 .favorite-buttons:hover {
   background-color: rgba(255, 74, 255, 0.356);
+}
+
+#favorites {
+  height: 200px;
 }
 </style>

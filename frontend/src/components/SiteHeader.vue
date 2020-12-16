@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <router-link v-bind:to="{ name: 'home' }">
-      <img id="logo" src="../../res/pngegg.png" alt="bread" />
+      <img id="logo" src="../../res/site_images/logo.png" alt="bread" />
     </router-link>
     <div id="search-bar" v-on:keyup.enter="performSearch()">
       <b-input-group size="md" class="mb-2">
@@ -31,6 +31,7 @@
           $store.state.user.authorities[0].name.substring(5)
         }}]
         <b-button
+          icon="logout"
           class="nav-buttons"
           id="button-in"
           v-bind:to="{ name: 'logout' }"
@@ -74,8 +75,8 @@ export default {
 
 <style>
 #logo {
-  height: 75px;
-  width: 75px;
+  height: auto;
+  width: 300px;
   padding: 10px 0 0 0;
 }
 #container {
