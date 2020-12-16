@@ -74,10 +74,15 @@ export default {
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 #logo {
   height: auto;
-  width: 180px;
+  width: 270px;
   padding: 10px 0 0 0;
+  margin-bottom: 10px;
 }
 #container {
   background: rgba(0, 0, 0, 0.2);
