@@ -41,8 +41,13 @@ export default {
     return axios.get(`/posts/${id}`);
   },
 
-  alterVote(vote, spicy, postId) {
-    console.log('inside altervote mehtod');
-    return axios.put(`posts/${postId}`, {"vote": vote, "spicy": spicy});
+  alterVote(vote, postId) {
+    return axios.put(`posts/${postId}`, {"vote": vote});
+  },
+
+  alterSpicy(spicy, postId) {
+    console.log('inside the alterspicy method')
+    console.log(spicy);
+    return axios.put(`posts/spicy/${postId}`, {"spicy": spicy});
   }
 }
