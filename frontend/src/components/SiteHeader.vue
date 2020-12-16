@@ -76,10 +76,11 @@ export default {
 <style>
 #logo {
   height: auto;
-  width: 300px;
+  width: 180px;
   padding: 10px 0 0 0;
 }
 #container {
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
