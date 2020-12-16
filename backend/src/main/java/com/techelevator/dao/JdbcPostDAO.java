@@ -185,14 +185,6 @@ public class JdbcPostDAO implements PostDAO {
                 jdbcTemplate.update(sql, postId, userId);
             }
 
-            if (vote.getSpicy() == 1) {
-                String sql = "UPDATE post_votes SET spicy = 1 WHERE post_id = ? AND user_id = ?;";
-                jdbcTemplate.update(sql, postId, userId);
-            } else if (vote.getSpicy() == 0) {
-                String sql = "UPDATE post_votes SET spicy = 0 WHERE post_id = ? AND user_id = ?;";
-                jdbcTemplate.update(sql, postId, userId);
-            }
-
         } catch (Exception e) {
             System.out.println(e);
             if (vote.getVote() == -1) {
@@ -204,6 +196,29 @@ public class JdbcPostDAO implements PostDAO {
                 String sql = "INSERT INTO post_votes (post_id, vote, user_id, created_time) VALUES (?, ?, ?, ?);";
                 jdbcTemplate.update(sql, postId, vote.getVote(), userId, LocalDateTime.now());
             }
+
+            return null;
+        }
+        return null;
+    }
+
+    @Override
+    public PostDTO alterSpicy(Long userId, long postId, Vote vote) {
+        String sqlToFindVote = "SELECT spicy FROM post_votes WHERE post_id = ? AND user_id = ?;";
+        try {
+            // queryForRowSet()
+            Integer voteAsNumber = jdbcTemplate.queryForObject(sqlToFindVote, Integer.class, postId, userId);
+
+            if (vote.getSpicy() == 1) {
+                String sql = "UPDATE post_votes SET spicy = 1 WHERE post_id = ? AND user_id = ?;";
+                jdbcTemplate.update(sql, postId, userId);
+            } else if (vote.getSpicy() == 0) {
+                String sql = "UPDATE post_votes SET spicy = 0 WHERE post_id = ? AND user_id = ?;";
+                jdbcTemplate.update(sql, postId, userId);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
 
             if (vote.getSpicy() == 1) {
                 String sql = "INSERT INTO post_votes (post_id, spicy, user_id, created_time) VALUES (?, ?, ?, ?);";

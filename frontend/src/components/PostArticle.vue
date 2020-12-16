@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <img
-      v-bind:src="post.imageURL"
-      alt="duck"
-    />
+    <img v-bind:src="post.imageURL" alt="duck" />
     <router-link
       :to="{
         name: 'post',
@@ -59,25 +56,30 @@ export default {
     this.spicy = this.post.spicy;
   },
   methods: {
-    callAPI(prevVote, prevSpicy) {
-      PostService.alterVote(this.vote, this.spicy, this.post.id).then((response) => {
+    alterVote(prevVote) {
+      PostService.alterVote(this.vote, this.post.id).then((response) => {
         console.log(response);
         if (prevVote !== this.vote) {
           this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote, });
-        } else if (this.spicy !== prevSpicy) {
+        }
+      });
+    },
+    alterSpicy(prevSpicy) {
+      PostService.alterSpicy(this.spicy, this.post.id).then((response) => {
+        console.log(response);
+        if (this.spicy !== prevSpicy) {
           this.$store.commit('UPDATE_SPICY', {"spicy": this.spicy, "postId": this.post.id});
         }
       });
     },
     clickSpicy() {
-      let prevVote = this.vote
       let prevSpicy = this.spicy
       if (this.spicy === 1) {
         this.spicy = 0;
       } else {
         this.spicy = 1;
       }
-      this.callAPI(prevVote, prevSpicy);
+      this.alterSpicy(prevSpicy);
     },
     clickUpvote() {
       let prevVote = this.vote;
@@ -86,7 +88,7 @@ export default {
       } else {
         this.vote = 1;
       }
-      this.callAPI(prevVote);
+      this.alterVote(prevVote);
     },
     clickDownvote() {
       let prevVote = this.vote;
@@ -95,7 +97,7 @@ export default {
       } else {
         this.vote = -1;
       }
-      this.callAPI(prevVote);
+      this.alterVote(prevVote);
     }
   },
 };
