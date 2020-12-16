@@ -17,22 +17,22 @@
     <p id="created">{{ date }}</p>
 
     <div id="popularity">
-      <font-awesome-icon
-        icon="arrow-up"
+      <img id="up_vote" src="https://i.imgur.com/F6k06sY.png" alt="up_vote"
+        icon="up_vote"
         size="2x"
         v-on:click="clickUpvote()"
         v-bind:class="{ upvote: vote === 1 }"
       />
       <p style="display: inline">{{ popularity }}</p>
-      <font-awesome-icon
-        icon="arrow-down"
+      <img id="down_vote" src="https://i.imgur.com/tYYNk9Q.png" alt="down_vote"
+        icon="down_vote"
         size="2x"
         v-on:click="clickDownvote()"
         v-bind:class="{ downvote: vote === -1 }"
       />
       <p style="display: inline">{{ post.totalSpicy }}</p>
-      <font-awesome-icon
-        icon="pepper-hot"
+      <img id="nsfw" src="https://i.imgur.com/fx4CFzI.png" alt="nsfw"
+        icon="nsfw"
         size="2x"
         v-on:click="clickSpicy()"
         v-bind:class="{ red: spicy === 1 }"

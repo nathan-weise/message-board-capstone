@@ -2,6 +2,7 @@
   <div class="sidebar-container">
     <h3>example</h3>
     <popup-form />
+    <!-- <img id="favorites" src="../../res/site_images/favorites.png" alt="favorites" /> -->
     <post-popup-form v-if="isInForumOrPost" />
     <comment-popup-form v-if="isInPost" />
 
@@ -49,9 +50,10 @@ export default {
 
 <style scoped>
 .sidebar-container {
-  border: solid 2px;
-  height: 200px;
-  width: 8rem;
+  background-image: url("../../res/site_images/favorites.png");
+  /* border: solid 2px; */
+  height: auto;
+  width: auto;
   margin-right: 10px;
   position: fixed;
   right: 5px;
@@ -59,5 +61,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#favorites {
+  height: 200px;
 }
 </style>
