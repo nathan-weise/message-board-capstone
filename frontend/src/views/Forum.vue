@@ -5,14 +5,30 @@
     <div class="details-container">
       <div class="forum-title">
         <h1>{{ forum.name }}</h1>
-        <img width="180px" src="https://i.imgur.com/FPnod3d.png" v-on:click="addToFavorites()" />
+        <img
+          width="180px"
+          src="https://i.imgur.com/FPnod3d.png"
+          v-on:click="addToFavorites()"
+        />
       </div>
     </div>
 
     <div class="sort-buttons">
-      <img height="75px" src="https://i.imgur.com/39CkSom.png" v-on:click="loadPostsByRecent()" />
-      <img height="75px" src="https://i.imgur.com/igiQgWE.png" v-on:click="loadPostsByPopularity()" />
-      <img height="75px" src="https://i.imgur.com/igiQgWE.png" v-on:click="loadPostsBySpicy()" />
+      <img
+        height="75px"
+        src="https://i.imgur.com/39CkSom.png"
+        v-on:click="loadPostsByRecent()"
+      />
+      <img
+        height="75px"
+        src="https://i.imgur.com/igiQgWE.png"
+        v-on:click="loadPostsByPopularity()"
+      />
+      <img
+        height="75px"
+        src="https://i.imgur.com/igiQgWE.png"
+        v-on:click="loadPostsBySpicy()"
+      />
     </div>
 
     <div class="posts-container">
@@ -120,8 +136,13 @@ export default {
 
 .sort-buttons {
   grid-area: sort-buttons;
-  display:flex;
+  display: flex;
   justify-content: space-around;
   padding: 5px 0 5px 0;
+}
+
+.sort-buttons img:hover {
+  -webkit-filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black);
+  filter: blur(2px);
 }
 </style>
