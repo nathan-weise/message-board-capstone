@@ -18,4 +18,6 @@ public interface ForumDAO {
 
     Forum createNewForum(String forumName, String forumDescription, long userId, LocalDateTime createdDate);
 
+    void addToFavorites(Long userId, Long forumId);
+
 }

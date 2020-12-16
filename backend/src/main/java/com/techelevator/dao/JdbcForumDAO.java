@@ -86,6 +86,12 @@ public class JdbcForumDAO implements ForumDAO {
         }
     }
 
+    @Override
+    public void addToFavorites(Long userId, Long forumId) {
+        String sql = "INSERT INTO forum_favorites (user_id, forum_id, forum_favorite, created_time) VALUES (?,?,?,?);";
+        jdbcTemplate.update(sql, userId, forumId, 1, LocalDateTime.now());
+    }
+
     private Forum mapRowToForum(SqlRowSet rs) {
         Forum forum = new Forum();
         forum.setId(rs.getLong("forum_id"));

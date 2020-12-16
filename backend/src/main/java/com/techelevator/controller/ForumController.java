@@ -49,6 +49,14 @@ public class ForumController {
         return forumDAO.getFavoriteForums(userId);
     }
 
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping(value = "favorites/forums")
+    public void addToFavoriteForums(Principal principal, @RequestBody Long forumId) {
+        String username = principal.getName();
+        Long userId = forumDAO.findIdByUsername(username);
+        forumDAO.addToFavorites(userId, forumId);
+    }
+
     //Method needed to create Forums in the database based upon the logged in user
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "forums")

@@ -18,6 +18,10 @@ export default {
 
   getFavoriteForums() {
     return axios.get('favorites/forums');
+  },
+
+  addToFavorites(forumId) {
+    return axios.put('favorites/forums', forumId, {headers: {"Content-Type": "application/json"}})
   }
 
 }
