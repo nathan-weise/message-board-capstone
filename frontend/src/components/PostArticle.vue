@@ -17,21 +17,21 @@
     <p id="created">{{ date }}</p>
 
     <div id="popularity">
-      <img id="up_vote" src="https://i.imgur.com/F6k06sY.png" alt="up_vote"
+      <img id="up_vote" src="https://i.imgur.com/F6k06sY.png" alt="up_vote" class="vote-button"
         icon="up_vote"
         size="2x"
         v-on:click="clickUpvote()"
         v-bind:class="{ upvote: vote === 1 }"
       />
       <p style="display: inline">{{ popularity }}</p>
-      <img id="down_vote" src="https://i.imgur.com/tYYNk9Q.png" alt="down_vote"
+      <img id="down_vote" src="https://i.imgur.com/tYYNk9Q.png" alt="down_vote" class="vote-button"
         icon="down_vote"
         size="2x"
         v-on:click="clickDownvote()"
         v-bind:class="{ downvote: vote === -1 }"
       />
       <p style="display: inline">{{ post.totalSpicy }}</p>
-      <img id="nsfw" src="https://i.imgur.com/fx4CFzI.png" alt="nsfw"
+      <img id="nsfw" src="https://i.imgur.com/fx4CFzI.png" alt="nsfw" class="vote-button"
         icon="nsfw"
         size="2x"
         v-on:click="clickSpicy()"
@@ -111,9 +111,11 @@ export default {
   margin-bottom: 10px;
   margin-left: 50px;
   display: grid;
-  height: 8rem;
+  min-height: 8rem;
   width: 50%;
-  border: solid;
+  /* border: solid; */
+  background-color: white;
+  border-radius: 5px;
   grid-template-areas:
     "img title    title"
     "img username create"
@@ -162,5 +164,10 @@ export default {
 
 .red {
   color: red;
+}
+
+.vote-button {
+  height: 5rem;
+  margin-bottom: 5px;
 }
 </style>
