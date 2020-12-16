@@ -18,80 +18,91 @@ public class JdbcPostDAO implements PostDAO {
 
     private static final String QUERY_RECENT_POPULAR =
             "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy " +
-            "FROM posts " +
-            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-            "JOIN users ON posts.user_id = users.user_id " +
-            "JOIN forums ON posts.forum_id = forums.forum_id " +
-            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
-            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-            "ORDER BY popularity DESC, posts.created_time DESC " +
-            "LIMIT 10;";
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "WHERE posts.created_time >= NOW() - '24 hours'::INTERVAL " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY popularity DESC, posts.created_time DESC " +
+                    "LIMIT 10;";
 
     private static final String QUERY_FORUM_POSTS =
             "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
-            "FROM posts " +
-            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-            "JOIN users ON posts.user_id = users.user_id " +
-            "JOIN forums ON posts.forum_id = forums.forum_id " +
-            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "WHERE forums.forum_id = ? " +
-            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-            "ORDER BY popularity DESC, posts.created_time DESC;";
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "WHERE forums.forum_id = ? " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY popularity DESC, posts.created_time DESC;";
 
     private static final String QUERY_POST_DETAILS =
             "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
-            "FROM posts " +
-            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-            "JOIN users ON posts.user_id = users.user_id " +
-            "JOIN forums ON posts.forum_id = forums.forum_id " +
-            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "WHERE posts.post_id = ? " +
-            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-            "ORDER BY popularity DESC, posts.created_time DESC " +
-            "LIMIT 10;";
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "WHERE posts.post_id = ? " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY popularity DESC, posts.created_time DESC " +
+                    "LIMIT 10;";
 
     private static final String QUERY_ALL_POSTS =
             "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
-            "FROM posts " +
-            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-            "JOIN users ON posts.user_id = users.user_id " +
-            "JOIN forums ON posts.forum_id = forums.forum_id " +
-            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-            "ORDER BY popularity DESC, posts.created_time DESC;";
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY popularity DESC, posts.created_time DESC;";
 
     private static final String QUERY_RECENT_POSTS =
             "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
-            "FROM posts " +
-            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-            "JOIN users ON posts.user_id = users.user_id " +
-            "JOIN forums ON posts.forum_id = forums.forum_id " +
-            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-            "ORDER BY posts.created_time DESC;";
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY posts.created_time DESC;";
 
     private static final String QUERY_POPULAR_POSTS_BY_FORUM =
             "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
-            "FROM posts " +
-            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-            "JOIN users ON posts.user_id = users.user_id " +
-            "JOIN forums ON posts.forum_id = forums.forum_id " +
-            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "WHERE forums.forum_id = ? " +
-            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-            "ORDER BY popularity DESC, posts.created_time DESC;";
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "WHERE forums.forum_id = ? " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY popularity DESC, posts.created_time DESC;";
 
-        private static final String QUERY_RECENT_POSTS_BY_FORUM =
+    private static final String QUERY_SPICY_POSTS_BY_FORUM =
             "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
-            "FROM posts " +
-            "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
-            "JOIN users ON posts.user_id = users.user_id " +
-            "JOIN forums ON posts.forum_id = forums.forum_id " +
-            "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
-            "WHERE forums.forum_id = ? " +
-            "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
-            "ORDER BY posts.created_time DESC;";
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "WHERE forums.forum_id = ? " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY total_spicy DESC, posts.created_time DESC;";
+
+    private static final String QUERY_RECENT_POSTS_BY_FORUM =
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "WHERE forums.forum_id = ? " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY posts.created_time DESC;";
 
 
     private JdbcTemplate jdbcTemplate;
@@ -235,11 +246,21 @@ public class JdbcPostDAO implements PostDAO {
     }
 
     @Override
+    public List<PostDTO> listAllPostsByForumBySpicy(Long userId, long forumId) {
+        List<PostDTO> results = new ArrayList<>();
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_SPICY_POSTS_BY_FORUM, userId, forumId);
+        while (rowSet.next()) {
+            results.add(mapRowToPostDTO(rowSet));
+        }
+        return results;
+    }
+
+    @Override
     public Post createNewPost(String postTitle, String postText, long forumId, String imageURL, Long userId, LocalDateTime createdDate) {
         Post newPost = new Post();
         String sql = "INSERT INTO posts " +
-                     "(post_title, post_text, forum_id, user_id, created_time, post_image) " +
-                     "VALUES (?,?,?,?,?,?) RETURNING post_id;";
+                "(post_title, post_text, forum_id, user_id, created_time, post_image) " +
+                "VALUES (?,?,?,?,?,?) RETURNING post_id;";
         newPost.setTitle(postTitle);
         newPost.setText(postText);
         newPost.setForumId(forumId);

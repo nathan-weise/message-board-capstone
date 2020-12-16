@@ -12,7 +12,7 @@
     <div class="sort-buttons">
       <img height="75px" src="https://i.imgur.com/39CkSom.png" v-on:click="loadPostsByRecent()" />
       <img height="75px" src="https://i.imgur.com/igiQgWE.png" v-on:click="loadPostsByPopularity()" />
-      <img height="75px" src="https://i.imgur.com/igiQgWE.png" v-on:click="loadPostsByPopularity()" />
+      <img height="75px" src="https://i.imgur.com/igiQgWE.png" v-on:click="loadPostsBySpicy()" />
     </div>
 
     <div class="posts-container">
@@ -58,6 +58,14 @@ export default {
     },
     loadPostsByRecent() {
       PostService.listAllRecentPostsByForum(this.$route.params.forumId).then(
+        (response) => {
+          this.posts = response.data;
+          this.$store.commit("SET_FORUM_POSTS", this.posts);
+        }
+      );
+    },
+    loadPostsBySpicy() {
+      PostService.listAllSpicyPostsByForum(this.$route.params.forumId).then(
         (response) => {
           this.posts = response.data;
           this.$store.commit("SET_FORUM_POSTS", this.posts);
