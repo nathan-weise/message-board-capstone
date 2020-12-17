@@ -34,6 +34,6 @@ public class CommentController {
     public Comment addComment(Principal principal, @PathVariable long postId, @RequestBody Comment newComment) {
         String username = principal.getName();
         long userId = forumDAO.findIdByUsername(username);
-        return commentDAO.addCommentToPost(postId, userId, newComment);
+        return commentDAO.addCommentToPost(postId, userId, newComment, username);
     }
 }

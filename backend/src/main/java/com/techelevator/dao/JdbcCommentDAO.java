@@ -25,6 +25,7 @@ public class JdbcCommentDAO implements CommentDAO {
         List<Comment> results = new ArrayList<>();
         String sql = "SELECT * " +
                 "FROM comments " +
+                "JOIN users ON comments.user_id = users.user_id " +
                 "WHERE post_id = ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, postId);
         while (rowSet.next()) {
@@ -35,7 +36,7 @@ public class JdbcCommentDAO implements CommentDAO {
     }
 
     @Override
-    public Comment addCommentToPost(long postId, long userId, Comment newComment) {
+    public Comment addCommentToPost(long postId, long userId, Comment newComment, String username) {
         Comment comment = new Comment();
         String sql = "INSERT INTO comments " +
                 "(comment_text, post_id, user_id, created_time) " +
@@ -46,6 +47,7 @@ public class JdbcCommentDAO implements CommentDAO {
         comment.setCreatedTime(LocalDateTime.now());
         Long commentId = jdbcTemplate.queryForObject(sql, Long.class, newComment.getText(), postId, userId, comment.getCreatedTime());
         comment.setId(commentId);
+        comment.setUsername(username);
         return comment;
     }
 
@@ -56,6 +58,7 @@ public class JdbcCommentDAO implements CommentDAO {
         comment.setPostId(rs.getLong("post_id"));
         comment.setUserId(rs.getLong("user_id"));
         comment.setCreatedTime(rs.getTimestamp("created_time").toLocalDateTime());
+        comment.setUsername(rs.getString("username"));
         return comment;
     }
 }

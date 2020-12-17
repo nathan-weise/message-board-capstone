@@ -114,7 +114,7 @@ export default {
   grid-area: sort-buttons;
   display: flex;
   justify-content: space-around;
-  padding: 5px 0 5px 0;
+  padding: 10px 0 10px 0;
 }
 
 .sort-buttons img:hover {

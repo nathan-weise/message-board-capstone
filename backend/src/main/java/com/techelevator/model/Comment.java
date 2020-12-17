@@ -8,6 +8,7 @@ public class Comment {
     private String text;
     private long postId;
     private long userId;
+    private String username;
     private LocalDateTime createdTime;
 
     public long getId() {
@@ -44,6 +45,14 @@ public class Comment {
 
     public LocalDateTime getCreatedTime() {
         return createdTime;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setCreatedTime(LocalDateTime createdTime) {

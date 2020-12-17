@@ -17,7 +17,7 @@
     <div class="info">
       <p class="info-text">Posted by {{ username }}</p>
       <p class="info-text">on {{ date }}</p>
-      <p class="info-text">in {{ post.forumName}}</p>
+      <p class="info-text">in {{ post.forumName}} Forum</p>
     </div>
 
     <div id="popularity">
