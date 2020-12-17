@@ -4,8 +4,10 @@
     <forum-posts />
     <div class="details-container">
       <div class="forum-title">
-        <h1>{{ forum.name }}</h1>
+        <h1>{{ forum.name }} Forum</h1>
         <img
+          v-bind:class="{ 'disabled-button': inFavorites }"
+          v-if="$store.state.token !== ''"
           id="favorite-button"
           width="180px"
           src="https://i.imgur.com/aTYqlM3.png"
@@ -61,7 +63,19 @@ export default {
       forum: {},
     };
   },
+  computed: {},
   methods: {
+    inFavorites() {
+      console.log();
+      this.$store.state.favForums.forEach((x) => {
+        console.log(this.forum.name, x.name);
+        if (x.name === this.forum.name) {
+          console.log('inside if statement')
+          return true;
+        }
+      });
+      return false;
+    },
     test() {
       console.log("cool");
     },
@@ -91,8 +105,8 @@ export default {
     },
     addToFavorites() {
       ForumService.addToFavorites(this.$route.params.forumId).then(() => {
-        this.$store.commit('ADD_FAV_FORUM', {name: this.forum.name});
-      })
+        this.$store.commit("ADD_FAV_FORUM", { name: this.forum.name });
+      });
     },
     loadForumPosts(forumId) {
       PostService.listAllPostsForForum(forumId).then((response) => {
@@ -146,12 +160,10 @@ export default {
 
 .sort-buttons img {
   cursor: pointer;
-
 }
 
 #favorite-button {
   cursor: pointer;
-
 }
 
 .sort-buttons img:hover {
@@ -164,6 +176,12 @@ export default {
 }
 
 #favorite-button:hover {
-    filter: drop-shadow(0px 0px 5px black);
+  filter: drop-shadow(0px 0px 5px black);
+}
+
+.disabled-button {
+  filter: grayscale(1);
+  opacity: 50%;
+  cursor: auto;
 }
 </style>

@@ -42,6 +42,8 @@ export default {
         nsfw: this.nsfw,
       }).then((response) => {
         if (response.status === 201) {
+
+          //TODO: change to the name object
           this.$router.push(`forums/${response.data.id}/posts`);
         }
       });

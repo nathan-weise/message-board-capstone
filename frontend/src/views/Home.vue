@@ -4,7 +4,7 @@
     <forum-posts />
     <div class="details-container">
       <div class="forum-title">
-        <h1>Front Page</h1>
+        <h1>Home Page</h1>
       </div>
     </div>
 

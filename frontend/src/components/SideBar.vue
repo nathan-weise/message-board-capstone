@@ -64,7 +64,7 @@ export default {
 .sidebar-container {
   border: solid 1px;
   border-radius: 5px;
-  min-height: 250px;
+  min-height: 200;
   width: 8rem;
   margin-right: 10px;
   position: fixed;

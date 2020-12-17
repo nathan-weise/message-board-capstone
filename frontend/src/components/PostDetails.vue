@@ -2,6 +2,7 @@
   <div>
       <h1>{{ post.title }}</h1>
       <p>{{ post.text }}</p>
+      <img v-bind:src="post.imageURL">
   </div>
 </template>
 
