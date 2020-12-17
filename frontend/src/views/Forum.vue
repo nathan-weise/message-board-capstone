@@ -26,7 +26,7 @@
       />
       <img
         height="75px"
-        src="https://i.imgur.com/t84eS4w.png"
+        src="https://i.imgur.com/GiTcDkp.png"
         v-on:click="loadPostsBySpicy()"
       />
     </div>

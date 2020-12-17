@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <img class="thumbnail"
-      v-bind:src="post.imageURL"
-      alt="duck"
-    />
+    <img class="thumbnail" v-bind:src="post.imageURL" alt="duck" />
     <router-link
       :to="{
         name: 'post',
@@ -11,33 +8,51 @@
       }"
       tag="div"
     >
-      <h3 aid="title">{{ title }}</h3>
+      <div class="title">
+        <h3 id="title">{{ title }}</h3>
+        <p id="comments">comments</p>
+      </div>
     </router-link>
-    <p id="username">{{ username }}</p>
-    <p id="created">{{ date }}</p>
+
+    <div class="info">
+      <p class="info-text">Posted by {{ username }}</p>
+      <p class="info-text">on {{ date }}</p>
+      <p class="info-text">in Baguette</p>
+    </div>
 
     <div id="popularity">
-      <img id="up_vote" src="https://i.imgur.com/F6k06sY.png" alt="up_vote" class="vote-button"
+      <img
+        id="up_vote"
+        src="https://i.imgur.com/F6k06sY.png"
+        alt="up_vote"
+        class="vote-button"
         icon="up_vote"
         size="2x"
         v-on:click="clickUpvote()"
         v-bind:class="{ upvote: vote === 1 }"
       />
-      <p style="display: inline">{{ popularity }}</p>
-      <img id="down_vote" src="https://i.imgur.com/tYYNk9Q.png" alt="down_vote" class="vote-button"
+      <p id="up-down-number" style="display: inline">{{ popularity }}</p>
+      <img
+        id="down_vote"
+        src="https://i.imgur.com/tYYNk9Q.png"
+        alt="down_vote"
+        class="vote-button"
         icon="down_vote"
         size="2x"
         v-on:click="clickDownvote()"
         v-bind:class="{ downvote: vote === -1 }"
       />
-      <p style="display: inline">{{ post.totalSpicy }}</p>
-      <img id="nsfw" src="https://i.imgur.com/JV8jUbB.png" alt="nsfw" class="vote-button"
-        icon="nsfw"
-        size="2x"
-        v-on:click="clickSpicy()"
-        v-bind:class="{ red: spicy === 1 }"
-      />
     </div>
+    <img
+      id="nsfw"
+      src="https://i.imgur.com/JV8jUbB.png"
+      alt="nsfw"
+      class="vote-button"
+      icon="nsfw"
+      size="2x"
+      v-on:click="clickSpicy()"
+      v-bind:class="{ red: spicy === 1 }"
+    />
   </div>
 </template>
 
@@ -48,7 +63,7 @@ export default {
   data() {
     return {
       vote: 0,
-      spicy: 0
+      spicy: 0,
     };
   },
   props: ["title", "username", "date", "popularity", "post"],
@@ -63,7 +78,11 @@ export default {
       PostService.alterVote(this.vote, this.post.id).then((response) => {
         console.log(response);
         if (prevVote !== this.vote) {
-          this.$store.commit('UPDATE_POPULARITY_TOTAL', {"vote": this.vote,"postId": this.post.id, "prevVote": prevVote, });
+          this.$store.commit("UPDATE_POPULARITY_TOTAL", {
+            vote: this.vote,
+            postId: this.post.id,
+            prevVote: prevVote,
+          });
         }
       });
     },
@@ -71,12 +90,15 @@ export default {
       PostService.alterSpicy(this.spicy, this.post.id).then((response) => {
         console.log(response);
         if (this.spicy !== prevSpicy) {
-          this.$store.commit('UPDATE_SPICY', {"spicy": this.spicy, "postId": this.post.id});
+          this.$store.commit("UPDATE_SPICY", {
+            spicy: this.spicy,
+            postId: this.post.id,
+          });
         }
       });
     },
     clickSpicy() {
-      let prevSpicy = this.spicy
+      let prevSpicy = this.spicy;
       if (this.spicy === 1) {
         this.spicy = 0;
       } else {
@@ -101,7 +123,7 @@ export default {
         this.vote = -1;
       }
       this.alterVote(prevVote);
-    }
+    },
   },
 };
 </script>
@@ -112,64 +134,94 @@ export default {
   margin-bottom: 10px;
   /* margin-left: 50px; */
   display: grid;
-  min-height: 8rem;
+  height: 200px;
   /* width: 100%; */
-  /* background-color: rgba(94, 94, 94, 0.9); */
-  background-image: url("https://www.f-covers.com/cover/cartoon-bread-toast-facebook-cover-timeline-banner-for-fb.jpg");
+  background-color: rgb(108, 157, 255);
+  /* background-image: url("https://www.f-covers.com/cover/cartoon-bread-toast-facebook-cover-timeline-banner-for-fb.jpg"); */
   background-size: cover;
   border-radius: 5px;
+  /* grid-template-columns:  */
   grid-template-areas:
-    "img title    title"
-    "img username create"
-    "img votes    .";
+    "img   title    title   title   spicy"
+    "img   info     info    votes   votes";
 }
 
 .thumbnail {
   border-radius: 100%;
-  height: 90px;
-  width: 90px;
-  padding: 5px;
+  height: 190px;
+  width: 190px;
+  padding-top: 5px;
+  object-fit: cover;
   grid-area: img;
 }
-
-#title {
+.title {
   grid-area: title;
 }
 
-#username {
-  grid-area: username;
+#title {
+  font-size: 35px;
+  padding-bottom: 0px;
+  margin: 0px;
 }
 
-#created {
-  grid-area: create;
+#comments {
+  font-size: 16px;
+  margin: 0px;
 }
 
 #popularity {
   grid-area: votes;
   display: flex;
-  justify-content: center;
-  align-items: stretch;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-#popularity * {
-  margin-right: 5px;
-  margin-left: 5px;
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  grid-area: info;
+  margin-bottom: 5px;
+}
+
+.info-text {
+  margin: 0px;
+  font-size: 16px;
 }
 
 .upvote {
   color: orange;
+  filter: drop-shadow(0px 0px 5px rgb(207, 45, 45));
+  filter: saturate(500%);
 }
 
 .downvote {
   color: blue;
+  filter: drop-shadow(0px 0px 5px rgb(207, 45, 45));
+  filter: saturate(500%);
 }
 
 .red {
   color: red;
+  filter: drop-shadow(0px 0px 5px rgb(207, 45, 45));
+  filter: saturate(500%);
 }
 
 .vote-button {
   height: 5rem;
   margin-bottom: 5px;
+}
+
+#up-down-number {
+  padding: 0 20px 0 20px;
+}
+
+#nsfw {
+  grid-area: spicy;
+  justify-self: end;
+  padding-right: 12px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-top: 5px;
 }
 </style>
