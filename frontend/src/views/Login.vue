@@ -100,6 +100,7 @@ export default {
 }
 
 #submit-button {
+  margin-top: 5px;
   border: none;
   background-color: rgba(0, 0, 255, 0);
   color: none;

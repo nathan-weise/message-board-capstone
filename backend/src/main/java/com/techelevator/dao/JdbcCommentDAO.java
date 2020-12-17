@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -44,7 +45,9 @@ public class JdbcCommentDAO implements CommentDAO {
         comment.setText(newComment.getText());
         comment.setUserId(userId);
         comment.setPostId(postId);
-        comment.setCreatedTime(LocalDateTime.now());
+        Date today = new Date();
+        today.setHours(0);
+        comment.setCreatedTime(today);
         Long commentId = jdbcTemplate.queryForObject(sql, Long.class, newComment.getText(), postId, userId, comment.getCreatedTime());
         comment.setId(commentId);
         comment.setUsername(username);
@@ -57,7 +60,7 @@ public class JdbcCommentDAO implements CommentDAO {
         comment.setText(rs.getString("comment_text"));
         comment.setPostId(rs.getLong("post_id"));
         comment.setUserId(rs.getLong("user_id"));
-        comment.setCreatedTime(rs.getTimestamp("created_time").toLocalDateTime());
+        comment.setCreatedTime(rs.getDate("created_time"));
         comment.setUsername(rs.getString("username"));
         return comment;
     }

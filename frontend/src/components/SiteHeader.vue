@@ -11,7 +11,7 @@
         <b-form-input
           v-model="searchTerm"
           type="search"
-          placeholder="Search BrEaDIT"
+          placeholder="Search BrEaDiT"
         ></b-form-input>
       </b-input-group>
     </div>

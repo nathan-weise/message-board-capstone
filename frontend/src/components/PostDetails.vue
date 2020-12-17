@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="post-text">
-      <h1>{{ post.title }}</h1>
+      <h1>{{ post.title }} in {{ post.forumName }} Forum</h1>
       <p>{{ post.text }}</p>
     </div>
     <img v-bind:src="post.imageURL" />
@@ -34,7 +34,8 @@ export default {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
-    "post-text img   .";
+  ". post-text ."
+    ".  img   .";
 }
 
 .post-text {

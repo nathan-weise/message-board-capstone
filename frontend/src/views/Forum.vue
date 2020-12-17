@@ -181,7 +181,6 @@ export default {
 
 .disabled-button {
   filter: grayscale(1);
-  opacity: 50%;
   cursor: auto;
 }
 </style>

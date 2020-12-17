@@ -1,7 +1,7 @@
 <template>
   <div>
     <post-details />
-    <side-bar />
+    <side-bar v-if="$store.state.token !== ''"/>
     <comment-details
       v-for="comment of comments"
       :key="comment.id"

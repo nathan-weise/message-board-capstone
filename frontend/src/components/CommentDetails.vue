@@ -21,6 +21,9 @@ export default {
 
 <style scoped>
 .container {
+  /* width: 100%;
+  margin-left: 0px;
+  margin-right: 0px; */
   max-width: 1000px;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -35,6 +38,7 @@ export default {
 }
 
 .real-comment-header {
+  padding: 0 5px 0 5px;
   border: 2px red solid;
   border: 2px black solid;
   background-color: #c9c6c2;

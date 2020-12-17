@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Comment {
 
@@ -9,7 +10,7 @@ public class Comment {
     private long postId;
     private long userId;
     private String username;
-    private LocalDateTime createdTime;
+    private Date createdTime;
 
     public long getId() {
         return id;
@@ -43,7 +44,7 @@ public class Comment {
         this.userId = userId;
     }
 
-    public LocalDateTime getCreatedTime() {
+    public Date getCreatedTime() {
         return createdTime;
     }
 
@@ -55,7 +56,7 @@ public class Comment {
         this.username = username;
     }
 
-    public void setCreatedTime(LocalDateTime createdTime) {
+    public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
     }
 }
