@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <img class="thumbnail" v-bind:src="post.imageURL" alt="duck" />
-    <router-link
+    <router-link class="title"
       :to="{
         name: 'post',
         params: { forumId: post.forumId, postId: post.id },
       }"
       tag="div"
     >
-      <div class="title">
+      <div >
         <h3 id="title">{{ title }}</h3>
         <p id="comments">comments</p>
       </div>
@@ -17,7 +17,7 @@
     <div class="info">
       <p class="info-text">Posted by {{ username }}</p>
       <p class="info-text">on {{ date }}</p>
-      <p class="info-text">in Baguette</p>
+      <p class="info-text">in {{ post.forumName}}</p>
     </div>
 
     <div id="popularity">
@@ -132,18 +132,16 @@ export default {
 .container {
   border: 2px black solid;
   margin-bottom: 10px;
-  /* margin-left: 50px; */
   display: grid;
   height: 200px;
-  /* width: 100%; */
-  background-color: rgb(108, 157, 255);
-  /* background-image: url("https://www.f-covers.com/cover/cartoon-bread-toast-facebook-cover-timeline-banner-for-fb.jpg"); */
+  background-color: #c9c6c2;
   background-size: cover;
   border-radius: 5px;
-  /* grid-template-columns:  */
+  grid-template-columns: auto 40fr auto auto auto;
   grid-template-areas:
-    "img   title    title   title   spicy"
-    "img   info     info    votes   votes";
+    "img   title title   spicy"
+    "img   info  votes   votes";
+  justify-content: stretch;
 }
 
 .thumbnail {
@@ -153,13 +151,16 @@ export default {
   padding-top: 5px;
   object-fit: cover;
   grid-area: img;
+  justify-self: start;
+
 }
 .title {
+  margin-left: 10px;
   grid-area: title;
 }
 
 #title {
-  font-size: 35px;
+  font-size: 30px;
   padding-bottom: 0px;
   margin: 0px;
 }
@@ -177,6 +178,7 @@ export default {
 }
 
 .info {
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -197,8 +199,8 @@ export default {
 
 .downvote {
   color: blue;
-  filter: drop-shadow(0px 0px 5px rgb(207, 45, 45));
-  filter: saturate(500%);
+  filter: drop-shadow(0px 0px 1px black);
+  filter: saturate(500%)
 }
 
 .red {

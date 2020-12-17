@@ -61,7 +61,8 @@ export default {
 
 <style scoped>
 .sidebar-container {
-  border: solid 2px;
+  border: solid 1px;
+  border-radius: 5px;
   min-height: 250px;
   width: 8rem;
   margin-right: 10px;
@@ -76,7 +77,7 @@ export default {
 
 .favorites {
   flex-direction: column;
-  background-image: url("https://i.imgur.com/Q1T5T8U.png");
+  background-image: url("https://i.imgur.com/b6st8jg.png");
   background-repeat: no-repeat;
   background-size: 100%;
   min-height: 150px;

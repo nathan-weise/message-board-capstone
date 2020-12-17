@@ -16,12 +16,9 @@ export default {
 <style scoped>
 
 div {
-  margin-bottom: 10px;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   display: grid;
-  height: 100px;
   width: 50%;
-  border: solid;
   grid-template-areas:
     "img title    title"
     "img username create"
@@ -47,3 +44,17 @@ img {
 #created {
   grid-area: create;
 }
+
+a {
+  text-decoration: none;
+  color: #2B303A;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #DA8F48;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+</style>

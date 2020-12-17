@@ -36,4 +36,8 @@ export default {
 #app {
   position: relative;
 }
+
+* {
+  font-family: 'Righteous', cursive, serif;
+}
 </style>

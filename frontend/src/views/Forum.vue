@@ -6,8 +6,9 @@
       <div class="forum-title">
         <h1>{{ forum.name }}</h1>
         <img
+          id="favorite-button"
           width="180px"
-          src="https://i.imgur.com/FPnod3d.png"
+          src="https://i.imgur.com/aTYqlM3.png"
           v-on:click="addToFavorites()"
         />
       </div>
@@ -148,5 +149,9 @@ export default {
 .sort-buttons img:last-child:hover {
   filter: drop-shadow(0px 0px 5px rgb(207, 45, 45));
   filter: saturate(500%);
+}
+
+#favorite-button:hover {
+    filter: drop-shadow(0px 0px 5px black);
 }
 </style>

@@ -16,6 +16,10 @@ export default {
     return axios.get('/posts/new');
   },
 
+  listAllSpicyPosts() {
+    return axios.get('/posts/spicy');
+  },
+
   listAllPopularPosts() {
     return axios.get('/posts/popular');
   },

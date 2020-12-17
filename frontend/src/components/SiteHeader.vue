@@ -32,9 +32,7 @@
         /></router-link>
       </div>
       <div v-else>
-        Hello, {{ $store.state.user.username }} [{{
-          $store.state.user.authorities[0].name.substring(5)
-        }}] 
+        Hello, {{ $store.state.user.username }}!
         <router-link :to="{ name: 'logout' }"
           ><img src="https://i.imgur.com/cNpwiai.png" icon="logout" class="nav-buttons" id="button-in"
         /></router-link>
@@ -86,6 +84,10 @@ export default {
   padding: 10px 0 0 0;
   margin-bottom: 10px;
 }
+#logo:hover {
+  filter: drop-shadow(0px 0px 0.5px rgb(102, 102, 102));
+
+}
 #container {
   background: rgba(0, 0, 0, 0.2);
   display: flex;
@@ -103,5 +105,9 @@ export default {
 
 .nav-buttons {
   height: 75px;
+}
+
+.nav-buttons:hover {
+  filter: drop-shadow(0px 0px 5px black);
 }
 </style>
