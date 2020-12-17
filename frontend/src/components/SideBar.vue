@@ -43,11 +43,12 @@ export default {
   },
   data() {
     return {
-      favoriteForums: [],
+      favoriteForums: this.$store.state.favforums,
     };
   },
   created() {
     ForumService.getFavoriteForums().then((response) => {
+      this.$store.commit('SET_FAV_FORUMS', response.data);
       this.favoriteForums = response.data;
     });
   },

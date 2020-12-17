@@ -24,7 +24,8 @@ export default new Vuex.Store({
     searchResults: [],
     forumPosts: [],
     activePost: {},
-    comments: []
+    comments: [],
+    favForums: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -82,6 +83,12 @@ export default new Vuex.Store({
       } else {
         thisPost.totalSpicy--;
       }
+    },
+    SET_FAV_FORUMS(state, forums) {
+      state.favForums = forums;
+    },
+    ADD_FAV_FORUM(state, forum) {
+      state.favForums.push(forum);
     }
   }
 })

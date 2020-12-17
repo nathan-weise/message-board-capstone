@@ -93,6 +93,16 @@ public class JdbcPostDAO implements PostDAO {
                     "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
                     "ORDER BY total_spicy DESC, posts.created_time DESC;";
 
+    private static final String QUERY_SPICY_POSTS =
+            "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
+                    "FROM posts " +
+                    "LEFT JOIN post_votes ON posts.post_id = post_votes.post_id " +
+                    "JOIN users ON posts.user_id = users.user_id " +
+                    "JOIN forums ON posts.forum_id = forums.forum_id " +
+                    "LEFT JOIN  post_votes pv on (pv.post_id = posts.post_id AND pv.user_id = ?) " +
+                    "GROUP BY posts.post_id, users.username, forums.forum_id, pv.vote, pv.spicy " +
+                    "ORDER BY total_spicy DESC, posts.created_time DESC;";
+
     private static final String QUERY_RECENT_POSTS_BY_FORUM =
             "SELECT post_image, pv.spicy, pv.vote, posts.post_id, posts.post_title, posts.post_text, posts.user_id, posts.forum_id, posts.created_time, users.username, forums.forum_name, COALESCE(SUM(post_votes.vote), 0) AS popularity, COALESCE(SUM(post_votes.spicy), 0) AS total_spicy  " +
                     "FROM posts " +
@@ -249,6 +259,16 @@ public class JdbcPostDAO implements PostDAO {
     public List<PostDTO> listAllPostsByForumBySpicy(Long userId, long forumId) {
         List<PostDTO> results = new ArrayList<>();
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_SPICY_POSTS_BY_FORUM, userId, forumId);
+        while (rowSet.next()) {
+            results.add(mapRowToPostDTO(rowSet));
+        }
+        return results;
+    }
+
+    @Override
+    public List<PostDTO> listPostsBySpicy(Long userId) {
+        List<PostDTO> results = new ArrayList<>();
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(QUERY_SPICY_POSTS, userId);
         while (rowSet.next()) {
             results.add(mapRowToPostDTO(rowSet));
         }

@@ -90,7 +90,9 @@ export default {
       );
     },
     addToFavorites() {
-      ForumService.addToFavorites(this.$route.params.forumId);
+      ForumService.addToFavorites(this.$route.params.forumId).then(() => {
+        this.$store.commit('ADD_FAV_FORUM', {name: this.forum.name});
+      })
     },
     loadForumPosts(forumId) {
       PostService.listAllPostsForForum(forumId).then((response) => {
@@ -140,6 +142,16 @@ export default {
   display: flex;
   justify-content: space-around;
   padding: 5px 0 5px 0;
+}
+
+.sort-buttons img {
+  cursor: pointer;
+
+}
+
+#favorite-button {
+  cursor: pointer;
+
 }
 
 .sort-buttons img:hover {

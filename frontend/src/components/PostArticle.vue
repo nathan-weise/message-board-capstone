@@ -8,7 +8,7 @@
       }"
       tag="div"
     >
-      <div >
+      <div class="title-link">
         <h3 id="title">{{ title }}</h3>
         <p id="comments">comments</p>
       </div>
@@ -177,6 +177,16 @@ export default {
   align-items: center;
 }
 
+#popularity img {
+  cursor: pointer;
+
+}
+
+#nsfw {
+  cursor: pointer;
+
+}
+
 .info {
   margin-left: 10px;
   display: flex;
@@ -225,5 +235,10 @@ export default {
   margin-bottom: 0;
   padding-bottom: 0;
   margin-top: 5px;
+}
+
+.title-link {
+  cursor: pointer;
+
 }
 </style>

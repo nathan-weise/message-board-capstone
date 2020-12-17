@@ -57,11 +57,16 @@ public class PostController {
         return postDAO.listAllPostsByForumByPopularity(userId, forumId);
     }
 
-    //Get posts sorted by popularity (per forum)
     @GetMapping(value = "/forums/{forumId}/posts/spicy")
     public List<PostDTO> listPostsByForumBySpicy(@PathVariable long forumId, Principal principal) {
         Long userId = getUserIdFromPrincipal(principal);
         return postDAO.listAllPostsByForumBySpicy(userId, forumId);
+    }
+
+    @GetMapping(value = "/posts/spicy")
+    public List<PostDTO> listAllPostsBySpicy(Principal principal) {
+        Long userId = getUserIdFromPrincipal(principal);
+        return postDAO.listPostsBySpicy(userId);
     }
 
     //Get posts sorted by recentness (per forum)

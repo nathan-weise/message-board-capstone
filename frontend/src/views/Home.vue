@@ -97,6 +97,11 @@ export default {
     "details posts        .";
 }
 
+.sort-buttons img {
+  cursor: pointer;
+
+}
+
 .posts-container {
   grid-area: posts;
 }
