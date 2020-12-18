@@ -170,50 +170,75 @@ VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fa
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
 VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 5, 3, TIMESTAMP '2020-12-14 10:00:00');
 
--- Baguette forum
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Sed pellentesque metus vel malesuada feugiat. Sed sed sollicitudin ipsum. Vivamus elementum mattis porttitor. Praesent consectetur, purus eget commodo aliquam, sem libero commodo eros, eget pellentesque lacus tortor et purus.', 1, 1, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Sed pellentesque metus vel malesuada feugiat. Sed sed sollicitudin ipsum. Vivamus elementum mattis porttitor. Praesent consectetur, purus eget commodo aliquam, sem libero commodo eros, eget pellentesque lacus tortor et purus.', 6, 1, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Fruitcake tiramisu tart danish jujubes gingerbread dragée. Lemon drops cookie dragée chocolate bar fruitcake oat cake. Croissant cookie bear claw. Fruitcake donut topping candy canes tootsie roll wafer. Cookie candy canes liquorice pudding brownie oat cake chocolate bar sesame snaps cheesecake.', 1, 2, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Fruitcake tiramisu tart danish jujubes gingerbread dragée. Lemon drops cookie dragée chocolate bar fruitcake oat cake. Croissant cookie bear claw. Fruitcake donut topping candy canes tootsie roll wafer. Cookie candy canes liquorice pudding brownie oat cake chocolate bar sesame snaps cheesecake.', 6, 2, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Bonbon pudding lemon drops sweet cookie biscuit cheesecake marshmallow candy. Powder tootsie roll jelly gingerbread oat cake. Toffee halvah chocolate bar bonbon. Dessert tart dessert. Jelly-o brownie cotton candy oat cake tootsie roll. Gingerbread chocolate pie gummi bears lemon drops. Donut muffin powder. Halvah muffin oat cake dessert chupa chups fruitcake carrot cake halvah carrot cake. Bonbon halvah sugar plum gummi bears jelly beans sweet macaroon cheesecake gummies.', 1, 3, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Bonbon pudding lemon drops sweet cookie biscuit cheesecake marshmallow candy. Powder tootsie roll jelly gingerbread oat cake. Toffee halvah chocolate bar bonbon. Dessert tart dessert. Jelly-o brownie cotton candy oat cake tootsie roll. Gingerbread chocolate pie gummi bears lemon drops. Donut muffin powder. Halvah muffin oat cake dessert chupa chups fruitcake carrot cake halvah carrot cake. Bonbon halvah sugar plum gummi bears jelly beans sweet macaroon cheesecake gummies.', 6, 3, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Gummi bears bonbon macaroon jelly-o apple pie lemon drops tart marzipan tart. Brownie tart jujubes ice cream wafer. Jelly beans dragée soufflé apple pie cookie cookie macaroon pie.', 1, 4, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Gummi bears bonbon macaroon jelly-o apple pie lemon drops tart marzipan tart. Brownie tart jujubes ice cream wafer. Jelly beans dragée soufflé apple pie cookie cookie macaroon pie.', 6, 4, TIMESTAMP '2020-12-14 10:00:00');
 
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 2, 5, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 7, 5, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Sed eu lectus quis justo varius maximus. Pellentesque cursus, felis nec suscipit auctor, purus quam scelerisque enim, id imperdiet ipsum neque porttitor ante.', 2, 6, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Sed eu lectus quis justo varius maximus. Pellentesque cursus, felis nec suscipit auctor, purus quam scelerisque enim, id imperdiet ipsum neque porttitor ante.', 7, 6, TIMESTAMP '2020-12-14 10:00:00');
 
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Donec feugiat ipsum lorem, et elementum ipsum maximus in. Curabitur pharetra viverra nisi a viverra. Sed pellentesque metus vel malesuada feugiat. Sed sed sollicitudin ipsum. Vivamus elementum mattis porttitor. Praesent consectetur, purus eget commodo aliquam, sem libero commodo eros, eget pellentesque lacus tortor et purus.', 3, 7, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Donec feugiat ipsum lorem, et elementum ipsum maximus in. Curabitur pharetra viverra nisi a viverra. Sed pellentesque metus vel malesuada feugiat. Sed sed sollicitudin ipsum. Vivamus elementum mattis porttitor. Praesent consectetur, purus eget commodo aliquam, sem libero commodo eros, eget pellentesque lacus tortor et purus.', 8, 7, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
 VALUES ('Bonbon pudding lemon drops sweet cookie biscuit cheesecake marshmallow candy. Powder tootsie roll jelly gingerbread oat cake. Toffee halvah chocolate bar bonbon. Dessert tart dessert. Jelly-o brownie cotton candy oat cake tootsie roll. Gingerbread chocolate pie gummi bears lemon drops. Donut muffin powder. Halvah muffin oat cake dessert chupa chups fruitcake carrot cake halvah carrot cake. Bonbon halvah sugar plum gummi bears jelly beans sweet macaroon cheesecake gummies.', 3, 8, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Sed eu lectus quis justo varius maximus. Pellentesque cursus, felis nec suscipit auctor, purus quam scelerisque enim, id imperdiet ipsum neque porttitor ante.', 3, 1, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Sed eu lectus quis justo varius maximus. Pellentesque cursus, felis nec suscipit auctor, purus quam scelerisque enim, id imperdiet ipsum neque porttitor ante.', 8, 1, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 3, 2, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 8, 2, TIMESTAMP '2020-12-14 10:00:00');
 
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Sed eu lectus quis justo varius maximus. Pellentesque cursus, felis nec suscipit auctor, purus quam scelerisque enim, id imperdiet ipsum neque porttitor ante.', 4, 3, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Sed eu lectus quis justo varius maximus. Pellentesque cursus, felis nec suscipit auctor, purus quam scelerisque enim, id imperdiet ipsum neque porttitor ante.', 9, 3, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Bonbon pudding lemon drops sweet cookie biscuit cheesecake marshmallow candy. Powder tootsie roll jelly gingerbread oat cake. Toffee halvah chocolate bar bonbon. Dessert tart dessert. Jelly-o brownie cotton candy oat cake tootsie roll. Gingerbread chocolate pie gummi bears lemon drops. Donut muffin powder. Halvah muffin oat cake dessert chupa chups fruitcake carrot cake halvah carrot cake. Bonbon halvah sugar plum gummi bears jelly beans sweet macaroon cheesecake gummies.', 4, 4, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Bonbon pudding lemon drops sweet cookie biscuit cheesecake marshmallow candy. Powder tootsie roll jelly gingerbread oat cake. Toffee halvah chocolate bar bonbon. Dessert tart dessert. Jelly-o brownie cotton candy oat cake tootsie roll. Gingerbread chocolate pie gummi bears lemon drops. Donut muffin powder. Halvah muffin oat cake dessert chupa chups fruitcake carrot cake halvah carrot cake. Bonbon halvah sugar plum gummi bears jelly beans sweet macaroon cheesecake gummies.', 9, 4, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Farm-to-table kitsch deep v small batch. Tumblr jean shorts meh palo santo vaporware. Celiac quinoa keffiyeh tumeric. Pabst banjo biodiesel la croix brunch freegan ethical.', 4, 5, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Farm-to-table kitsch deep v small batch. Tumblr jean shorts meh palo santo vaporware. Celiac quinoa keffiyeh tumeric. Pabst banjo biodiesel la croix brunch freegan ethical.', 9, 5, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
 VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 4, 6, TIMESTAMP '2020-12-14 10:00:00');
 
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Bonbon pudding lemon drops sweet cookie biscuit cheesecake marshmallow candy. Powder tootsie roll jelly gingerbread oat cake. Toffee halvah chocolate bar bonbon. Dessert tart dessert. Jelly-o brownie cotton candy oat cake tootsie roll. Gingerbread chocolate pie gummi bears lemon drops. Donut muffin powder. Halvah muffin oat cake dessert chupa chups fruitcake carrot cake halvah carrot cake. Bonbon halvah sugar plum gummi bears jelly beans sweet macaroon cheesecake gummies.', 5, 7, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Bonbon pudding lemon drops sweet cookie biscuit cheesecake marshmallow candy. Powder tootsie roll jelly gingerbread oat cake. Toffee halvah chocolate bar bonbon. Dessert tart dessert. Jelly-o brownie cotton candy oat cake tootsie roll. Gingerbread chocolate pie gummi bears lemon drops. Donut muffin powder. Halvah muffin oat cake dessert chupa chups fruitcake carrot cake halvah carrot cake. Bonbon halvah sugar plum gummi bears jelly beans sweet macaroon cheesecake gummies.', 10, 7, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 5, 8, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 10, 8, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 5, 1, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 10, 1, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 5, 2, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 10, 2, TIMESTAMP '2020-12-14 10:00:00');
 INSERT INTO comments (comment_text, post_id, user_id, created_time)
-VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 5, 3, TIMESTAMP '2020-12-14 10:00:00');
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 10, 3, TIMESTAMP '2020-12-14 10:00:00');
 
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 11, 8, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 11, 1, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 11, 2, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 11, 3, TIMESTAMP '2020-12-14 10:00:00');
+
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 12, 8, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 12, 1, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 12, 2, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 12, 3, TIMESTAMP '2020-12-14 10:00:00');
+
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 13, 8, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 13, 1, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.', 13, 2, TIMESTAMP '2020-12-14 10:00:00');
+INSERT INTO comments (comment_text, post_id, user_id, created_time)
+VALUES ('Danish marshmallow cupcake croissant cake cheesecake bonbon halvah lollipop. Bonbon caramels candy canes. Chupa chups fruitcake carrot cake soufflé pie chocolate bar oat cake.', 13, 3, TIMESTAMP '2020-12-14 10:00:00');
 
 -- Dummy data for post_votes table
 INSERT INTO post_votes (post_id, vote, spicy, user_id, created_time)
