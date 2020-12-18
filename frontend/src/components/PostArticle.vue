@@ -10,7 +10,6 @@
     >
       <div class="title-link">
         <h3 id="title">{{ title }}</h3>
-        <p id="comments">comments</p>
       </div>
     </router-link>
 
